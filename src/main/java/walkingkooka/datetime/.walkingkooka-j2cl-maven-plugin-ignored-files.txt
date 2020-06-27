@@ -1,4 +1,4 @@
-7z t# Classes with references to java.time are blacklisted until they are emulated.
+# Classes with references to java.time are blacklisted until they are emulated.
 
 DateTimeFormatterBuilderDateTimeFormatterPatternVisitor.*
 DateTimeFormatterPattern*
