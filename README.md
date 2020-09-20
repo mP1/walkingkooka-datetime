@@ -7,7 +7,20 @@
 
 
 
-A collection of mostly Contexts with a datetime focus.
+A collection of mostly Contexts with a datetime focus and a few other utilities which can be useful, when working with
+date, times, formatters and parsers within `java.time` and support packages.
+
+
+
+# `DateTimeFormatterPatternVisitor`
+
+One feature missing from `DateTimeFormatter` is a visitor that can provide each of the components in the pattern.
+
+- Understands components with a pattern, including those that are length aware with length selecting different options.
+- The sequence run for all components is passed as a parameter.
+- visit methods are named with their pretty form.
+- `visitLiteral` Aggregates any sequence of literals with support for escaping.
+- `visitIllegal` Attempts to identify illegal sequences that are compatible with those identify by `DateTimeFormatter#parse`.
 
 
 
