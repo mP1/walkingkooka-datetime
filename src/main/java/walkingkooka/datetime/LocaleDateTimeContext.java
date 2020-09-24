@@ -72,7 +72,7 @@ final class LocaleDateTimeContext implements DateTimeContext {
      * {@link DateFormatSymbols} removes the initial empty string lot in a list of day names, so 0 = Sunday.
      */
     private static List<String> dayNames(final String[] names) {
-        return Lists.of(Arrays.copyOfRange(names, 0, names.length));
+        return Lists.of(Arrays.copyOfRange(names, 1, names.length));
     }
 
     // DateTimeContext..................................................................................................

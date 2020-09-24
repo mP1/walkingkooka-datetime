@@ -97,34 +97,34 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
 
     @Test
     public void testWeekDayName1() {
-        this.weekDayNameAndCheck(1, "Sunday");
+        this.weekDayNameAndCheck(0, "Sunday");
     }
 
     @Test
     public void testWeekDayName2() {
-        this.weekDayNameAndCheck(2, "Monday");
+        this.weekDayNameAndCheck(1, "Monday");
     }
 
     @Test
     public void testWeekDayName6() {
-        this.weekDayNameAndCheck(6, "Friday");
+        this.weekDayNameAndCheck(6, "Saturday");
     }
 
     // weekDayNameAbbreviation..........................................................................................
 
     @Test
     public void testWeekDayNameAbbreviation1() {
-        this.weekDayNameAbbreviationAndCheck(1, "Sun");
+        this.weekDayNameAbbreviationAndCheck(0, "Sun");
     }
 
     @Test
     public void testWeekDayNameAbbreviation2() {
-        this.weekDayNameAbbreviationAndCheck(2, "Mon");
+        this.weekDayNameAbbreviationAndCheck(1, "Mon");
     }
 
     @Test
     public void testWeekDayNameAbbreviation6() {
-        this.weekDayNameAbbreviationAndCheck(6, "Fri");
+        this.weekDayNameAbbreviationAndCheck(6, "Sat");
     }
 
     // toString.........................................................................................................
