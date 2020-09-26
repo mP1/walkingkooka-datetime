@@ -59,7 +59,8 @@ public abstract class FakeSimpleDateFormatPatternVisitor extends SimpleDateForma
     }
 
     @Override
-    protected void visitDayNameInWeek(final int width) {
+    protected void visitDayNameInWeek(final int width,
+                                      final SimpleDateFormatPatternComponentKind kind) {
         throw new UnsupportedOperationException();
     }
 

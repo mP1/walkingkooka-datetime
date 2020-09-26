@@ -173,9 +173,10 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
     public void testDayNameInWeek() {
         this.visitAndCheck(new TestSimpleDateFormatPatternVisitor() {
                                @Override
-                               protected void visitDayNameInWeek(final int width) {
+                               protected void visitDayNameInWeek(final int width,
+                                                                 final SimpleDateFormatPatternComponentKind kind) {
                                    check(width);
-                                   this.add(width);
+                                   this.add(width, kind);
                                }
                            },
                 'E'
