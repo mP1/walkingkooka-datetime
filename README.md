@@ -24,6 +24,13 @@ One feature missing from `DateTimeFormatter` is a visitor that can provide each 
 
 
 
+# `SimpleDateFormatPatternVisitor`
+
+Supports visiting the individual components, identifying sequences and providing some hints to the matching visitor method.
+This can be useful when attempting to translate a `SimpleDateFormat` pattern to another pattern. 
+
+
+
 ## Getting the source
 
 You can either download the source using the "ZIP" button at the top
