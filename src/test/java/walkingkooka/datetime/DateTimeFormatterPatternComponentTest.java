@@ -19,7 +19,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.reflect.JavaVisibility;
 
-public final class DateTimeFormatterPatternComponentTest extends DateTimeFormatterPatternVisitorTestCase2<DateTimeFormatterPatternComponent> {
+public final class DateTimeFormatterPatternComponentTest extends DateTimeFormatterPatternVisitorTestCase<DateTimeFormatterPatternComponent> {
     @Override
     public Class<DateTimeFormatterPatternComponent> type() {
         return DateTimeFormatterPatternComponent.class;
