@@ -136,7 +136,7 @@ enum SimpleDateFormatPatternComponent {
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
                     position,
-                    visitor::visitDayNameInWeek);
+                    visitor::traverseDayNameInWeek);
         }
     },
 

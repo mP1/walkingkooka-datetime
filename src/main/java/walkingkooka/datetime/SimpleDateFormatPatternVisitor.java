@@ -145,12 +145,28 @@ public abstract class SimpleDateFormatPatternVisitor extends PatternVisitor {
     protected void visitDayOfWeekInMonth(final int width) {
     }
 
+    final void traverseDayNameInWeek(final int width) {
+        final SimpleDateFormatPatternComponentKind kind;
+        switch (width) {
+            case 1:
+            case 2:
+            case 3:
+                kind = SimpleDateFormatPatternComponentKind.SHORT_TEXT;
+                break;
+            default:
+                kind = SimpleDateFormatPatternComponentKind.FULL_TEXT;
+                break;
+        }
+        this.visitDayNameInWeek(width, kind);
+    }
+
     /**
      * <pre>
      * E	Day name in week	Text	Tuesday; Tue
      * </pre>
      */
-    protected void visitDayNameInWeek(final int width) {
+    protected void visitDayNameInWeek(final int width,
+                                      final SimpleDateFormatPatternComponentKind kind) {
     }
 
     /**
