@@ -21,14 +21,13 @@ import walkingkooka.text.CharSequences;
 import walkingkooka.visit.Visiting;
 import walkingkooka.visit.Visitor;
 
-import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.IntConsumer;
 
 /**
  * A {@link Visitor} for {@link java.time.format.DateTimeFormatter patterns}.
  */
-public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
+public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
 
     final static char ERA = 'G';
     final static char YEAR = 'u';
@@ -72,7 +71,6 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
 
     final static char PAD = 'p';
 
-    final static char ESCAPE = '\'';
     final static char OPTIONAL_START = '[';
     final static char OPTIONAL_END = ']';
     final static char RESERVED_HASH = '#';
@@ -81,18 +79,6 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
 
     protected DateTimeFormatterPatternVisitor() {
         super();
-    }
-
-    /**
-     * Called before each component visit method and contains the text and position for the first character.
-     */
-    protected Visiting startVisitComponent(final int position,
-                                           final String text) {
-        return Visiting.CONTINUE;
-    }
-
-    protected void endVisitComponent(final int position,
-                                     final String text) {
     }
 
     /**
@@ -342,8 +328,7 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
      * ZoneId: This outputs the time-zone ID, such as 'Europe/Paris'. If the count of letters is two, then the time-zone ID is output. Any other count of letters throws IllegalArgumentException.x`x``
      * </pre>
      */
-    @SuppressWarnings("SwitchStatementWithTooFewBranches")
-    final void traverseTimezoneId(final int width) {
+    @SuppressWarnings("SwitchStatementWithTooFewBranches") final void traverseTimezoneId(final int width) {
         switch (width) {
             case 2:
                 this.visitTimeZoneId(width);
@@ -448,52 +433,6 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
 
     /**
      * <pre>
-     * '       escape for text             delimiter
-     * ''      single quote                literal
-     * </pre>
-     */
-    final int traverseEscaped(final String pattern,
-                              final int position) {
-        final int length = pattern.length();
-
-        int end = position + 1;
-        boolean escape = false;
-
-        while (end < length) {
-            final char c = pattern.charAt(end);
-            end++;
-
-            if (escape) {
-                escape = false;
-                continue;
-            }
-            if ('\\' == c) {
-                escape = true;
-                continue;
-            }
-            if (DateTimeFormatterPatternVisitor.ESCAPE == c) {
-                break;
-            }
-        }
-
-        final String escaped = pattern.substring(position, end);
-        if (Visiting.CONTINUE == this.startVisitComponent(position, escaped)) {
-            this.visitLiteral(escaped.length() == 2 ?
-                    ESCAPE_STRING :
-                    CharSequences.unescape(pattern.substring(position + 1, end - 1)).toString()
-            );
-        }
-        this.endVisitComponent(position, escaped);
-        return end;
-    }
-
-    private final static String ESCAPE_STRING = "" + DateTimeFormatterPatternVisitor.ESCAPE;
-
-    protected void visitLiteral(final String text) {
-    }
-
-    /**
-     * <pre>
      * [       optional section start
      * </pre>
      */
@@ -508,64 +447,33 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
     protected void visitOptionalEnd(final int width) {
     }
 
-    // visitIllegal.....................................................................................................
-
-    /**
-     * Eventually calls {@link #visitIllegal(String)}
-     */
-    final int traverseIllegal(final String pattern,
-                              final int position) {
-        final String text = this.repeatingTextRun(position, pattern);
-        if (Visiting.CONTINUE == this.startVisitComponent(position, text)) {
-            this.visitIllegal(text);
-        }
-        this.endVisitComponent(position, text);
-        return position + text.length();
-    }
-
-    private void visitIllegal(final char c,
-                              final int width) {
-        this.visitIllegal(CharSequences.repeating(c, width).toString());
-    }
-
-    /**
-     * Called with any illegal component.
-     */
-    protected void visitIllegal(final String component) {
-    }
-
-    // visitLiteral.....................................................................................................
-
-    /**
-     * Eventually calls {@link #visitIllegal(String)}
-     */
-    final int traverseLiteral(final String pattern,
-                              final int position) {
-        final String text = this.repeatingTextRun(position, pattern);
-        if (Visiting.CONTINUE == this.startVisitComponent(position, text)) {
-            this.visitLiteral(text);
-        }
-        this.endVisitComponent(position, text);
-        return position + text.length();
-    }
-
-    // helper...........................................................................................................
+    // helpers..........................................................................................................
 
     final int traverse(final String pattern,
                        final int position,
                        final int max,
                        final IntConsumer dispatcher) {
-        return this.traverseRepeatingComponentWidth(pattern,
+        return this.traverseRepeating(pattern,
                 position,
                 max,
                 dispatcher);
+    }
+
+    @Override //
+    final int traverseChar(final char c,
+                           final String pattern,
+                           final int position) {
+        return DateTimeFormatterPatternComponent.ofCharacter(c)
+                .traverse(pattern,
+                        position,
+                        this);
     }
 
     final int traverseNumber(final String pattern,
                              final int position,
                              final int max,
                              final IntConsumer dispatcher) {
-        return this.traverseRepeatingComponentWidth(pattern,
+        return this.traverseRepeating(pattern,
                 position,
                 max,
                 dispatcher);
@@ -575,7 +483,7 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
                                    final int position,
                                    final int max,
                                    final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
-        return this.traverseRepeatingComponentWidthKind(pattern,
+        return this.traverseRepeating(pattern,
                 position,
                 max,
                 DateTimeFormatterPatternComponentKindFactory.NUMBER_OR_TEXT,
@@ -586,7 +494,7 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
                            final int position,
                            final int max,
                            final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
-        return this.traverseRepeatingComponentWidthKind(pattern,
+        return this.traverseRepeating(pattern,
                 position,
                 max,
                 DateTimeFormatterPatternComponentKindFactory.TEXT,
@@ -596,10 +504,10 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
     /**
      * Finds the repeating character, then calls the visitor method with a width parameter.
      */
-    private int traverseRepeatingComponentWidth(final String pattern,
-                                                final int position,
-                                                final int max,
-                                                final IntConsumer dispatcher) {
+    private int traverseRepeating(final String pattern,
+                                  final int position,
+                                  final int max,
+                                  final IntConsumer dispatcher) {
         final String text = this.repeatingTextRun(position, pattern);
         final int width = text.length();
 
@@ -617,11 +525,11 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
     /**
      * Finds the repeating character, then calls the visitor method with a width and kind parameter.
      */
-    private int traverseRepeatingComponentWidthKind(final String pattern,
-                                                    final int position,
-                                                    final int max,
-                                                    final DateTimeFormatterPatternComponentKindFactory kindFactory,
-                                                    final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
+    private int traverseRepeating(final String pattern,
+                                  final int position,
+                                  final int max,
+                                  final DateTimeFormatterPatternComponentKindFactory kindFactory,
+                                  final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
         final String text = this.repeatingTextRun(position, pattern);
         final int width = text.length();
 
@@ -634,41 +542,5 @@ public abstract class DateTimeFormatterPatternVisitor extends Visitor<String> {
         }
         this.endVisitComponent(position, text);
         return position + width;
-    }
-
-    private String repeatingTextRun(final int position,
-                                    final String pattern) {
-        final int length = pattern.length();
-        final char c = pattern.charAt(position);
-
-        int end = position + 1;
-        while (end < length) {
-            if (c != pattern.charAt(end)) {
-                break;
-            }
-            end++;
-        }
-        return pattern.substring(position, end);
-    }
-
-    // Visitor..........................................................................................................
-
-    /**
-     * Accepts a pattern and calls visit methods for each of its components.
-     */
-    @Override
-    public void accept(final String pattern) {
-        Objects.requireNonNull(pattern, "pattern");
-
-        int i = 0;
-        final int patternLength = pattern.length();
-
-        while (i < patternLength) {
-            final char c = pattern.charAt(i);
-            i = DateTimeFormatterPatternComponent.ofCharacter(c)
-                    .traverse(pattern,
-                            i,
-                    this);
-        }
     }
 }
