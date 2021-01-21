@@ -28,6 +28,6 @@ public class JunitTest {
 
     @Test
     public void testDateTimeContextLocale() {
-        Assert.assertNotNull(DateTimeContexts.locale(Locale.forLanguageTag("EN-AU"), 1950));
+        Assert.assertNotNull(DateTimeContexts.locale(Locale.forLanguageTag("EN-AU"), 50));
     }
 }

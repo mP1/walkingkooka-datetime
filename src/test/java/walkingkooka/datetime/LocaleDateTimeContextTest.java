@@ -30,6 +30,16 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
         assertThrows(NullPointerException.class, () -> LocaleDateTimeContext.with(null, 50));
     }
 
+    @Test
+    public void testWithNullNegativeTwoDigitYearFails() {
+        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, -1));
+    }
+
+    @Test
+    public void testWithNullInvalidTwoDigitYearFails2() {
+        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, 100));
+    }
+
     // ampm.............................................................................................................
 
     @Test
