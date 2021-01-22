@@ -23,7 +23,7 @@ import walkingkooka.locale.HasLocale;
 import java.util.List;
 
 /**
- * Context that typically accompanies another stateless component such as a number parser or formatter that involves decimals.
+ * Context that typically accompanies another stateless component such as a parser or formatter that involves dates or times.
  */
 public interface DateTimeContext extends YearContext, HasLocale {
 
