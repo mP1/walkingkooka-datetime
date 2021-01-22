@@ -31,4 +31,17 @@ public interface YearContext extends Context {
      * Returns a two digit value, values under should be 2000 years, while those under should be 1900s.
      */
     int twoDigitYear();
+
+    /**
+     * Accepts a two digit year, and using {@link #twoDigitYear()} returns a four digit yar.
+     */
+    default int twoToFourDigitYear(final int year) {
+        if(year < 0 || year >= 100) {
+            throw new IllegalArgumentException("Invalid two digit year " + year + " expected between 0 and 100");
+        }
+        return year +
+                (year < this.twoDigitYear() ?
+                        2000 :
+                        1900);
+    }
 }
