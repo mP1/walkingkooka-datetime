@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Context that typically accompanies another stateless component such as a number parser or formatter that involves decimals.
  */
-public interface DateTimeContext extends Context, HasLocale {
+public interface DateTimeContext extends YearContext, HasLocale {
 
     /**
      * Returns all the AM/PM strings.
@@ -65,11 +65,6 @@ public interface DateTimeContext extends Context, HasLocale {
     default String monthNameAbbreviation(final int month) {
         return DateTimeContextGetter.get(month, this.monthNameAbbreviations(), "month");
     }
-
-    /**
-     * Returns a two digit value, values under should be 2000 years, while those under should be 1900s.
-     */
-    int twoDigitYear();
 
     /**
      * Returns all the week day names in long form.
