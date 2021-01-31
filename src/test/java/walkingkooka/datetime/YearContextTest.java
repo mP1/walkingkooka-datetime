@@ -80,6 +80,12 @@ public final class YearContextTest implements ClassTesting2<YearContext> {
     }
 
     static class TestYearContext implements YearContext {
+
+        @Override
+        public int defaultYear() {
+            throw new UnsupportedOperationException();
+        }
+
         @Override
         public int twoDigitYear() {
             return 20;

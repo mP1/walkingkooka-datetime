@@ -31,7 +31,12 @@ public class FakeDateTimeContext implements DateTimeContext {
     public String ampm(final int hourOfDay) {
         throw new UnsupportedOperationException();
     }
-    
+
+    @Override
+    public int defaultYear() {
+        throw new UnsupportedOperationException();
+    }
+
     @Override
     public Locale locale() {
         throw new UnsupportedOperationException();

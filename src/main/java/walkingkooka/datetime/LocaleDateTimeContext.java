@@ -33,16 +33,22 @@ import java.util.Objects;
 final class LocaleDateTimeContext implements DateTimeContext {
 
     static LocaleDateTimeContext with(final Locale locale,
+                                      final int defaultYear,
                                       final int twoDigitYear) {
         Objects.requireNonNull(locale, "locale");
         if(twoDigitYear < 0 || twoDigitYear > 99) {
             throw new IllegalArgumentException("Invalid two digit year " + twoDigitYear + " expected beteen 0 and 100");
         }
 
-        return new LocaleDateTimeContext(locale, twoDigitYear);
+        return new LocaleDateTimeContext(
+                locale,
+                defaultYear,
+                twoDigitYear
+        );
     }
 
     private LocaleDateTimeContext(final Locale locale,
+                                  final int defaultYear,
                                   final int twoDigitYear) {
         super();
 
@@ -50,6 +56,8 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
         final DateFormatSymbols symbols = new DateFormatSymbols(locale);
         this.ampms = Lists.of(symbols.getAmPmStrings());
+
+        this.defaultYear = defaultYear;
 
         this.monthNames = monthNames(symbols.getMonths());
         this.monthNameAbbreviations = monthNames(symbols.getShortMonths());
@@ -86,6 +94,13 @@ final class LocaleDateTimeContext implements DateTimeContext {
     }
 
     private final List<String> ampms;
+
+    @Override
+    public int defaultYear() {
+        return this.defaultYear;
+    }
+
+    private final int defaultYear;
 
     @Override
     public Locale locale() {

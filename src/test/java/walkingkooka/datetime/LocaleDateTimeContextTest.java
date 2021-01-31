@@ -25,19 +25,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<LocaleDateTimeContext> {
 
+    private final static int DEFAULT_YEAR = 1901;
+
     @Test
     public void testWithNullLocaleFails() {
-        assertThrows(NullPointerException.class, () -> LocaleDateTimeContext.with(null, 50));
+        assertThrows(NullPointerException.class, () -> LocaleDateTimeContext.with(null, DEFAULT_YEAR,50));
     }
 
     @Test
     public void testWithNullNegativeTwoDigitYearFails() {
-        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, -1));
+        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, DEFAULT_YEAR, -1));
     }
 
     @Test
     public void testWithNullInvalidTwoDigitYearFails2() {
-        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, 100));
+        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, DEFAULT_YEAR, 100));
     }
 
     // ampm.............................................................................................................
@@ -60,6 +62,13 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
     @Test
     public void testAmpm1800() {
         this.amPmAndCheck(18, "PM");
+    }
+
+    // defaultYear......................................................................................................
+
+    @Test
+    public void testDefaultYear() {
+        this.defaultYearAndCheck(this.createContext(), DEFAULT_YEAR);
     }
 
     // locale...........................................................................................................
@@ -146,7 +155,11 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
 
     @Override
     public LocaleDateTimeContext createContext() {
-        return LocaleDateTimeContext.with(this.locale(), 1);
+        return LocaleDateTimeContext.with(
+                this.locale(),
+                DEFAULT_YEAR,
+                1
+        );
     }
 
     private Locale locale() {
