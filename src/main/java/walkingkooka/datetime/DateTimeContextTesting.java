@@ -34,6 +34,15 @@ public interface DateTimeContextTesting extends HasLocaleTesting {
         assertEquals(ampm, context.ampm(hourOfDay), () -> "ampm hourOfDay=" + hourOfDay);
     }
 
+    default void defaultYearAndCheck(final DateTimeContext context,
+                                     final int defaultYear) {
+        assertEquals(
+                defaultYear,
+                context.defaultYear(),
+                () -> "defaultYear=" + defaultYear
+        );
+    }
+
     default void monthNameAndCheck(final DateTimeContext context,
                                    final int month,
                                    final String monthName) {

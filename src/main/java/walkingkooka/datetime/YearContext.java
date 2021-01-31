@@ -28,6 +28,11 @@ import java.util.List;
 public interface YearContext extends Context {
 
     /**
+     * Provides the default year useful for parsing operations where the year is missing.
+     */
+    int defaultYear();
+
+    /**
      * Returns a two digit value, values under should be 2000 years, while those under should be 1900s.
      */
     int twoDigitYear();
