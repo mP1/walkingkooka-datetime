@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class YearContextTest implements ClassTesting2<YearContext> {
@@ -72,7 +71,7 @@ public final class YearContextTest implements ClassTesting2<YearContext> {
     }
 
     private void twoToFourDigitYearAndCheck(final int two, final int four) {
-        assertEquals(
+        this.checkEquals(
                 four,
                 new TestYearContext().twoToFourDigitYear(two),
                 () -> "twoToFourDigitYear " + two

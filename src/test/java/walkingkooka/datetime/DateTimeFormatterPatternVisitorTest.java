@@ -27,8 +27,6 @@ import walkingkooka.visit.Visiting;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatterPatternVisitorTestCase<DateTimeFormatterPatternVisitor>
@@ -623,13 +621,14 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Test
     public void testLiteralUnescaped() {
-        this.visitAndCheck(new TestDateTimeFormatterPatternVisitor() {
-                               @Override
-                               protected void visitLiteral(final String text) {
-                                   assertEquals("hello\t", text, "text");
-                                   this.add(text);
-                               }
-                           },
+        this.visitAndCheck(
+                new TestDateTimeFormatterPatternVisitor() {
+                    @Override
+                    protected void visitLiteral(final String text) {
+                        checkEquals("hello\t", text, "text");
+                        this.add(text);
+                    }
+                },
                 "'hello\\t'",
                 "s0 'hello\\t',hello\t,e0 'hello\\t'"
         );
@@ -637,12 +636,13 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Test
     public void testLiteralSlash() {
-        this.visitAndCheck(new TestDateTimeFormatterPatternVisitor() {
-                               @Override
-                               protected void visitLiteral(final String text) {
-                                   this.add(text);
-                               }
-                           },
+        this.visitAndCheck(
+                new TestDateTimeFormatterPatternVisitor() {
+                    @Override
+                    protected void visitLiteral(final String text) {
+                        this.add(text);
+                    }
+                },
                 "/",
                 "s0 /,/,e0 /"
         );
@@ -786,28 +786,29 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Test
     public void testDDDmmuuuu() {
-        this.visitAndCheck(new TestDateTimeFormatterPatternVisitor() {
+        this.visitAndCheck(
+                new TestDateTimeFormatterPatternVisitor() {
 
-                               @Override
-                               protected void visitDayOfYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
-                                   this.add(width);
-                               }
+                    @Override
+                    protected void visitDayOfYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitMonthOfYear(final int width,
+                    @Override
+                    protected void visitMonthOfYear(final int width,
                                                                final DateTimeFormatterPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                        checkEquals(2, width);
+                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
                                @Override
                                protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                                   checkEquals(4, width);
 
                                    check(width);
                                    this.add(width);
@@ -820,25 +821,26 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Test
     public void testLiteralDDDmmuuuu() {
-        this.visitAndCheck(new TestDateTimeFormatterPatternVisitor() {
-                               @Override
-                               protected void visitLiteral(final String unescapedText) {
-                                   assertEquals("hello", unescapedText);
-                                   this.add(unescapedText);
-                               }
+        this.visitAndCheck(
+                new TestDateTimeFormatterPatternVisitor() {
+                    @Override
+                    protected void visitLiteral(final String unescapedText) {
+                        checkEquals("hello", unescapedText);
+                        this.add(unescapedText);
+                    }
 
-                               @Override
-                               protected void visitDayOfYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
+                    @Override
+                    protected void visitDayOfYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
                                    this.add(width);
                                }
 
                                @Override
                                protected void visitMonthOfYear(final int width,
                                                                final DateTimeFormatterPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                                   checkEquals(2, width);
+                                   checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
                                    check(width);
                                    this.add(width);
@@ -846,7 +848,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
                                @Override
                                protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                                   checkEquals(4, width);
 
                                    check(width);
                                    this.add(width);
@@ -859,24 +861,25 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Test
     public void testLiteralDDDmmLiteraluuuu() {
-        this.visitAndCheck(new TestDateTimeFormatterPatternVisitor() {
-                               @Override
-                               protected void visitLiteral(final String unescapedText) {
-                                   this.add(unescapedText);
-                               }
+        this.visitAndCheck(
+                new TestDateTimeFormatterPatternVisitor() {
+                    @Override
+                    protected void visitLiteral(final String unescapedText) {
+                        this.add(unescapedText);
+                    }
 
-                               @Override
-                               protected void visitDayOfYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
-                                   this.add(width);
+                    @Override
+                    protected void visitDayOfYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
+                        this.add(width);
                                }
 
                                @Override
                                protected void visitMonthOfYear(final int width,
                                                                final DateTimeFormatterPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                                   checkEquals(2, width);
+                                   checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
                                    check(width);
                                    this.add(width);
@@ -884,7 +887,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
                                @Override
                                protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                                   checkEquals(4, width);
 
                                    check(width);
                                    this.add(width);
@@ -953,7 +956,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         new TestDateTimeFormatterPatternVisitor() {
             @Override
             protected void visitIllegal(final String p) {
-                assertEquals(pattern, p, () -> "character, pattern: " + CharSequences.quoteAndEscape(pattern));
+                checkEquals(pattern, p, () -> "character, pattern: " + CharSequences.quoteAndEscape(pattern));
 
                 this.add("illegal " + p);
             }
@@ -963,14 +966,14 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         }.accept(pattern);
     }
 
-    private static void check(final int width) {
-        assertNotEquals(0, width, "width");
+    private void check(final int width) {
+        this.checkNotEquals(0, width, "width");
     }
 
-    private static void checkNumberOrText(final int width,
-                                          final DateTimeFormatterPatternComponentKind kind) {
-        check(width);
-        assertNotEquals(null, kind, "kind");
+    private void checkNumberOrText(final int width,
+                                   final DateTimeFormatterPatternComponentKind kind) {
+        this.check(width);
+        this.checkNotEquals(null, kind, "kind");
 
         DateTimeFormatterPatternComponentKind expected;
 
@@ -989,13 +992,13 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                 expected = DateTimeFormatterPatternComponentKind.NARROW_TEXT;
                 break;
         }
-        assertEquals(expected, kind, "incorrect kind for " + width);
+        this.checkEquals(expected, kind, "incorrect kind for " + width);
     }
 
-    private static void checkText(final int width,
-                                  final DateTimeFormatterPatternComponentKind kind) {
+    private void checkText(final int width,
+                           final DateTimeFormatterPatternComponentKind kind) {
         check(width);
-        assertNotEquals(null, kind, "kind");
+        this.checkNotEquals(null, kind, "kind");
 
         DateTimeFormatterPatternComponentKind expected;
 
@@ -1012,10 +1015,10 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                 expected = DateTimeFormatterPatternComponentKind.NARROW_TEXT;
                 break;
         }
-        assertEquals(expected, kind, "incorrect kind for " + width);
+        this.checkEquals(expected, kind, "incorrect kind for " + width);
     }
 
-    abstract static class TestDateTimeFormatterPatternVisitor extends FakeDateTimeFormatterPatternVisitor {
+    abstract class TestDateTimeFormatterPatternVisitor extends FakeDateTimeFormatterPatternVisitor {
 
         void acceptAndCheck(final String pattern, final String expected) {
             this.visited.clear();
@@ -1035,8 +1038,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
         @Override
         protected final void endVisitComponent(final int position, final String text) {
-            assertEquals(this.position, position, "position doesnt match startVisitComponent parameter");
-            assertEquals(this.text, text, "text doesnt match startVisitComponent parameter");
+            checkEquals(this.position, position, "position doesnt match startVisitComponent parameter");
+            checkEquals(this.text, text, "text doesnt match startVisitComponent parameter");
 
             this.position = -1;
             this.text = null;
@@ -1058,7 +1061,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         }
 
         final void add(final String visit) {
-            assertNotEquals("", visit);
+            checkNotEquals("", visit);
             this.visited.add(visit);
         }
 
@@ -1068,9 +1071,11 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
         final void checkVisited(final String pattern,
                                 final String expected) {
-            assertEquals(expected,
+            checkEquals(
+                    expected,
                     String.join(",", this.visited),
-                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern));
+                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
+            );
         }
     }
 

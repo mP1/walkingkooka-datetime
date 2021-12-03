@@ -29,7 +29,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Locale;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeFormatterBuilderDateTimeFormatterPatternVisitorTest implements DateTimeFormatterPatternVisitorTesting<DateTimeFormatterBuilderDateTimeFormatterPatternVisitor> {
@@ -161,7 +160,7 @@ public final class DateTimeFormatterBuilderDateTimeFormatterPatternVisitorTest i
         final DateTimeFormatter expectedFormatter = DateTimeFormatter.ofPattern(pattern).withLocale(locale);
         final DateTimeFormatter formatter = builder.toFormatter(locale);
 
-        assertEquals(expectedFormatter.toString(),
+        this.checkEquals(expectedFormatter.toString(),
                 formatter.toString(),
                 () -> "Pattern " + CharSequences.quoteAndEscape(pattern));
 
@@ -173,7 +172,7 @@ public final class DateTimeFormatterBuilderDateTimeFormatterPatternVisitorTest i
         }
 
         if (null != expected) {
-            assertEquals(expected,
+            this.checkEquals(expected,
                     formatter.format(dateTime),
                     () -> "Pattern " + CharSequences.quoteAndEscape(pattern) + " value=" + dateTime);
         }
