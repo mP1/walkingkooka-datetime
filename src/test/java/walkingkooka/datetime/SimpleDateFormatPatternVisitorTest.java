@@ -27,8 +27,6 @@ import walkingkooka.visit.Visiting;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPatternVisitorTestCase<SimpleDateFormatPatternVisitor>
@@ -383,13 +381,14 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
     @Test
     public void testLiteralUnescaped() {
-        this.visitAndCheck(new TestSimpleDateFormatPatternVisitor() {
-                               @Override
-                               protected void visitLiteral(final String text) {
-                                   assertEquals("hello\t", text, "text");
-                                   this.add(text);
-                               }
-                           },
+        this.visitAndCheck(
+                new TestSimpleDateFormatPatternVisitor() {
+                    @Override
+                    protected void visitLiteral(final String text) {
+                        checkEquals("hello\t", text, "text");
+                        this.add(text);
+                    }
+                },
                 "'hello\\t'",
                 "s0 'hello\\t',hello\t,e0 'hello\\t'"
         );
@@ -478,33 +477,34 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
     @Test
     public void testDDDLLyyyy() {
-        this.visitAndCheck(new TestSimpleDateFormatPatternVisitor() {
+        this.visitAndCheck(
+                new TestSimpleDateFormatPatternVisitor() {
 
-                               @Override
-                               protected void visitDayInYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
-                                   this.add(width);
-                               }
+                    @Override
+                    protected void visitDayInYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitMonthInYearStandaloneForm(final int width,
-                                                                             final SimpleDateFormatPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                    @Override
+                    protected void visitMonthInYearStandaloneForm(final int width,
+                                                                  final SimpleDateFormatPatternComponentKind kind) {
+                        checkEquals(2, width);
+                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
-                                   this.add(width);
-                               }
-                           },
+                        check(width);
+                        this.add(width);
+                    }
+                },
                 "DDDLLyyyy",
                 "s0 DDD,3,e0 DDD,s3 LL,2,e3 LL,s5 yyyy,4,e5 yyyy"
         );
@@ -512,35 +512,36 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
     @Test
     public void testLiteralDDDLLyyyy() {
-        this.visitAndCheck(new TestSimpleDateFormatPatternVisitor() {
+        this.visitAndCheck(
+                new TestSimpleDateFormatPatternVisitor() {
 
-                               @Override
-                               protected void visitLiteral(final String unescapedText) {
-                                   this.add(unescapedText);
-                               }
+                    @Override
+                    protected void visitLiteral(final String unescapedText) {
+                        this.add(unescapedText);
+                    }
 
-                               @Override
-                               protected void visitDayInYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
-                                   this.add(width);
-                               }
+                    @Override
+                    protected void visitDayInYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitMonthInYearStandaloneForm(final int width,
-                                                                             final SimpleDateFormatPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                    @Override
+                    protected void visitMonthInYearStandaloneForm(final int width,
+                                                                  final SimpleDateFormatPatternComponentKind kind) {
+                        checkEquals(2, width);
+                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
+                        check(width);
                                    this.add(width);
                                }
                            },
@@ -551,35 +552,36 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
     @Test
     public void testLiteralDDDLLLiteralyyyy() {
-        this.visitAndCheck(new TestSimpleDateFormatPatternVisitor() {
+        this.visitAndCheck(
+                new TestSimpleDateFormatPatternVisitor() {
 
-                               @Override
-                               protected void visitLiteral(final String unescapedText) {
-                                   this.add(unescapedText);
-                               }
+                    @Override
+                    protected void visitLiteral(final String unescapedText) {
+                        this.add(unescapedText);
+                    }
 
-                               @Override
-                               protected void visitDayInYear(final int width) {
-                                   assertEquals(3, width);
-                                   check(width);
-                                   this.add(width);
-                               }
+                    @Override
+                    protected void visitDayInYear(final int width) {
+                        checkEquals(3, width);
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitMonthInYearStandaloneForm(final int width,
-                                                                             final SimpleDateFormatPatternComponentKind kind) {
-                                   assertEquals(2, width);
-                                   assertEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                    @Override
+                    protected void visitMonthInYearStandaloneForm(final int width,
+                                                                  final SimpleDateFormatPatternComponentKind kind) {
+                        checkEquals(2, width);
+                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   assertEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
+                        check(width);
                                    this.add(width);
                                }
                            },
@@ -646,7 +648,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
         new TestSimpleDateFormatPatternVisitor() {
             @Override
             protected void visitIllegal(final String p) {
-                assertEquals(pattern, p, () -> "character, pattern: " + CharSequences.quoteAndEscape(pattern));
+                checkEquals(pattern, p, () -> "character, pattern: " + CharSequences.quoteAndEscape(pattern));
 
                 this.add("illegal " + p);
             }
@@ -656,14 +658,14 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
         }.accept(pattern);
     }
 
-    private static void check(final int width) {
-        assertNotEquals(0, width, "width");
+    private void check(final int width) {
+        this.checkNotEquals(0, width, "width");
     }
 
-    private static void checkNumberOrText(final int width,
-                                          final SimpleDateFormatPatternComponentKind kind) {
+    private void checkNumberOrText(final int width,
+                                   final SimpleDateFormatPatternComponentKind kind) {
         check(width);
-        assertNotEquals(null, kind, "kind");
+        this.checkNotEquals(null, kind, "kind");
 
         SimpleDateFormatPatternComponentKind expected;
 
@@ -679,10 +681,10 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                 expected = SimpleDateFormatPatternComponentKind.FULL_TEXT;
                 break;
         }
-        assertEquals(expected, kind, "incorrect kind for " + width);
+        this.checkEquals(expected, kind, "incorrect kind for " + width);
     }
 
-    abstract static class TestSimpleDateFormatPatternVisitor extends FakeSimpleDateFormatPatternVisitor {
+    abstract class TestSimpleDateFormatPatternVisitor extends FakeSimpleDateFormatPatternVisitor {
 
         void acceptAndCheck(final String pattern, final String expected) {
             this.visited.clear();
@@ -702,8 +704,8 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
         @Override
         protected final void endVisitComponent(final int position, final String text) {
-            assertEquals(this.position, position, "position doesnt match startVisitComponent parameter");
-            assertEquals(this.text, text, "text doesnt match startVisitComponent parameter");
+            checkEquals(this.position, position, "position doesnt match startVisitComponent parameter");
+            checkEquals(this.text, text, "text doesnt match startVisitComponent parameter");
 
             this.position = -1;
             this.text = null;
@@ -726,7 +728,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
         }
 
         final void add(final String visit) {
-            assertNotEquals("", visit);
+            checkNotEquals("", visit);
             this.visited.add(visit);
         }
 
@@ -736,9 +738,11 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
 
         final void checkVisited(final String pattern,
                                 final String expected) {
-            assertEquals(expected,
+            checkEquals(
+                    expected,
                     String.join(",", this.visited),
-                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern));
+                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
+            );
         }
     }
 
