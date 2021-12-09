@@ -26,7 +26,7 @@ public final class DateTimeFormatterPatternComponentKindTest extends DateTimeFor
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PUBLIC;
     }
 }

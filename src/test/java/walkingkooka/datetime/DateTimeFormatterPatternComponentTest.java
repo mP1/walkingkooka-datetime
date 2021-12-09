@@ -26,7 +26,7 @@ public final class DateTimeFormatterPatternComponentTest extends DateTimeFormatt
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PACKAGE_PRIVATE;
     }
 }

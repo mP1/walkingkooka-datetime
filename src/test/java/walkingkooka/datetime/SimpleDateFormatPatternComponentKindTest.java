@@ -26,7 +26,7 @@ public final class SimpleDateFormatPatternComponentKindTest extends SimpleDateFo
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PUBLIC;
     }
 }
