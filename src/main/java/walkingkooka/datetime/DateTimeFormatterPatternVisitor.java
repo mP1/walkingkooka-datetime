@@ -17,7 +17,6 @@
 
 package walkingkooka.datetime;
 
-import walkingkooka.text.CharSequences;
 import walkingkooka.visit.Visiting;
 import walkingkooka.visit.Visitor;
 
