@@ -26,7 +26,7 @@ public final class DateTimeFormatterPatternComponentKindFactoryTest extends Date
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
+    public JavaVisibility typeVisibility() {
         return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
