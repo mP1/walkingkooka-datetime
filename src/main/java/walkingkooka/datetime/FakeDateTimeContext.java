@@ -17,6 +17,7 @@
 
 package walkingkooka.datetime;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,6 +60,11 @@ public class FakeDateTimeContext implements DateTimeContext {
 
     @Override
     public String monthNameAbbreviation(final int month) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public LocalDateTime now() {
         throw new UnsupportedOperationException();
     }
 

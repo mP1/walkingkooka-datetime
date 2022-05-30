@@ -19,6 +19,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.locale.HasLocale;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -64,6 +65,11 @@ public interface DateTimeContext extends YearContext, HasLocale {
     default String monthNameAbbreviation(final int month) {
         return DateTimeContextGetter.get(month, this.monthNameAbbreviations(), "month");
     }
+
+    /**
+     * Returns a {@link java.time.LocalDateTime} with now.
+     */
+    LocalDateTime now();
 
     /**
      * Returns all the week day names in long form.

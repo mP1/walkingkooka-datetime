@@ -19,7 +19,9 @@ package walkingkooka.datetime;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.Locale;
+import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -27,19 +29,58 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
 
     private final static int DEFAULT_YEAR = 1901;
 
+    private final static Supplier<LocalDateTime> NOW  = () -> LocalDateTime.of(1999, 12, 31, 12, 58, 59);
+
     @Test
     public void testWithNullLocaleFails() {
-        assertThrows(NullPointerException.class, () -> LocaleDateTimeContext.with(null, DEFAULT_YEAR,50));
+        assertThrows(
+                NullPointerException.class,
+                () -> LocaleDateTimeContext.with(
+                        null,
+                        DEFAULT_YEAR,
+                        50,
+                        NOW
+                )
+        );
     }
 
     @Test
     public void testWithNullNegativeTwoDigitYearFails() {
-        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, DEFAULT_YEAR, -1));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> LocaleDateTimeContext.with(
+                        Locale.ENGLISH,
+                        DEFAULT_YEAR,
+                        -1,
+                        NOW
+                )
+        );
     }
 
     @Test
     public void testWithNullInvalidTwoDigitYearFails2() {
-        assertThrows(IllegalArgumentException.class, () -> LocaleDateTimeContext.with(Locale.ENGLISH, DEFAULT_YEAR, 100));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> LocaleDateTimeContext.with(
+                        Locale.ENGLISH,
+                        DEFAULT_YEAR,
+                        100,
+                        NOW
+                )
+        );
+    }
+
+    @Test
+    public void testWithNullNowSupplierFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> LocaleDateTimeContext.with(
+                        Locale.ENGLISH,
+                        DEFAULT_YEAR,
+                        50,
+                        null
+                )
+        );
     }
 
     // ampm.............................................................................................................
@@ -158,7 +199,8 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
         return LocaleDateTimeContext.with(
                 this.locale(),
                 DEFAULT_YEAR,
-                1
+                1,
+                NOW
         );
     }
 
