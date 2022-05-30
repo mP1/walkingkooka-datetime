@@ -21,6 +21,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import walkingkooka.datetime.DateTimeContexts;
 
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 @J2clTestInput(JunitTest.class)
@@ -28,10 +29,13 @@ public class JunitTest {
 
     @Test
     public void testDateTimeContextLocale() {
-        Assert.assertNotNull(DateTimeContexts.locale(
-                Locale.forLanguageTag("EN-AU"),
-                1902,
-                50)
+        Assert.assertNotNull(
+                DateTimeContexts.locale(
+                    Locale.forLanguageTag("EN-AU"),
+                    1902,
+                    50,
+                    LocalDateTime::now
+                )
         );
     }
 }

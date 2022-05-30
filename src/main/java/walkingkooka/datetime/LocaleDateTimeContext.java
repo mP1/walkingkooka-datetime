@@ -22,10 +22,12 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.text.CharSequences;
 
 import java.text.DateFormatSymbols;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * A {@link DateTimeContext} that sources its responses from a {@link DateFormatSymbols} taken from a {@link Locale}.
@@ -34,22 +36,26 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
     static LocaleDateTimeContext with(final Locale locale,
                                       final int defaultYear,
-                                      final int twoDigitYear) {
+                                      final int twoDigitYear,
+                                      final Supplier<LocalDateTime> now) {
         Objects.requireNonNull(locale, "locale");
         if(twoDigitYear < 0 || twoDigitYear > 99) {
             throw new IllegalArgumentException("Invalid two digit year " + twoDigitYear + " expected beteen 0 and 100");
         }
+        Objects.requireNonNull(now, "now");
 
         return new LocaleDateTimeContext(
                 locale,
                 defaultYear,
-                twoDigitYear
+                twoDigitYear,
+                now
         );
     }
 
     private LocaleDateTimeContext(final Locale locale,
                                   final int defaultYear,
-                                  final int twoDigitYear) {
+                                  final int twoDigitYear,
+                                  final Supplier<LocalDateTime> now) {
         super();
 
         this.locale = locale;
@@ -66,6 +72,8 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
         this.weekDayNames = dayNames(symbols.getWeekdays());
         this.weekDayNameAbbreviations = dayNames(symbols.getShortWeekdays());
+
+        this.now = now;
     }
 
     /**
@@ -122,6 +130,13 @@ final class LocaleDateTimeContext implements DateTimeContext {
     }
 
     private final List<String> monthNameAbbreviations;
+
+    @Override
+    public LocalDateTime now() {
+        return this.now.get();
+    }
+
+    private final Supplier<LocalDateTime> now;
 
     @Override
     public int twoDigitYear() {
