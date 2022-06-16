@@ -19,13 +19,12 @@ package walkingkooka.datetime;
 
 import walkingkooka.locale.HasLocale;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Context that typically accompanies another stateless component such as a parser or formatter that involves dates or times.
  */
-public interface DateTimeContext extends YearContext, HasLocale {
+public interface DateTimeContext extends YearContext, HasLocale, HasNow {
 
     /**
      * Returns all the AM/PM strings.
@@ -65,11 +64,6 @@ public interface DateTimeContext extends YearContext, HasLocale {
     default String monthNameAbbreviation(final int month) {
         return DateTimeContextGetter.get(month, this.monthNameAbbreviations(), "month");
     }
-
-    /**
-     * Returns a {@link java.time.LocalDateTime} with now.
-     */
-    LocalDateTime now();
 
     /**
      * Returns all the week day names in long form.
