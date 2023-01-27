@@ -22,14 +22,14 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:https://github.com/mP1/j2cl-java-time.git</connection>
-        <developerConnection>scm:git:git@github.com:mP1/j2cl-java-time.git</developerConnection>
-        <url>https://github.com/mP1/j2cl-java-time</url>
+        <connection>scm:git:https://github.com/mP1/walkingkooka-datetime.git</connection>
+        <developerConnection>scm:git:git@github.com:mP1/walkingkooka-datetime.git</developerConnection>
+        <url>https://github.com/mP1/walkingkooka-datetime</url>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/mP1/j2cl-java-time/issues</url>
+        <url>https://github.com/mP1/walkingkooka-datetime/issues</url>
     </issueManagement>
 
     <repositories>
