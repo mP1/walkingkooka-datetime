@@ -1,12 +1,14 @@
 package test;
 
 import com.google.gwt.junit.client.GWTTestCase;
+import walkingkooka.collect.list.Lists;
+import walkingkooka.datetime.DateTimeContexts;
+import walkingkooka.j2cl.locale.LocaleAware;
 
 import java.time.LocalDateTime;
 import java.util.Locale;
-import walkingkooka.datetime.DateTimeContexts;
-import walkingkooka.collect.list.Lists;
 
+@LocaleAware
 public class TestGwtTest extends GWTTestCase {
 
     @Override
@@ -40,7 +42,7 @@ public class TestGwtTest extends GWTTestCase {
                 DateTimeContexts.locale(
                         Locale.getDefault(),
                         2000,
-                        1950,
+                        50,
                         () -> LocalDateTime.now()
                 ).monthNames()
         );
