@@ -18,8 +18,10 @@
 package walkingkooka.datetime;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.InvalidCharacterException;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
+import walkingkooka.text.CharSequences;
 
 import java.lang.reflect.Method;
 import java.sql.Date;
@@ -91,6 +93,93 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
                 )
         );
     }
+
+    // patternWithoutTimezone...........................................................................................
+
+    @Test
+    public void testPatternWithoutTimezoneWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTime.patternWithoutTimezone(null)
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithInvalidComponentFails() {
+        final InvalidCharacterException thrown = assertThrows(
+                InvalidCharacterException.class,
+                () -> DateTime.patternWithoutTimezone("AM")
+        );
+
+        this.checkEquals(
+                "Invalid character 'A' at 0 in \"AM\"",
+                thrown.getMessage()
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithInvalidComponentFails2() {
+        final InvalidCharacterException thrown = assertThrows(
+                InvalidCharacterException.class,
+                () -> DateTime.patternWithoutTimezone("dd/MM/yyyy AM")
+        );
+
+        this.checkEquals(
+                "Invalid character 'A' at 11 in \"dd/MM/yyyy AM\"",
+                thrown.getMessage()
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithoutTimeZone() {
+        final String pattern = "dd/MM/yyyy hh:mm:ss.00";
+
+        this.patternWithoutTimezoneAndCheck(
+                pattern,
+                pattern
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithTimeZoneSmallZ() {
+        final String pattern = "dd/MM/yyyy hh:mm:ss.00";
+
+        this.patternWithoutTimezoneAndCheck(
+                pattern + " z",
+                pattern
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithTimeZoneBigZ() {
+        final String pattern = "dd/MM/yyyy hh:mm:ss.00";
+
+        this.patternWithoutTimezoneAndCheck(
+                pattern + " Z",
+                pattern
+        );
+    }
+
+    @Test
+    public void testPatternWithoutTimezoneWithTimeZoneX() {
+        final String pattern = "dd/MM/yyyy hh:mm:ss.00";
+
+        this.patternWithoutTimezoneAndCheck(
+                pattern + " X",
+                pattern
+        );
+    }
+
+    private void patternWithoutTimezoneAndCheck(final String pattern,
+                                                final String expected) {
+        this.checkEquals(
+                expected,
+                DateTime.patternWithoutTimezone(pattern),
+                () -> "patternWithoutTimezone " + CharSequences.quoteAndEscape(pattern)
+        );
+    }
+
+    // PublicStaticHelperTesting........................................................................................
     
     @Override
     public boolean canHavePublicTypes(final Method method) {

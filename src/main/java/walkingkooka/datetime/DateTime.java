@@ -19,6 +19,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.reflect.PublicStaticHelper;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -66,6 +67,14 @@ public final class DateTime implements PublicStaticHelper {
                 localTime.atDate(LocalDate.EPOCH)
                         .toInstant(ZoneOffset.UTC)
         );
+    }
+
+    /**
+     * Accept a {@link SimpleDateFormat#toPattern()} filtering any timezone components.
+     */
+    public static String patternWithoutTimezone(final String pattern) {
+        return DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor.filterTimeZonePatternComponents(pattern)
+                .trim();
     }
 
     /**
