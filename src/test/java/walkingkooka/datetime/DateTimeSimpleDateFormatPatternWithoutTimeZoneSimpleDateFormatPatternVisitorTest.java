@@ -19,10 +19,10 @@ package walkingkooka.datetime;
 
 import walkingkooka.reflect.JavaVisibility;
 
-public final class DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitorTest implements SimpleDateFormatPatternVisitorTesting<DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor> {
+public final class DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitorTest implements SimpleDateFormatPatternVisitorTesting<DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor> {
     @Override
-    public DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor createVisitor() {
-        return new DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor("!");
+    public DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor createVisitor() {
+        return new DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor("!");
     }
 
     @Override
@@ -31,8 +31,8 @@ public final class DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitorT
     }
 
     @Override
-    public Class<DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor> type() {
-        return DateTimePatternWithoutTimeZoneSimpleDateFormatPatternVisitor.class;
+    public Class<DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor> type() {
+        return DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor.class;
     }
 
     @Override

@@ -94,21 +94,21 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         );
     }
 
-    // patternWithoutTimezone...........................................................................................
+    // simpleDateFormatPatternWithoutTimezone...........................................................................
 
     @Test
-    public void testPatternWithoutTimezoneWithNullFails() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithNullFails() {
         assertThrows(
                 NullPointerException.class,
-                () -> DateTime.patternWithoutTimezone(null)
+                () -> DateTime.simpleDateFormatPatternWithoutTimezone(null)
         );
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithInvalidComponentFails() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithInvalidComponentFails() {
         final InvalidCharacterException thrown = assertThrows(
                 InvalidCharacterException.class,
-                () -> DateTime.patternWithoutTimezone("AM")
+                () -> DateTime.simpleDateFormatPatternWithoutTimezone("AM")
         );
 
         this.checkEquals(
@@ -118,10 +118,10 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithInvalidComponentFails2() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithInvalidComponentFails2() {
         final InvalidCharacterException thrown = assertThrows(
                 InvalidCharacterException.class,
-                () -> DateTime.patternWithoutTimezone("dd/MM/yyyy AM")
+                () -> DateTime.simpleDateFormatPatternWithoutTimezone("dd/MM/yyyy AM")
         );
 
         this.checkEquals(
@@ -131,51 +131,51 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithoutTimeZone() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithoutTimeZone() {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
-        this.patternWithoutTimezoneAndCheck(
+        this.simpleDateFormatPatternWithoutTimezoneAndCheck(
                 pattern,
                 pattern
         );
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithTimeZoneSmallZ() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithTimeZoneSmallZ() {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
-        this.patternWithoutTimezoneAndCheck(
+        this.simpleDateFormatPatternWithoutTimezoneAndCheck(
                 pattern + " z",
                 pattern
         );
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithTimeZoneBigZ() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithTimeZoneBigZ() {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
-        this.patternWithoutTimezoneAndCheck(
+        this.simpleDateFormatPatternWithoutTimezoneAndCheck(
                 pattern + " Z",
                 pattern
         );
     }
 
     @Test
-    public void testPatternWithoutTimezoneWithTimeZoneX() {
+    public void testSimpleDateFormatPatternWithoutTimezoneWithTimeZoneX() {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
-        this.patternWithoutTimezoneAndCheck(
+        this.simpleDateFormatPatternWithoutTimezoneAndCheck(
                 pattern + " X",
                 pattern
         );
     }
 
-    private void patternWithoutTimezoneAndCheck(final String pattern,
-                                                final String expected) {
+    private void simpleDateFormatPatternWithoutTimezoneAndCheck(final String pattern,
+                                                                final String expected) {
         this.checkEquals(
                 expected,
-                DateTime.patternWithoutTimezone(pattern),
-                () -> "patternWithoutTimezone " + CharSequences.quoteAndEscape(pattern)
+                DateTime.simpleDateFormatPatternWithoutTimezone(pattern),
+                () -> "simpleDateFormatPatternWithoutTimezone " + CharSequences.quoteAndEscape(pattern)
         );
     }
 
