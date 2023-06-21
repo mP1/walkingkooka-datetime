@@ -23,8 +23,8 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.Objects;
 
 /**
- * A {DateTimeFormatterPatternVisitor} that performs an almost equivalent action as {@link java.time.format.DateTimeFormatter#ofPattern(String)},
- * calling each of the #visit methods for each and every individual component.
+ * This {@link DateTimeFormatterPatternVisitor} accept a {@link java.time.format.DateTimeFormatter} pattern and calls
+ * the matching #visit method which calls {@link DateTimeFormatterBuilder} methods effectively assembling the builder from a {@link String pattern}.
  */
 public class DateTimeFormatterBuilderDateTimeFormatterPatternVisitor extends DateTimeFormatterPatternVisitor {
 
