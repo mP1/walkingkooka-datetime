@@ -25,7 +25,7 @@ import walkingkooka.visit.Visiting;
  */
 final class DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor extends SimpleDateFormatPatternVisitor{
 
-    static String filterTimeZonePatternComponents(final String pattern) {
+    static String removeTimeZonePatternComponents(final String pattern) {
         final DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor visitor = new DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor(pattern);
         visitor.accept(pattern);
         return visitor.filteredPattern.toString();
