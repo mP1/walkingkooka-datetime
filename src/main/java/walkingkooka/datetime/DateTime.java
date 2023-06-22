@@ -81,7 +81,7 @@ public final class DateTime implements PublicStaticHelper {
      * Accept a {@link SimpleDateFormat#toPattern()} filtering any timezone components.
      */
     public static String simpleDateFormatPatternWithoutTimezone(final String pattern) {
-        return DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor.filterTimeZonePatternComponents(pattern)
+        return DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor.removeTimeZonePatternComponents(pattern)
                 .trim();
     }
 
