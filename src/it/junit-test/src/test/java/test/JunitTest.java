@@ -19,9 +19,13 @@ package test;
 import com.google.j2cl.junit.apt.J2clTestInput;
 import org.junit.Assert;
 import org.junit.Test;
+import walkingkooka.datetime.DateTime;
 import walkingkooka.datetime.DateTimeContexts;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 @J2clTestInput(JunitTest.class)
@@ -35,6 +39,18 @@ public class JunitTest {
                     1902,
                     50,
                     LocalDateTime::now
+                )
+        );
+    }
+
+    @Test
+    public void testDateTimeLocalDateToDate() {
+        Assert.assertEquals(
+                new Date(
+                        Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+                ),
+                DateTime.localDateToDate(
+                        LocalDate.of(2000, 12, 31)
                 )
         );
     }
