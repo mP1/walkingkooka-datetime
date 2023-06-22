@@ -20,6 +20,7 @@ package walkingkooka.datetime;
 import walkingkooka.reflect.PublicStaticHelper;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -39,7 +40,7 @@ public final class DateTime implements PublicStaticHelper {
     public static Date localDateToDate(final LocalDate localDate) {
         Objects.requireNonNull(localDate, "localDate");
 
-        return Date.from(
+        return dateFromInstant(
                 localDate.atStartOfDay()
                         .toInstant(ZoneOffset.UTC)
         );
@@ -51,7 +52,7 @@ public final class DateTime implements PublicStaticHelper {
     public static Date localDateTimeToDate(final LocalDateTime localDateTime) {
         Objects.requireNonNull(localDateTime, "localDateTime");
 
-        return Date.from(
+        return dateFromInstant(
                 localDateTime.toInstant(ZoneOffset.UTC)
         );
     }
@@ -63,9 +64,16 @@ public final class DateTime implements PublicStaticHelper {
     public static Date localTimeToDate(final LocalTime localTime) {
         Objects.requireNonNull(localTime, "localTime");
 
-        return Date.from(
+        return dateFromInstant(
                 localTime.atDate(LocalDate.EPOCH)
                         .toInstant(ZoneOffset.UTC)
+        );
+    }
+
+    // Date.from(Instant) is not available in the GWT JRE.
+    private static Date dateFromInstant(final Instant instant) {
+        return new Date(
+                instant.toEpochMilli()
         );
     }
 
