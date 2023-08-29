@@ -24,6 +24,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.Objects;
@@ -44,6 +45,20 @@ public final class DateTime implements PublicStaticHelper {
                 date.getTime()
         );
     }
+
+    /**
+     * Converts the given {@link Date} into a {@link LocalDateTime}.
+     */
+    public static LocalDateTime dateToLocalDateTime(final Date date) {
+        Objects.requireNonNull(date, "date");
+
+        return dateToInstant(
+                date
+        ).atZone(UTC)
+                .toLocalDateTime();
+    }
+
+    private final static ZoneId UTC = ZoneId.of("UTC");
 
     /**
      * The GWT {@link Date#from(Instant)} is not emulated so this method is necessary.
