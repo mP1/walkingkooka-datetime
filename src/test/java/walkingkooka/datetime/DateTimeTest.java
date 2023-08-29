@@ -24,15 +24,41 @@ import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 
 import java.lang.reflect.Method;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
+
+    // InstantToDate....................................................................................................
+
+    @Test
+    public void testInstantToDateWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTime.instantToDate(null)
+        );
+    }
+
+    @Test
+    public void testInstantToDate() {
+        final Date date = new Date(
+                Date.UTC(1900- 1900, Calendar.JANUARY, 1, 0, 0, 0)
+        );
+
+        this.checkEquals(
+                date,
+                DateTime.instantToDate(
+                        date.toInstant()
+                )
+        );
+    }
+
+    // LocalDateTime....................................................................................................
 
     @Test
     public void testLocalDateToDateWithNullFails() {
