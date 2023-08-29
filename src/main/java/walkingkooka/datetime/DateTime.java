@@ -35,6 +35,17 @@ import java.util.Objects;
 public final class DateTime implements PublicStaticHelper {
 
     /**
+     * Converts the given {@link Date} into a {@link Instant}.
+     */
+    public static Instant dateToInstant(final Date date) {
+        Objects.requireNonNull(date, "date");
+
+        return Instant.ofEpochMilli(
+                date.getTime()
+        );
+    }
+
+    /**
      * The GWT {@link Date#from(Instant)} is not emulated so this method is necessary.
      */
     public static Date instantToDate(final Instant instant) {

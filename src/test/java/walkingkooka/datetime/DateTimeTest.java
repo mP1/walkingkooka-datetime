@@ -34,6 +34,54 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
 
+    // DateToInstant....................................................................................................
+
+    @Test
+    public void testDateToInstantWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTime.dateToInstant(null)
+        );
+    }
+
+    @Test
+    public void testDateToInstant() {
+        final Date date = new Date(
+                Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
+        );
+
+        this.checkEquals(
+                date.toInstant(),
+                DateTime.dateToInstant(date)
+        );
+    }
+
+    @Test
+    public void testDateToInstant2() {
+        final Date date = new Date(
+                Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+        );
+
+        this.checkEquals(
+                date.toInstant(),
+                DateTime.dateToInstant(date)
+        );
+    }
+
+    @Test
+    public void testDateToInstantToDate() {
+        final Date date = new Date(
+                Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+        );
+
+        this.checkEquals(
+                date,
+                DateTime.instantToDate(
+                        DateTime.dateToInstant(date)
+                )
+        );
+    }
+    
     // InstantToDate....................................................................................................
 
     @Test
