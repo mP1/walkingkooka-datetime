@@ -35,12 +35,23 @@ import java.util.Objects;
 public final class DateTime implements PublicStaticHelper {
 
     /**
+     * The GWT {@link Date#from(Instant)} is not emulated so this method is necessary.
+     */
+    public static Date instantToDate(final Instant instant) {
+        Objects.requireNonNull(instant, "instant");
+
+        return new Date(
+                instant.toEpochMilli()
+        );
+    }
+
+    /**
      * Returns a {@link Date} with an equivalent value as the given {@link LocalDate}.
      */
     public static Date localDateToDate(final LocalDate localDate) {
         Objects.requireNonNull(localDate, "localDate");
 
-        return dateFromInstant(
+        return instantToDate(
                 localDate.atStartOfDay()
                         .toInstant(ZoneOffset.UTC)
         );
@@ -52,7 +63,7 @@ public final class DateTime implements PublicStaticHelper {
     public static Date localDateTimeToDate(final LocalDateTime localDateTime) {
         Objects.requireNonNull(localDateTime, "localDateTime");
 
-        return dateFromInstant(
+        return instantToDate(
                 localDateTime.toInstant(ZoneOffset.UTC)
         );
     }
@@ -64,16 +75,9 @@ public final class DateTime implements PublicStaticHelper {
     public static Date localTimeToDate(final LocalTime localTime) {
         Objects.requireNonNull(localTime, "localTime");
 
-        return dateFromInstant(
+        return instantToDate(
                 localTime.atDate(LocalDate.EPOCH)
                         .toInstant(ZoneOffset.UTC)
-        );
-    }
-
-    // Date.from(Instant) is not available in the GWT JRE.
-    private static Date dateFromInstant(final Instant instant) {
-        return new Date(
-                instant.toEpochMilli()
         );
     }
 
