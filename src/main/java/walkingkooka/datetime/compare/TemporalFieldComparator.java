@@ -18,6 +18,7 @@
 package walkingkooka.datetime.compare;
 
 import walkingkooka.Cast;
+import walkingkooka.text.CaseKind;
 
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalField;
@@ -67,6 +68,9 @@ final class TemporalFieldComparator<T extends Temporal> implements Comparator<T>
 
     @Override
     public String toString() {
-        return this.field.toString();
+        return CaseKind.CAMEL.change(
+                this.field.toString(),
+                CaseKind.KEBAB
+        ).toString();
     }
 }
