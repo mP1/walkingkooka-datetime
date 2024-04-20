@@ -26,6 +26,12 @@ import java.util.Comparator;
 
 final public class DateTimeComparators implements PublicStaticHelper {
 
+    public static Comparator<Temporal> alignedWeekOfYear() {
+        return ALIGNED_WEEK_OF_YEAR;
+    }
+
+    private final static Comparator<Temporal> ALIGNED_WEEK_OF_YEAR = TemporalFieldComparator.with(ChronoField.ALIGNED_WEEK_OF_YEAR);
+
     public static Comparator<Temporal> dayOfMonth() {
         return DAY_OF_MONTH;
     }
@@ -81,7 +87,7 @@ final public class DateTimeComparators implements PublicStaticHelper {
     public static Comparator<Temporal> temporalField(final TemporalField field) {
         return TemporalFieldComparator.with(field);
     }
-    
+
     public static Comparator<Temporal> year() {
         return YEAR;
     }
