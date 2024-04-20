@@ -111,12 +111,22 @@ public final class TemporalFieldComparatorTest implements ComparatorTesting2<Tem
     }
 
     @Test
-    public void testToString() {
+    public void testToStringDayOfMonth() {
         final TemporalField field = ChronoField.DAY_OF_MONTH;
 
         this.toStringAndCheck(
                 TemporalFieldComparator.with(field),
-                field.toString()
+                "day-of-month"
+        );
+    }
+
+    @Test
+    public void testToStringYear() {
+        final TemporalField field = ChronoField.YEAR;
+
+        this.toStringAndCheck(
+                TemporalFieldComparator.with(field),
+                "year"
         );
     }
 
