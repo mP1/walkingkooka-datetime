@@ -32,6 +32,13 @@ final public class DateTimeComparators implements PublicStaticHelper {
 
     private final static Comparator<Temporal> DAY_OF_MONTH = TemporalFieldComparator.with(ChronoField.DAY_OF_MONTH);
 
+    public static Comparator<Temporal> dayOfWeek() {
+        return DAY_OF_WEEK;
+    }
+
+    private final static Comparator<Temporal> DAY_OF_WEEK = TemporalFieldComparator.with(ChronoField.DAY_OF_WEEK);
+
+    
     public static Comparator<Temporal> hourOfAmPm() {
         return HOUR_OF_AMPM;
     }

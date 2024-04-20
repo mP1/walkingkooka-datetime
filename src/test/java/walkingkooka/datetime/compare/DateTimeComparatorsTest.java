@@ -55,6 +55,15 @@ final public class DateTimeComparatorsTest implements PublicStaticHelperTesting<
     }
 
     @Test
+    public void testCompareDayOfWeek() {
+        this.compareAndCheckLess(
+                DateTimeComparators.<Temporal>dayOfWeek(),
+                LocalDate.of(2024, 4, 19),
+                LocalDate.of(2024, 4, 20)
+        );
+    }
+
+    @Test
     public void testCompareHourOfAmpm() {
         this.compareAndCheckLess(
                 DateTimeComparators.hourOfAmPm(),
