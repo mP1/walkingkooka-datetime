@@ -27,7 +27,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
  * A {@link DateTimeContext} that sources its responses from a {@link DateFormatSymbols} taken from a {@link Locale}.
@@ -37,7 +36,7 @@ final class LocaleDateTimeContext implements DateTimeContext {
     static LocaleDateTimeContext with(final Locale locale,
                                       final int defaultYear,
                                       final int twoDigitYear,
-                                      final Supplier<LocalDateTime> now) {
+                                      final HasNow now) {
         Objects.requireNonNull(locale, "locale");
         if(twoDigitYear < 0 || twoDigitYear > 99) {
             throw new IllegalArgumentException("Invalid two digit year " + twoDigitYear + " expected beteen 0 and 100");
@@ -55,7 +54,7 @@ final class LocaleDateTimeContext implements DateTimeContext {
     private LocaleDateTimeContext(final Locale locale,
                                   final int defaultYear,
                                   final int twoDigitYear,
-                                  final Supplier<LocalDateTime> now) {
+                                  final HasNow now) {
         super();
 
         this.locale = locale;
@@ -133,10 +132,10 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
     @Override
     public LocalDateTime now() {
-        return this.now.get();
+        return this.now.now();
     }
 
-    private final Supplier<LocalDateTime> now;
+    private final HasNow now;
 
     @Override
     public int twoDigitYear() {

@@ -18,9 +18,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.reflect.PublicStaticHelper;
 
-import java.time.LocalDateTime;
 import java.util.Locale;
-import java.util.function.Supplier;
 
 /**
  * A collection of factory methods to create {@link DateTimeContext}.
@@ -33,7 +31,7 @@ public final class DateTimeContexts implements PublicStaticHelper {
     public static DateTimeContext locale(final Locale locale,
                                          final int defaultYear,
                                          final int twoDigitYear,
-                                         final Supplier<LocalDateTime> now) {
+                                         final HasNow now) {
         return LocaleDateTimeContext.with(
                 locale,
                 defaultYear,
