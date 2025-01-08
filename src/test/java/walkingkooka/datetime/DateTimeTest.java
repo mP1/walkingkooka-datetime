@@ -224,7 +224,7 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testInstantToDate() {
         final Date date = new Date(
-                Date.UTC(1900- 1900, Calendar.JANUARY, 1, 0, 0, 0)
+                Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
         );
 
         this.checkEquals(
@@ -269,7 +269,7 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     public void testLocalDateTimeToDate() {
         this.checkEquals(
                 new Date(
-                Date.UTC(2000- 1900, Calendar.DECEMBER, 31, 12, 58, 59)
+                        Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 12, 58, 59)
                 ),
                 DateTime.localDateTimeToDate(
                         LocalDateTime.of(2000, 12, 31, 12, 58, 59)
@@ -404,7 +404,7 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     }
 
     // PublicStaticHelperTesting........................................................................................
-    
+
     @Override
     public boolean canHavePublicTypes(final Method method) {
         return false;

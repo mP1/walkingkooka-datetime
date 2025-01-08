@@ -798,7 +798,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
                     @Override
                     protected void visitMonthOfYear(final int width,
-                                                               final DateTimeFormatterPatternComponentKind kind) {
+                                                    final DateTimeFormatterPatternComponentKind kind) {
                         checkEquals(2, width);
                         checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
@@ -806,14 +806,14 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                         this.add(width);
                     }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   checkEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
-                                   this.add(width);
-                               }
-                           },
+                        check(width);
+                        this.add(width);
+                    }
+                },
                 "DDDMMuuuu",
                 "s0 DDD,3,e0 DDD,s3 MM,2,e3 MM,s5 uuuu,4,e5 uuuu"
         );
@@ -833,27 +833,27 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                     protected void visitDayOfYear(final int width) {
                         checkEquals(3, width);
                         check(width);
-                                   this.add(width);
-                               }
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitMonthOfYear(final int width,
-                                                               final DateTimeFormatterPatternComponentKind kind) {
-                                   checkEquals(2, width);
-                                   checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                    @Override
+                    protected void visitMonthOfYear(final int width,
+                                                    final DateTimeFormatterPatternComponentKind kind) {
+                        checkEquals(2, width);
+                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   checkEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
-                                   this.add(width);
-                               }
-                           },
+                        check(width);
+                        this.add(width);
+                    }
+                },
                 "'hello'DDDMMuuuu",
                 "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 uuuu,4,e12 uuuu"
         );
@@ -873,26 +873,26 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                         checkEquals(3, width);
                         check(width);
                         this.add(width);
-                               }
+                    }
 
-                               @Override
-                               protected void visitMonthOfYear(final int width,
-                                                               final DateTimeFormatterPatternComponentKind kind) {
-                                   checkEquals(2, width);
-                                   checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                    @Override
+                    protected void visitMonthOfYear(final int width,
+                                                    final DateTimeFormatterPatternComponentKind kind) {
+                        checkEquals(2, width);
+                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                                   check(width);
-                                   this.add(width);
-                               }
+                        check(width);
+                        this.add(width);
+                    }
 
-                               @Override
-                               protected void visitYear(final int width) {
-                                   checkEquals(4, width);
+                    @Override
+                    protected void visitYear(final int width) {
+                        checkEquals(4, width);
 
-                                   check(width);
-                                   this.add(width);
-                               }
-                           },
+                        check(width);
+                        this.add(width);
+                    }
+                },
                 "'hello'DDDMM/uuuu",
                 "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 /,/,e12 /,s13 uuuu,4,e13 uuuu"
         );

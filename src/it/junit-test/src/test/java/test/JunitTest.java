@@ -35,10 +35,10 @@ public class JunitTest {
     public void testDateTimeContextLocale() {
         Assert.assertNotNull(
                 DateTimeContexts.locale(
-                    Locale.forLanguageTag("EN-AU"),
-                    1902,
-                    50,
-                    LocalDateTime::now
+                        Locale.forLanguageTag("EN-AU"),
+                        1902,
+                        50,
+                        LocalDateTime::now
                 )
         );
     }

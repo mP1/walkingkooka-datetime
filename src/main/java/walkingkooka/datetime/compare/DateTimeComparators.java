@@ -44,7 +44,7 @@ final public class DateTimeComparators implements PublicStaticHelper {
 
     private final static Comparator<Temporal> DAY_OF_WEEK = TemporalFieldComparator.with(ChronoField.DAY_OF_WEEK);
 
-    
+
     public static Comparator<Temporal> hourOfAmPm() {
         return HOUR_OF_AMPM;
     }
@@ -74,7 +74,7 @@ final public class DateTimeComparators implements PublicStaticHelper {
     }
 
     private final static Comparator<Temporal> NANO_OF_SECOND = TemporalFieldComparator.with(ChronoField.NANO_OF_SECOND);
-    
+
     public static Comparator<Temporal> secondOfMinute() {
         return SECOND_OF_MINUTE;
     }
@@ -91,7 +91,7 @@ final public class DateTimeComparators implements PublicStaticHelper {
     public static Comparator<Temporal> year() {
         return YEAR;
     }
-    
+
     private final static Comparator<Temporal> YEAR = TemporalFieldComparator.with(ChronoField.YEAR);
 
     /**

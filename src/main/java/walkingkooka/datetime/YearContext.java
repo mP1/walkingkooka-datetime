@@ -38,7 +38,7 @@ public interface YearContext extends Context {
      * Accepts a two digit year, and using {@link #twoDigitYear()} returns a four digit yar.
      */
     default int twoToFourDigitYear(final int year) {
-        if(year < 0 || year >= 100) {
+        if (year < 0 || year >= 100) {
             throw new IllegalArgumentException("Invalid two digit year " + year + " expected between 0 and 100");
         }
         return year +

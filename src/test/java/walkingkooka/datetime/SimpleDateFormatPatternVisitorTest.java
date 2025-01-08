@@ -542,9 +542,9 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                         checkEquals(4, width);
 
                         check(width);
-                                   this.add(width);
-                               }
-                           },
+                        this.add(width);
+                    }
+                },
                 "'hello' DDDLLyyyy",
                 "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
         );
@@ -582,9 +582,9 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                         checkEquals(4, width);
 
                         check(width);
-                                   this.add(width);
-                               }
-                           },
+                        this.add(width);
+                    }
+                },
                 "'hello' DDDLLyyyy",
                 "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
         );
