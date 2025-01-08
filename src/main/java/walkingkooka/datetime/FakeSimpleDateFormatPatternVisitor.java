@@ -6,7 +6,7 @@ public abstract class FakeSimpleDateFormatPatternVisitor extends SimpleDateForma
         super();
     }
 
-    @Override 
+    @Override
     protected void visitEra(final int width) {
         throw new UnsupportedOperationException();
     }

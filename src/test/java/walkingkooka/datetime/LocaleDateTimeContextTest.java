@@ -28,7 +28,7 @@ public final class LocaleDateTimeContextTest implements DateTimeContextTesting2<
 
     private final static int DEFAULT_YEAR = 1901;
 
-    private final static HasNow NOW  = () -> LocalDateTime.of(1999, 12, 31, 12, 58, 59);
+    private final static HasNow NOW = () -> LocalDateTime.of(1999, 12, 31, 12, 58, 59);
 
     @Test
     public void testWithNullLocaleFails() {

@@ -38,7 +38,7 @@ final class LocaleDateTimeContext implements DateTimeContext {
                                       final int twoDigitYear,
                                       final HasNow now) {
         Objects.requireNonNull(locale, "locale");
-        if(twoDigitYear < 0 || twoDigitYear > 99) {
+        if (twoDigitYear < 0 || twoDigitYear > 99) {
             throw new IllegalArgumentException("Invalid two digit year " + twoDigitYear + " expected beteen 0 and 100");
         }
         Objects.requireNonNull(now, "now");

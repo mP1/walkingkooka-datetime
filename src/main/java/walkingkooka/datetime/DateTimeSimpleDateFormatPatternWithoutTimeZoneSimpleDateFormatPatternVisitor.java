@@ -23,7 +23,7 @@ import walkingkooka.visit.Visiting;
 /**
  * Accepts a {@link java.text.SimpleDateFormat} pattern returning the pattern without any timezone placeholders in the format pattern.
  */
-final class DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor extends SimpleDateFormatPatternVisitor{
+final class DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor extends SimpleDateFormatPatternVisitor {
 
     static String removeTimeZonePatternComponents(final String pattern) {
         final DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor visitor = new DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor(pattern);
@@ -47,7 +47,7 @@ final class DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatter
     @Override
     protected void endVisitComponent(final int position,
                                      final String text) {
-        if(this.keep) {
+        if (this.keep) {
             this.filteredPattern.append(text);
         }
     }
