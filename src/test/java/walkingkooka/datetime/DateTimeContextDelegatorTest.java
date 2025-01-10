@@ -25,11 +25,6 @@ import java.util.Locale;
 public final class DateTimeContextDelegatorTest implements DateTimeContextTesting2<TestDateTimeContextDelegator> {
 
     @Override
-    public void testCheckToStringOverridden() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public void testTypeNaming() {
         throw new UnsupportedOperationException();
     }
@@ -56,6 +51,11 @@ public final class DateTimeContextDelegatorTest implements DateTimeContextTestin
                     50, // twoDigitYear
                     LocalDateTime::now
             );
+        }
+
+        @Override
+        public String toString() {
+            return this.getClass().getSimpleName();
         }
     }
 }

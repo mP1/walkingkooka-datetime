@@ -20,6 +20,7 @@ package walkingkooka.datetime;
 import org.junit.jupiter.api.Test;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.datetime.DateTimeFormatterPatternVisitorTest.TestDateTimeFormatterPatternVisitor;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.CharSequences;
 import walkingkooka.visit.Visiting;
@@ -29,8 +30,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatterPatternVisitorTestCase<DateTimeFormatterPatternVisitor>
-        implements DateTimeFormatterPatternVisitorTesting<DateTimeFormatterPatternVisitor> {
+public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatterPatternVisitorTestCase<TestDateTimeFormatterPatternVisitor>
+        implements DateTimeFormatterPatternVisitorTesting<TestDateTimeFormatterPatternVisitor> {
 
     // tests............................................................................................................
 
@@ -1018,7 +1019,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         this.checkEquals(expected, kind, "incorrect kind for " + width);
     }
 
-    abstract class TestDateTimeFormatterPatternVisitor extends FakeDateTimeFormatterPatternVisitor {
+    // must not be static because of #checkEquals which also makes it public even without public keyword
+    abstract public class TestDateTimeFormatterPatternVisitor extends FakeDateTimeFormatterPatternVisitor {
 
         void acceptAndCheck(final String pattern, final String expected) {
             this.visited.clear();
@@ -1079,27 +1081,30 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         }
     }
 
-    // skipped..........................................................................................................
-
-    @Override
-    public void testCheckToStringOverridden() {
-    }
-
     // DateTimeFormatterPatternVisitorTesting...........................................................................
 
     @Override
-    public DateTimeFormatterPatternVisitor createVisitor() {
-        return new DateTimeFormatterPatternVisitor() {
-        };
+    public TestDateTimeFormatterPatternVisitor createVisitor() {
+        return new TestDateTimeFormatterPatternVisitor() {};
     }
 
     @Override
-    public Class<DateTimeFormatterPatternVisitor> type() {
-        return DateTimeFormatterPatternVisitor.class;
+    public Class<TestDateTimeFormatterPatternVisitor> type() {
+        return TestDateTimeFormatterPatternVisitor.class;
     }
 
     @Override
     public JavaVisibility typeVisibility() {
         return JavaVisibility.PUBLIC;
+    }
+
+    @Override
+    public void testTestNaming() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 }

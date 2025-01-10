@@ -20,6 +20,7 @@ package walkingkooka.datetime;
 import org.junit.jupiter.api.Test;
 import walkingkooka.InvalidCharacterException;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.datetime.SimpleDateFormatPatternVisitorTest.TestSimpleDateFormatPatternVisitor;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.CharSequences;
 import walkingkooka.visit.Visiting;
@@ -29,8 +30,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPatternVisitorTestCase<SimpleDateFormatPatternVisitor>
-        implements SimpleDateFormatPatternVisitorTesting<SimpleDateFormatPatternVisitor> {
+public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPatternVisitorTestCase<TestSimpleDateFormatPatternVisitor>
+        implements SimpleDateFormatPatternVisitorTesting<TestSimpleDateFormatPatternVisitor> {
 
     // tests............................................................................................................
 
@@ -744,29 +745,38 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                     () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
             );
         }
-    }
 
-    // skipped..........................................................................................................
-
-    @Override
-    public void testCheckToStringOverridden() {
+        @Override
+        public String toString() {
+            return this.getClass().getSimpleName();
+        }
     }
 
     // SimpleDateFormatPatternVisitorTesting...........................................................................
 
     @Override
-    public SimpleDateFormatPatternVisitor createVisitor() {
-        return new SimpleDateFormatPatternVisitor() {
+    public TestSimpleDateFormatPatternVisitor createVisitor() {
+        return new TestSimpleDateFormatPatternVisitor() {
         };
     }
 
     @Override
-    public Class<SimpleDateFormatPatternVisitor> type() {
-        return SimpleDateFormatPatternVisitor.class;
+    public Class<TestSimpleDateFormatPatternVisitor> type() {
+        return TestSimpleDateFormatPatternVisitor.class;
     }
 
     @Override
     public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
+        return JavaVisibility.PACKAGE_PRIVATE;
+    }
+
+    @Override
+    public void testTestNaming() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 }
