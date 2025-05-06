@@ -1,0 +1,509 @@
+/*
+ * Copyright 2019 Miroslav Pokorny (github.com/mP1)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+package walkingkooka.datetime;
+
+import org.junit.jupiter.api.Test;
+import walkingkooka.HashCodeEqualsDefinedTesting2;
+import walkingkooka.ToStringTesting;
+import walkingkooka.collect.list.Lists;
+import walkingkooka.reflect.ClassTesting;
+import walkingkooka.reflect.JavaVisibility;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
+        ToStringTesting<DateTimeSymbols>,
+        ClassTesting<DateTimeSymbols> {
+
+    private final static List<String> AM_PMS = Lists.of("am", "pm");
+    private final static List<String> MONTH_NAMES = Lists.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    private final static List<String> MONTH_NAME_ABBREVIATIONS = Lists.of("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+    private final static List<String> WEEKDAY_NAMES = Lists.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    private final static List<String> WEEKDAY_NAME_ABBREVIATIONS = Lists.of("Mon", "Tu", "Wed", "Thu", "Fri", "Sat", "Sun");
+
+    @Test
+    public void testWithNullAmpmsFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.with(
+                        null,
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testWithNullMonthNamesFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.with(
+                        AM_PMS,
+                        null,
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testWithNullMonthNameAbbreviationsFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        null,
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testWithNullWeekdayNamesFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        null,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testWithNullWeekdayNameAbbreviationsFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        null
+                )
+        );
+    }
+
+    // ampms............................................................................................................
+
+    @Test
+    public void testSetAmpmsWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createObject().setAmpms(null)
+        );
+    }
+
+    @Test
+    public void testSetAmpmsWithSame() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        assertSame(
+                symbols,
+                symbols.setAmpms(AM_PMS)
+        );
+    }
+
+    @Test
+    public void testSetAmpmsWithDifferent() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        final List<String> differentAmpms = toUpperCase(AM_PMS);
+        final DateTimeSymbols different = symbols.setAmpms(differentAmpms);
+
+        assertNotSame(
+                symbols,
+                different
+        );
+
+        this.ampmsAndCheck(
+                different,
+                differentAmpms
+        );
+        this.monthNamesAndCheck(different);
+        this.monthNameAbbreviationsAndCheck(different);
+        this.weekDayNamesAndCheck(different);
+        this.weekDayNameAbbreviationsAndCheck(different);
+    }
+
+    private void ampmsAndCheck(final DateTimeSymbols symbols) {
+        this.ampmsAndCheck(
+                symbols,
+                AM_PMS
+        );
+    }
+
+    private void ampmsAndCheck(final DateTimeSymbols symbols,
+                               final List<String> ampms) {
+        this.checkEquals(
+                ampms,
+                symbols.ampms(),
+                "ampms"
+        );
+    }
+
+    // monthNames.......................................................................................................
+
+    @Test
+    public void testSetMonthNamesWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createObject().setMonthNames(null)
+        );
+    }
+
+    @Test
+    public void testSetMonthNamesWithSame() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        assertSame(
+                symbols,
+                symbols.setMonthNames(MONTH_NAMES)
+        );
+    }
+
+    @Test
+    public void testSetMonthNamesWithDifferent() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        final List<String> differentMonthNames = toUpperCase(MONTH_NAMES);
+        final DateTimeSymbols different = symbols.setMonthNames(differentMonthNames);
+
+        assertNotSame(
+                symbols,
+                different
+        );
+
+        this.ampmsAndCheck(different);
+        this.monthNamesAndCheck(
+                different,
+                differentMonthNames
+        );
+        this.monthNameAbbreviationsAndCheck(different);
+        this.weekDayNamesAndCheck(different);
+        this.weekDayNameAbbreviationsAndCheck(different);
+    }
+
+    private void monthNamesAndCheck(final DateTimeSymbols symbols) {
+        this.monthNamesAndCheck(
+                symbols,
+                MONTH_NAMES
+        );
+    }
+
+    private void monthNamesAndCheck(final DateTimeSymbols symbols,
+                                    final List<String> monthNames) {
+        this.checkEquals(
+                monthNames,
+                symbols.monthNames(),
+                "monthNames"
+        );
+    }
+
+    // monthNames.......................................................................................................
+
+    @Test
+    public void testSetMonthNameAbbreviationsWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createObject().setMonthNameAbbreviations(null)
+        );
+    }
+
+    @Test
+    public void testSetMonthNameAbbreviationsWithSame() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        assertSame(
+                symbols,
+                symbols.setMonthNameAbbreviations(MONTH_NAME_ABBREVIATIONS)
+        );
+    }
+
+    @Test
+    public void testSetMonthNameAbbreviationsWithDifferent() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        final List<String> differentMonthNameAbbreviations = toUpperCase(MONTH_NAME_ABBREVIATIONS);
+        final DateTimeSymbols different = symbols.setMonthNameAbbreviations(differentMonthNameAbbreviations);
+
+        assertNotSame(
+                symbols,
+                different
+        );
+
+        this.ampmsAndCheck(different);
+        this.monthNamesAndCheck(different);
+        this.monthNameAbbreviationsAndCheck(
+                different,
+                differentMonthNameAbbreviations
+        );
+        this.weekDayNamesAndCheck(different);
+        this.weekDayNameAbbreviationsAndCheck(different);
+    }
+
+    private void monthNameAbbreviationsAndCheck(final DateTimeSymbols symbols) {
+        this.monthNameAbbreviationsAndCheck(
+                symbols,
+                MONTH_NAME_ABBREVIATIONS
+        );
+    }
+
+    private void monthNameAbbreviationsAndCheck(final DateTimeSymbols symbols,
+                                                final List<String> monthNames) {
+        this.checkEquals(
+                monthNames,
+                symbols.monthNameAbbreviations(),
+                "monthNameAbbreviations"
+        );
+    }
+
+    // weekDayNames.....................................................................................................
+
+    @Test
+    public void testSetWeekDayNamesWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createObject().setWeekDayNames(null)
+        );
+    }
+
+    @Test
+    public void testSetWeekDayNamesWithSame() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        assertSame(
+                symbols,
+                symbols.setWeekDayNames(WEEKDAY_NAMES)
+        );
+    }
+
+    @Test
+    public void testSetWeekDayNamesWithDifferent() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        final List<String> differentWeekDayNames = toUpperCase(WEEKDAY_NAMES);
+        final DateTimeSymbols different = symbols.setWeekDayNames(differentWeekDayNames);
+
+        assertNotSame(
+                symbols,
+                different
+        );
+
+        this.ampmsAndCheck(different);
+        this.monthNamesAndCheck(different);
+        this.monthNameAbbreviationsAndCheck(different);
+        this.weekDayNamesAndCheck(
+                different,
+                differentWeekDayNames
+        );
+        this.weekDayNameAbbreviationsAndCheck(different);
+    }
+
+    private void weekDayNamesAndCheck(final DateTimeSymbols symbols) {
+        this.weekDayNamesAndCheck(
+                symbols,
+                WEEKDAY_NAMES
+        );
+    }
+
+    private void weekDayNamesAndCheck(final DateTimeSymbols symbols,
+                                      final List<String> weekDayNames) {
+        this.checkEquals(
+                weekDayNames,
+                symbols.weekDayNames(),
+                "weekDayNames"
+        );
+    }
+
+    // weekDayNameAbbreviations.........................................................................................
+
+    @Test
+    public void testSetWeekDayNameAbbreviationsWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> this.createObject().setWeekDayNameAbbreviations(null)
+        );
+    }
+
+    @Test
+    public void testSetWeekDayNameAbbreviationsWithSame() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        assertSame(
+                symbols,
+                symbols.setWeekDayNameAbbreviations(WEEKDAY_NAME_ABBREVIATIONS)
+        );
+    }
+
+    @Test
+    public void testSetWeekDayNameAbbreviationsWithDifferent() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        final List<String> differentWeekDayNameAbbreviations = toUpperCase(WEEKDAY_NAME_ABBREVIATIONS);
+        final DateTimeSymbols different = symbols.setWeekDayNameAbbreviations(differentWeekDayNameAbbreviations);
+
+        assertNotSame(
+                symbols,
+                different
+        );
+
+        this.ampmsAndCheck(different);
+        this.monthNamesAndCheck(different);
+        this.monthNameAbbreviationsAndCheck(different);
+        this.weekDayNamesAndCheck(different);
+        this.weekDayNameAbbreviationsAndCheck(
+                different,
+                differentWeekDayNameAbbreviations
+        );
+    }
+
+    private void weekDayNameAbbreviationsAndCheck(final DateTimeSymbols symbols) {
+        this.weekDayNameAbbreviationsAndCheck(
+                symbols,
+                WEEKDAY_NAME_ABBREVIATIONS
+        );
+    }
+
+    private void weekDayNameAbbreviationsAndCheck(final DateTimeSymbols symbols,
+                                                  final List<String> weekDayNames) {
+        this.checkEquals(
+                weekDayNames,
+                symbols.weekDayNameAbbreviations(),
+                "weekDayNameAbbreviations"
+        );
+    }
+
+    // hashCode/equals..................................................................................................
+
+    @Test
+    public void testEqualsDifferentAmpm() {
+        this.checkNotEquals(
+                DateTimeSymbols.with(
+                        toUpperCase(AM_PMS),
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentMonthNames() {
+        this.checkNotEquals(
+                DateTimeSymbols.with(
+                        AM_PMS,
+                        toUpperCase(MONTH_NAMES),
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentMonthNamesAbbreviations() {
+        this.checkNotEquals(
+                DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        toUpperCase(MONTH_NAME_ABBREVIATIONS),
+                        WEEKDAY_NAMES,
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentWeekdayNames() {
+        this.checkNotEquals(
+                DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        toUpperCase(WEEKDAY_NAMES),
+                        WEEKDAY_NAME_ABBREVIATIONS
+                )
+        );
+    }
+
+    @Test
+    public void testEqualsDifferentWeekDayNamesAbbreviations() {
+        this.checkNotEquals(
+                DateTimeSymbols.with(
+                        AM_PMS,
+                        MONTH_NAMES,
+                        MONTH_NAME_ABBREVIATIONS,
+                        WEEKDAY_NAMES,
+                        toUpperCase(WEEKDAY_NAME_ABBREVIATIONS)
+                )
+        );
+    }
+
+    private List<String> toUpperCase(final List<String> list) {
+        return list.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public DateTimeSymbols createObject() {
+        return DateTimeSymbols.with(
+                AM_PMS,
+                MONTH_NAMES,
+                MONTH_NAME_ABBREVIATIONS,
+                WEEKDAY_NAMES,
+                WEEKDAY_NAME_ABBREVIATIONS
+        );
+    }
+
+    // toString.........................................................................................................
+
+    @Test
+    public void testToString() {
+        this.toStringAndCheck(
+                this.createObject(),
+                "ampms=\"am\", \"pm\" monthNames=\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\" monthNameAbbreviations=\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\" weekDayNames=\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\" weekDayNameAbbreviations=\"Mon\", \"Tu\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\""
+        );
+    }
+
+    // type.............................................................................................................
+
+    @Override
+    public Class<DateTimeSymbols> type() {
+        return DateTimeSymbols.class;
+    }
+
+    @Override
+    public JavaVisibility typeVisibility() {
+        return JavaVisibility.PUBLIC;
+    }
+}
