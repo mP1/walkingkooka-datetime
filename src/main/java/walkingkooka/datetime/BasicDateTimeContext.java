@@ -18,32 +18,31 @@
 package walkingkooka.datetime;
 
 import walkingkooka.ToStringBuilder;
-import walkingkooka.collect.list.Lists;
-import walkingkooka.text.CharSequences;
 
-import java.text.DateFormatSymbols;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 /**
- * A {@link DateTimeContext} that sources its responses from a {@link DateFormatSymbols} taken from a {@link Locale}.
+ * A {@link DateTimeContext} that uses the dependencies to source values.
  */
-final class LocaleDateTimeContext implements DateTimeContext {
+final class BasicDateTimeContext implements DateTimeContext {
 
-    static LocaleDateTimeContext with(final Locale locale,
-                                      final int defaultYear,
-                                      final int twoDigitYear,
-                                      final HasNow now) {
+    static BasicDateTimeContext with(final DateTimeSymbols symbols,
+                                     final Locale locale,
+                                     final int defaultYear,
+                                     final int twoDigitYear,
+                                     final HasNow now) {
+        Objects.requireNonNull(symbols, "symbols");
         Objects.requireNonNull(locale, "locale");
         if (twoDigitYear < 0 || twoDigitYear > 99) {
             throw new IllegalArgumentException("Invalid two digit year " + twoDigitYear + " expected beteen 0 and 100");
         }
         Objects.requireNonNull(now, "now");
 
-        return new LocaleDateTimeContext(
+        return new BasicDateTimeContext(
+                symbols,
                 locale,
                 defaultYear,
                 twoDigitYear,
@@ -51,56 +50,27 @@ final class LocaleDateTimeContext implements DateTimeContext {
         );
     }
 
-    private LocaleDateTimeContext(final Locale locale,
-                                  final int defaultYear,
-                                  final int twoDigitYear,
-                                  final HasNow now) {
+    private BasicDateTimeContext(final DateTimeSymbols symbols,
+                                 final Locale locale,
+                                 final int defaultYear,
+                                 final int twoDigitYear,
+                                 final HasNow now) {
         super();
 
+        this.symbols = symbols;
         this.locale = locale;
 
-        final DateFormatSymbols symbols = new DateFormatSymbols(locale);
-        this.ampms = Lists.of(symbols.getAmPmStrings());
-
         this.defaultYear = defaultYear;
-
-        this.monthNames = monthNames(symbols.getMonths());
-        this.monthNameAbbreviations = monthNames(symbols.getShortMonths());
-
         this.twoDigitYear = twoDigitYear;
-
-        this.weekDayNames = dayNames(symbols.getWeekdays());
-        this.weekDayNameAbbreviations = dayNames(symbols.getShortWeekdays());
-
         this.now = now;
-    }
-
-    /**
-     * {@link DateFormatSymbols} returns arrays of 13 with null occupying the 13th slot for month systems with only 12.
-     */
-    private static List<String> monthNames(final String[] names) {
-        final int last = names.length - 1;
-
-        return CharSequences.isNullOrEmpty(names[last]) ?
-                Lists.of(Arrays.copyOfRange(names, 0, last)) :
-                Lists.of(names);
-    }
-
-    /**
-     * {@link DateFormatSymbols} removes the initial empty string lot in a list of day names, so 0 = Sunday.
-     */
-    private static List<String> dayNames(final String[] names) {
-        return Lists.of(Arrays.copyOfRange(names, 1, names.length));
     }
 
     // DateTimeContext..................................................................................................
 
     @Override
     public List<String> ampms() {
-        return this.ampms;
+        return this.symbols.ampms();
     }
-
-    private final List<String> ampms;
 
     @Override
     public int defaultYear() {
@@ -118,17 +88,13 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
     @Override
     public List<String> monthNames() {
-        return this.monthNames;
+        return this.symbols.monthNames();
     }
-
-    private final List<String> monthNames;
 
     @Override
     public List<String> monthNameAbbreviations() {
-        return this.monthNameAbbreviations;
+        return this.symbols.monthNameAbbreviations();
     }
-
-    private final List<String> monthNameAbbreviations;
 
     @Override
     public LocalDateTime now() {
@@ -146,23 +112,22 @@ final class LocaleDateTimeContext implements DateTimeContext {
 
     @Override
     public List<String> weekDayNames() {
-        return this.weekDayNames;
+        return this.symbols.weekDayNames();
     }
-
-    private final List<String> weekDayNames;
 
     @Override
     public List<String> weekDayNameAbbreviations() {
-        return this.weekDayNameAbbreviations;
+        return this.symbols.weekDayNameAbbreviations();
     }
 
-    private final List<String> weekDayNameAbbreviations;
+    private final DateTimeSymbols symbols;
 
     // Object...........................................................................................................
 
     @Override
     public String toString() {
         return ToStringBuilder.empty()
+                .label("symbols").value(this.symbols)
                 .label("locale").value(this.locale.toLanguageTag())
                 .label("twoDigitYear").value(this.twoDigitYear)
                 .build();
