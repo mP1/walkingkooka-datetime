@@ -23,6 +23,7 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.text.DateFormatSymbols;
 import java.util.List;
@@ -35,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
         ToStringTesting<DateTimeSymbols>,
+        TreePrintableTesting,
         ClassTesting<DateTimeSymbols> {
 
     private final static List<String> AM_PMS = Lists.of("am", "pm");
@@ -438,6 +440,60 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         this.weekDayNameAbbreviationsAndCheck(
                 symbols,
                 Lists.of("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.")
+        );
+    }
+
+    // TreePrintable....................................................................................................
+
+    @Test
+    public void testTreePrintable() {
+        this.treePrintAndCheck(
+                this.createObject(),
+                "DateTimeSymbolsampms\n" +
+                        "    am\n" +
+                        "    pm\n" +
+                        "  monthNames\n" +
+                        "    January\n" +
+                        "    February\n" +
+                        "    March\n" +
+                        "    April\n" +
+                        "    May\n" +
+                        "    June\n" +
+                        "    July\n" +
+                        "    August\n" +
+                        "    September\n" +
+                        "    October\n" +
+                        "    November\n" +
+                        "    December\n" +
+                        "  monthNameAbbreviations\n" +
+                        "    Jan\n" +
+                        "    Feb\n" +
+                        "    Mar\n" +
+                        "    Apr\n" +
+                        "    May\n" +
+                        "    Jun\n" +
+                        "    Jul\n" +
+                        "    Aug\n" +
+                        "    Sep\n" +
+                        "    Oct\n" +
+                        "    Nov\n" +
+                        "    Dec\n" +
+                        "  weekDayNames\n" +
+                        "    Sunday\n" +
+                        "    Monday\n" +
+                        "    Tuesday\n" +
+                        "    Wednesday\n" +
+                        "    Thursday\n" +
+                        "    Friday\n" +
+                        "    Saturday\n" +
+                        "  weekDayNameAbbreviations\n" +
+                        "    Sun\n" +
+                        "    Mon\n" +
+                        "    Tu\n" +
+                        "    Wed\n" +
+                        "    Thu\n" +
+                        "    Fri\n" +
+                        "    Sat\n"
         );
     }
 
