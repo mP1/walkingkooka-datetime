@@ -24,7 +24,9 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
+import java.text.DateFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -38,8 +40,8 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     private final static List<String> AM_PMS = Lists.of("am", "pm");
     private final static List<String> MONTH_NAMES = Lists.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     private final static List<String> MONTH_NAME_ABBREVIATIONS = Lists.of("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-    private final static List<String> WEEKDAY_NAMES = Lists.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-    private final static List<String> WEEKDAY_NAME_ABBREVIATIONS = Lists.of("Mon", "Tu", "Wed", "Thu", "Fri", "Sat", "Sun");
+    private final static List<String> WEEKDAY_NAMES = Lists.of("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    private final static List<String> WEEKDAY_NAME_ABBREVIATIONS = Lists.of("Sun", "Mon", "Tu", "Wed", "Thu", "Fri", "Sat");
 
     @Test
     public void testWithNullAmpmsFails() {
@@ -401,6 +403,44 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         );
     }
 
+    // fromDateFormatSymbols............................................................................................
+
+    @Test
+    public void testFromDateFormatSymbolsWithNullFails() {
+        assertThrows(
+                NullPointerException.class,
+                () -> DateTimeSymbols.fromDateFormatSymbols(null)
+        );
+    }
+
+    @Test
+    public void testFromDateFormatSymbols() {
+        final DateTimeSymbols symbols = DateTimeSymbols.fromDateFormatSymbols(
+                new DateFormatSymbols(Locale.forLanguageTag("EN-AU"))
+        );
+
+        this.ampmsAndCheck(
+                symbols,
+                AM_PMS
+        );
+        this.monthNamesAndCheck(
+                symbols,
+                MONTH_NAMES
+        );
+        this.monthNameAbbreviationsAndCheck(
+                symbols,
+                Lists.of("Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec.")
+        );
+        this.weekDayNamesAndCheck(
+                symbols,
+                WEEKDAY_NAMES
+        );
+        this.weekDayNameAbbreviationsAndCheck(
+                symbols,
+                Lists.of("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.")
+        );
+    }
+
     // hashCode/equals..................................................................................................
 
     @Test
@@ -491,7 +531,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     public void testToString() {
         this.toStringAndCheck(
                 this.createObject(),
-                "ampms=\"am\", \"pm\" monthNames=\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\" monthNameAbbreviations=\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\" weekDayNames=\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\" weekDayNameAbbreviations=\"Mon\", \"Tu\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\""
+                "ampms=\"am\", \"pm\" monthNames=\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\" monthNameAbbreviations=\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\" weekDayNames=\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\" weekDayNameAbbreviations=\"Sun\", \"Mon\", \"Tu\", \"Wed\", \"Thu\", \"Fri\", \"Sat\""
         );
     }
 

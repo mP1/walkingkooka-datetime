@@ -19,7 +19,10 @@ package walkingkooka.datetime;
 
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.text.CharSequences;
 
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +30,51 @@ import java.util.Objects;
  * Holds the Locale related data for dates and times.
  */
 public final class DateTimeSymbols {
+
+    /**
+     * Creates a {@link DateTimeSymbols} from the given {@link DateFormatSymbols}.
+     */
+    public static DateTimeSymbols fromDateFormatSymbols(final DateFormatSymbols symbols) {
+        Objects.requireNonNull(symbols, "symbols");
+
+        return with(
+                Lists.of(symbols.getAmPmStrings()),
+                monthNames(symbols.getMonths()),
+                monthNames(symbols.getShortMonths()),
+                dayNames(symbols.getWeekdays()),
+                dayNames(symbols.getShortWeekdays())
+        );
+    }
+
+    /**
+     * {@link DateFormatSymbols} returns arrays of 13 with null occupying the 13th slot for month systems with only 12.
+     */
+    private static List<String> monthNames(final String[] names) {
+        final int last = names.length - 1;
+
+        return CharSequences.isNullOrEmpty(names[last]) ?
+                Lists.of(
+                        Arrays.copyOfRange(
+                                names,
+                                0,
+                                last
+                        )
+                ) :
+                Lists.of(names);
+    }
+
+    /**
+     * {@link DateFormatSymbols} removes the initial empty string lot in a list of day names, so 0 = Sunday.
+     */
+    private static List<String> dayNames(final String[] names) {
+        return Lists.of(
+                Arrays.copyOfRange(
+                        names,
+                        1,
+                        names.length
+                )
+        );
+    }
 
     public static DateTimeSymbols with(final List<String> ampms,
                                        final List<String> monthNames,
