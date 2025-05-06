@@ -336,7 +336,7 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         );
 
         this.checkEquals(
-                "Invalid character 'A' at 0 in \"AM\"",
+                "Invalid character 'A' at 0",
                 thrown.getMessage()
         );
     }
@@ -349,7 +349,7 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         );
 
         this.checkEquals(
-                "Invalid character 'A' at 11 in \"dd/MM/yyyy AM\"",
+                "Invalid character 'A' at 11",
                 thrown.getMessage()
         );
     }
