@@ -20,16 +20,19 @@ package walkingkooka.datetime;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.text.CharSequences;
+import walkingkooka.text.printer.IndentingPrinter;
+import walkingkooka.text.printer.TreePrintable;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Holds the Locale related data for dates and times.
  */
-public final class DateTimeSymbols {
+public final class DateTimeSymbols implements TreePrintable {
 
     /**
      * Creates a {@link DateTimeSymbols} from the given {@link DateFormatSymbols}.
@@ -234,5 +237,56 @@ public final class DateTimeSymbols {
                 .label("weekDayNames").value(this.weekDayNames)
                 .label("weekDayNameAbbreviations").value(this.weekDayNameAbbreviations)
                 .build();
+    }
+
+    // TreePrintable....................................................................................................
+    
+    @Override
+    public void printTree(final IndentingPrinter printer) {
+        printer.print(this.getClass().getSimpleName());
+        
+        printer.indent();
+        {
+            this.printLabelAndValues(
+                    "ampms",
+                    this.ampms,
+                    printer
+            );
+            this.printLabelAndValues(
+                    "monthNames",
+                    this.monthNames,
+                    printer
+            );
+            this.printLabelAndValues(
+                    "monthNameAbbreviations",
+                    this.monthNameAbbreviations,
+                    printer
+            );
+            this.printLabelAndValues(
+                    "weekDayNames",
+                    this.weekDayNames,
+                    printer
+            );
+            this.printLabelAndValues(
+                    "weekDayNameAbbreviations",
+                    this.weekDayNameAbbreviations,
+                    printer
+            );
+        }
+        printer.outdent();
+    }
+    
+    private void printLabelAndValues(final String label,
+                                     final Collection<String> values,
+                                     final IndentingPrinter printer) {
+            printer.println(label);
+
+            printer.indent();
+            {
+                for(final String value : values) {
+                    printer.println(value);
+                }
+            }
+            printer.outdent();
     }
 }
