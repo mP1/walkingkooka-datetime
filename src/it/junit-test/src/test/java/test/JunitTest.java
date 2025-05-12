@@ -19,9 +19,13 @@ package test;
 import com.google.j2cl.junit.apt.J2clTestInput;
 import org.junit.Assert;
 import org.junit.Test;
+
+import walkingkooka.collect.list.Lists;
 import walkingkooka.datetime.DateTime;
 import walkingkooka.datetime.DateTimeContexts;
+import walkingkooka.datetime.DateTimeSymbols;
 
+import java.text.DateFormatSymbols;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -32,26 +36,60 @@ import java.util.Locale;
 public class JunitTest {
 
     @Test
-    public void testDateTimeContextLocale() {
-        Assert.assertNotNull(
-                DateTimeContexts.locale(
-                        Locale.forLanguageTag("EN-AU"),
-                        1902,
+    public void testDateContextMonthNames() {
+        final Locale locale = Locale.getDefault();
+
+        this.checkEquals(
+                Lists.of(
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                ),
+                DateTimeContexts.basic(
+                        DateTimeSymbols.fromDateFormatSymbols(
+                                new DateFormatSymbols(locale)
+                        ),
+                        locale,
+                        2000,
                         50,
-                        LocalDateTime::now
-                )
+                        () -> LocalDateTime.now()
+                ).monthNames()
         );
     }
 
     @Test
     public void testDateTimeLocalDateToDate() {
-        Assert.assertEquals(
+        this.checkEquals(
                 new Date(
-                        Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+                        Date.UTC(
+                                2000 - 1900,
+                                Calendar.DECEMBER,
+                                31,
+                                0,
+                                0,
+                                0
+                        )
                 ),
                 DateTime.localDateToDate(
                         LocalDate.of(2000, 12, 31)
                 )
+        );
+    }
+
+    public void checkEquals(final Object expected,
+                            final Object actual) {
+        Assert.assertEquals(
+                expected,
+                actual
         );
     }
 }
