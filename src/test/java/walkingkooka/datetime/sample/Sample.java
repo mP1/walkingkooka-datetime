@@ -1,8 +1,23 @@
-package test;
+/*
+ * Copyright 2019 Miroslav Pokorny (github.com/mP1)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 
-import com.google.gwt.junit.client.GWTTestCase;
-import org.junit.Test;
+package walkingkooka.datetime.sample;
 
+import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.datetime.DateTime;
 import walkingkooka.datetime.DateTimeContexts;
@@ -15,19 +30,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-@walkingkooka.j2cl.locale.LocaleAware
-public class TestGwtTest extends GWTTestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Override
-    public String getModuleName() {
-        return "test.Test";
+public final class Sample {
+
+    public static void main(final String[] args) {
+        new Sample();
     }
 
-    public void testAssertEquals() {
-        assertEquals(
-                1,
-                1
-        );
+    private Sample() {
+        this.testDateContextMonthNames();
+        this.testDateTimeLocalDateToDate();
     }
 
     public void testDateContextMonthNames() {
