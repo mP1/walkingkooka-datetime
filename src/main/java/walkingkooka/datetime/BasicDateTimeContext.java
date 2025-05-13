@@ -20,14 +20,14 @@ package walkingkooka.datetime;
 import walkingkooka.ToStringBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 /**
  * A {@link DateTimeContext} that uses the dependencies to source values.
  */
-final class BasicDateTimeContext implements DateTimeContext {
+final class BasicDateTimeContext implements DateTimeContext,
+        DateTimeSymbolsDelegator {
 
     static BasicDateTimeContext with(final DateTimeSymbols symbols,
                                      final Locale locale,
@@ -68,11 +68,6 @@ final class BasicDateTimeContext implements DateTimeContext {
     // DateTimeContext..................................................................................................
 
     @Override
-    public List<String> ampms() {
-        return this.symbols.ampms();
-    }
-
-    @Override
     public int defaultYear() {
         return this.defaultYear;
     }
@@ -85,16 +80,6 @@ final class BasicDateTimeContext implements DateTimeContext {
     }
 
     private final Locale locale;
-
-    @Override
-    public List<String> monthNames() {
-        return this.symbols.monthNames();
-    }
-
-    @Override
-    public List<String> monthNameAbbreviations() {
-        return this.symbols.monthNameAbbreviations();
-    }
 
     @Override
     public LocalDateTime now() {
@@ -110,14 +95,11 @@ final class BasicDateTimeContext implements DateTimeContext {
 
     private final int twoDigitYear;
 
-    @Override
-    public List<String> weekDayNames() {
-        return this.symbols.weekDayNames();
-    }
+    // DateTimeSymbolsDelegator.........................................................................................
 
     @Override
-    public List<String> weekDayNameAbbreviations() {
-        return this.symbols.weekDayNameAbbreviations();
+    public DateTimeSymbols dateTimeSymbols() {
+        return this.symbols;
     }
 
     private final DateTimeSymbols symbols;
