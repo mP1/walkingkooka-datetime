@@ -22,8 +22,9 @@ import java.util.List;
 /**
  * Delegate methods for all {@link DateTimeSymbols} property getters.
  */
-public interface DateTimeSymbolsDelegator {
+public interface DateTimeSymbolsDelegator extends DateTimeSymbolsLike {
 
+    @Override
     default List<String> ampms() {
         return this.dateTimeSymbols()
                 .ampms();
@@ -32,6 +33,7 @@ public interface DateTimeSymbolsDelegator {
     /**
      * Returns all the month names in long form.
      */
+    @Override
     default List<String> monthNames() {
         return this.dateTimeSymbols()
                 .monthNames();
@@ -40,6 +42,7 @@ public interface DateTimeSymbolsDelegator {
     /**
      * Returns all the month names in short form.
      */
+    @Override
     default List<String> monthNameAbbreviations() {
         return this.dateTimeSymbols()
                 .monthNameAbbreviations();
@@ -48,6 +51,7 @@ public interface DateTimeSymbolsDelegator {
     /**
      * Returns all the week day names in long form.
      */
+    @Override
     default List<String> weekDayNames() {
         return this.dateTimeSymbols()
                 .weekDayNames();
@@ -56,6 +60,7 @@ public interface DateTimeSymbolsDelegator {
     /**
      * Returns all the week day names in short form.
      */
+    @Override
     default List<String> weekDayNameAbbreviations() {
         return this.dateTimeSymbols().weekDayNameAbbreviations();
     }
