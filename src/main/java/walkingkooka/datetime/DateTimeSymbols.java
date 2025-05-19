@@ -38,6 +38,31 @@ public final class DateTimeSymbols implements HasText,
         TreePrintable {
 
     /**
+     * Parses the {@link String csv text} with each token interpreted as a character or string for each
+     * of the {@link DateTimeSymbols} properties. This is the inverse of {@link #text()}.
+     */
+    public static DateTimeSymbols parse(final String text) {
+        final CsvStringList csv = CsvStringList.parse(text);
+
+        final int tokenCount = csv.size();
+        if (5 != tokenCount) {
+            throw new IllegalArgumentException("Expected 5 tokens but got " + tokenCount);
+        }
+
+        return with(
+                parseList(csv.get(0)),
+                parseList(csv.get(1)),
+                parseList(csv.get(2)),
+                parseList(csv.get(3)),
+                parseList(csv.get(4))
+        );
+    }
+
+    private static List<String> parseList(final String text) {
+        return CsvStringList.parse(text);
+    }
+    
+    /**
      * Creates a {@link DateTimeSymbols} from the given {@link DateFormatSymbols}.
      */
     public static DateTimeSymbols fromDateFormatSymbols(final DateFormatSymbols symbols) {

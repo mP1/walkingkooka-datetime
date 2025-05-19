@@ -23,6 +23,7 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
@@ -37,6 +38,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
         HasTextTesting,
+        ParseStringTesting<DateTimeSymbols>,
         ToStringTesting<DateTimeSymbols>,
         TreePrintableTesting,
         ClassTesting<DateTimeSymbols> {
@@ -453,6 +455,33 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
                 this.createObject(),
                 "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tu,Wed,Thu,Fri,Sat\""
         );
+    }
+
+    // parse............................................................................................................
+
+    @Test
+    public void testParse() {
+        final DateTimeSymbols symbols = this.createObject();
+
+        this.parseStringAndCheck(
+                symbols.text(),
+                symbols
+        );
+    }
+
+    @Override
+    public DateTimeSymbols parseString(final String text) {
+        return DateTimeSymbols.parse(text);
+    }
+
+    @Override
+    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
+        return expected;
+    }
+
+    @Override
+    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
+        return expected;
     }
 
     // TreePrintable....................................................................................................
