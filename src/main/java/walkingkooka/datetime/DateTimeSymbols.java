@@ -243,7 +243,7 @@ public final class DateTimeSymbols implements TreePrintable {
     
     @Override
     public void printTree(final IndentingPrinter printer) {
-        printer.print(this.getClass().getSimpleName());
+        printer.println(this.getClass().getSimpleName());
         
         printer.indent();
         {
