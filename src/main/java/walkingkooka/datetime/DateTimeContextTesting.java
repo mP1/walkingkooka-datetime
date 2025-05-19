@@ -24,7 +24,8 @@ import java.util.stream.IntStream;
 /**
  * Mixing interface that provides methods to test a {@link DateTimeContext}
  */
-public interface DateTimeContextTesting extends HasLocaleTesting {
+public interface DateTimeContextTesting extends HasLocaleTesting,
+        HasDateTimeSymbolsTesting{
 
     default void amPmAndCheck(final DateTimeContext context,
                               final int hourOfDay,
