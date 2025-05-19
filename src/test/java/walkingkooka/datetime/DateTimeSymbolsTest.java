@@ -449,7 +449,8 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     public void testTreePrintable() {
         this.treePrintAndCheck(
                 this.createObject(),
-                "DateTimeSymbolsampms\n" +
+                "DateTimeSymbols\n" +
+                        "  ampms\n" +
                         "    am\n" +
                         "    pm\n" +
                         "  monthNames\n" +
