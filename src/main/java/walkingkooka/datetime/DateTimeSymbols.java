@@ -18,8 +18,10 @@
 package walkingkooka.datetime;
 
 import walkingkooka.ToStringBuilder;
+import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.text.CharSequences;
+import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
 import walkingkooka.text.printer.TreePrintable;
 
@@ -32,7 +34,8 @@ import java.util.Objects;
 /**
  * Holds the Locale related data for dates and times.
  */
-public final class DateTimeSymbols implements TreePrintable {
+public final class DateTimeSymbols implements HasText,
+        TreePrintable {
 
     /**
      * Creates a {@link DateTimeSymbols} from the given {@link DateFormatSymbols}.
@@ -288,5 +291,30 @@ public final class DateTimeSymbols implements TreePrintable {
                 }
             }
             printer.outdent();
+    }
+
+    // HasText..........................................................................................................
+
+    /**
+     * Returns a CSV string with each of the lists encoded as their own quoted strings holding their elements.
+     */
+    @Override
+    public String text() {
+        return CsvStringList.EMPTY.concat(
+                csv(this.ampms)
+        ).concat(
+                csv(this.monthNames)
+        ).concat(
+                csv(this.monthNameAbbreviations)
+        ).concat(
+                csv(this.weekDayNames)
+        ).concat(
+                csv(this.weekDayNameAbbreviations)
+        ).text();
+    }
+
+    private static String csv(final List<String> csv) {
+        return CsvStringList.EMPTY.concatAll(csv)
+                .text();
     }
 }

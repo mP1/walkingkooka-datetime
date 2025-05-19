@@ -23,6 +23,7 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.text.DateFormatSymbols;
@@ -35,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
+        HasTextTesting,
         ToStringTesting<DateTimeSymbols>,
         TreePrintableTesting,
         ClassTesting<DateTimeSymbols> {
@@ -440,6 +442,16 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         this.weekDayNameAbbreviationsAndCheck(
                 symbols,
                 Lists.of("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.")
+        );
+    }
+
+    // text..............................................................................................................
+
+    @Test
+    public void testText() {
+        this.textAndCheck(
+                this.createObject(),
+                "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tu,Wed,Thu,Fri,Sat\""
         );
     }
 
