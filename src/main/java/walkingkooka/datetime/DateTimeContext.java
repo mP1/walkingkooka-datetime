@@ -25,5 +25,6 @@ import walkingkooka.locale.HasLocale;
 public interface DateTimeContext extends YearContext,
         HasLocale,
         HasNow,
-        DateTimeSymbolsLike {
+        DateTimeSymbolsLike,
+        HasDateTimeSymbols{
 }

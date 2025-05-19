@@ -92,4 +92,9 @@ public class FakeDateTimeContext implements DateTimeContext {
     public String weekDayNameAbbreviation(final int day) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public DateTimeSymbols dateTimeSymbols() {
+        throw new UnsupportedOperationException();
+    }
 }
