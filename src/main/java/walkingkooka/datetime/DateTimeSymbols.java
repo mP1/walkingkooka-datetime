@@ -41,6 +41,9 @@ public final class DateTimeSymbols implements HasText,
 
     public final static int AMPM_COUNT_MAX = 2;
 
+    /**
+     * This constant will be used by a UI that allows entry of month names.
+     */
     public final static int MONTH_COUNT_MIN = 12;
 
     public final static int MONTH_COUNT_MAX = 13;
