@@ -37,6 +37,10 @@ import java.util.Objects;
 public final class DateTimeSymbols implements HasText,
         TreePrintable {
 
+    public final static int AMPM_COUNT_MIN = 2;
+
+    public final static int AMPM_COUNT_MAX = 2;
+
     public final static int MONTH_COUNT_MIN = 12;
 
     public final static int MONTH_COUNT_MAX = 13;
