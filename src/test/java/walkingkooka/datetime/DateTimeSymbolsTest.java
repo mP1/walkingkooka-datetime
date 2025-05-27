@@ -48,6 +48,28 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     // constants........................................................................................................
 
     @Test
+    public void testAMPM_COUNT_MIN() {
+        this.checkEquals(
+                DateTimeSymbols.AMPM_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getAmPmStrings()))
+                        .min()
+                        .orElse(0)
+        );
+    }
+
+    @Test
+    public void testAMPM_COUNT_MAX() {
+        this.checkEquals(
+                DateTimeSymbols.AMPM_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getAmPmStrings()))
+                        .max()
+                        .orElse(0)
+        );
+    }
+    
+    @Test
     public void testMONTH_COUNT_MIN() {
         this.checkEquals(
                 DateTimeSymbols.MONTH_COUNT_MIN,
