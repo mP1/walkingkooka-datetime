@@ -24,10 +24,12 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
+import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasTextTesting;
 import walkingkooka.text.printer.TreePrintableTesting;
 
 import java.text.DateFormatSymbols;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -42,6 +44,60 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         ToStringTesting<DateTimeSymbols>,
         TreePrintableTesting,
         ClassTesting<DateTimeSymbols> {
+
+    // constants........................................................................................................
+
+    @Test
+    public void testMONTH_COUNT_MIN() {
+        this.checkEquals(
+                DateTimeSymbols.MONTH_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getMonths()))
+                        .min()
+                        .orElse(0)
+        );
+    }
+
+    @Test
+    public void testMONTH_COUNT_MAX() {
+        this.checkEquals(
+                DateTimeSymbols.MONTH_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getMonths()))
+                        .max()
+                        .orElse(0)
+        );
+    }
+
+    @Test
+    public void testWEEK_DAY_COUNT_MIN() {
+        this.checkEquals(
+                DateTimeSymbols.WEEK_DAY_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getWeekdays()))
+                        .min()
+                        .orElse(0)
+        );
+    }
+
+    @Test
+    public void testWEEK_DAY_COUNT_MAX() {
+        this.checkEquals(
+                DateTimeSymbols.WEEK_DAY_COUNT_MIN,
+                Arrays.stream(Locale.getAvailableLocales())
+                        .mapToInt((Locale l) -> countNonEmpty(new DateFormatSymbols(l).getWeekdays()))
+                        .max()
+                        .orElse(0)
+        );
+    }
+
+    private static int countNonEmpty(final String[] names) {
+        return (int)Arrays.stream(names)
+                .filter(n -> false == CharSequences.isNullOrEmpty(n))
+                .count();
+    }
+
+    // with.............................................................................................................
 
     private final static List<String> AM_PMS = Lists.of("am", "pm");
     private final static List<String> MONTH_NAMES = Lists.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");

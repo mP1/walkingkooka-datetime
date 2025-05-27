@@ -37,6 +37,14 @@ import java.util.Objects;
 public final class DateTimeSymbols implements HasText,
         TreePrintable {
 
+    public final static int MONTH_COUNT_MIN = 12;
+
+    public final static int MONTH_COUNT_MAX = 13;
+
+    public final static int WEEK_DAY_COUNT_MIN = 7;
+
+    public final static int WEEK_DAY_COUNT_MAX = 7;
+
     /**
      * Parses the {@link String csv text} with each token interpreted as a character or string for each
      * of the {@link DateTimeSymbols} properties. This is the inverse of {@link #text()}.
