@@ -140,7 +140,10 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
 
     @Test
     public void testLocale() {
-        this.hasLocaleAndCheck(this.createContext(), LOCALE);
+        this.localeAndCheck(
+                this.createContext(),
+                LOCALE
+        );
     }
 
     // monthName........................................................................................................
