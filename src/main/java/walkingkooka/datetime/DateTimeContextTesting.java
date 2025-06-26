@@ -16,7 +16,7 @@
  */
 package walkingkooka.datetime;
 
-import walkingkooka.locale.HasLocaleTesting;
+import walkingkooka.util.HasLocaleTesting;
 
 import java.util.List;
 import java.util.stream.IntStream;
