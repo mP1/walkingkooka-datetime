@@ -17,7 +17,7 @@
 
 package walkingkooka.datetime;
 
-import walkingkooka.locale.HasLocale;
+import walkingkooka.util.HasLocale;
 
 /**
  * Context that typically accompanies another stateless component such as a parser or formatter that involves dates or times.
