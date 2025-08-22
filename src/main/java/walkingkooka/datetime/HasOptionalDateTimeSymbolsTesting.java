@@ -23,14 +23,14 @@ import java.util.Optional;
 
 public interface HasOptionalDateTimeSymbolsTesting extends Testing {
 
-    default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has) {
+    default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has) {
         this.dateTimeSymbolsAndCheck(
                 has,
                 Optional.empty()
         );
     }
 
-    default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has,
+    default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has,
                                          final DateTimeSymbols expected) {
         this.dateTimeSymbolsAndCheck(
                 has,
@@ -38,7 +38,7 @@ public interface HasOptionalDateTimeSymbolsTesting extends Testing {
         );
     }
 
-    default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has,
+    default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has,
                                          final Optional<DateTimeSymbols> expected) {
         this.checkEquals(
                 expected,
