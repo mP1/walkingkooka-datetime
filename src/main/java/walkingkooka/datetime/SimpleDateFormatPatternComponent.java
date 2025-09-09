@@ -28,8 +28,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitEra);
+                position,
+                visitor::visitEra);
         }
     },
     YEAR {
@@ -38,8 +38,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitYear);
+                position,
+                visitor::visitYear);
         }
     },
     WEEK_YEAR {
@@ -48,8 +48,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitWeekYear);
+                position,
+                visitor::visitWeekYear);
         }
     },
     MONTH_IN_YEAR_CONTEXT_SENSITIVE {
@@ -58,8 +58,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    visitor::visitMonthInYearContextSensitive);
+                position,
+                visitor::visitMonthInYearContextSensitive);
         }
     },
 
@@ -69,8 +69,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    visitor::visitMonthInYearStandaloneForm);
+                position,
+                visitor::visitMonthInYearStandaloneForm);
         }
     },
 
@@ -80,8 +80,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitWeekInYear);
+                position,
+                visitor::visitWeekInYear);
         }
     },
 
@@ -91,8 +91,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitWeekInMonth);
+                position,
+                visitor::visitWeekInMonth);
         }
     },
 
@@ -102,8 +102,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitDayInYear);
+                position,
+                visitor::visitDayInYear);
         }
     },
 
@@ -113,8 +113,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitDayInMonth);
+                position,
+                visitor::visitDayInMonth);
         }
     },
 
@@ -124,8 +124,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitDayOfWeekInMonth);
+                position,
+                visitor::visitDayOfWeekInMonth);
         }
     },
 
@@ -135,8 +135,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::traverseDayNameInWeek);
+                position,
+                visitor::traverseDayNameInWeek);
         }
     },
 
@@ -146,8 +146,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitDayNumberOfWeek);
+                position,
+                visitor::visitDayNumberOfWeek);
         }
     },
 
@@ -157,8 +157,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitAmPmMarker);
+                position,
+                visitor::visitAmPmMarker);
         }
     },
 
@@ -168,8 +168,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitHourInDay23);
+                position,
+                visitor::visitHourInDay23);
         }
     },
 
@@ -179,8 +179,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitHourInDay24);
+                position,
+                visitor::visitHourInDay24);
         }
     },
 
@@ -190,8 +190,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitHourInAmPm11);
+                position,
+                visitor::visitHourInAmPm11);
         }
     },
 
@@ -201,8 +201,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitHourInAmPm12);
+                position,
+                visitor::visitHourInAmPm12);
         }
     },
 
@@ -212,8 +212,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    visitor::visitMinuteInHour);
+                position,
+                visitor::visitMinuteInHour);
         }
     },
     SECOND_OF_MINUTE {
@@ -222,8 +222,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    visitor::visitSecondInMinute);
+                position,
+                visitor::visitSecondInMinute);
         }
     },
     MILLISECOND {
@@ -232,8 +232,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    visitor::visitMillisecond);
+                position,
+                visitor::visitMillisecond);
         }
     },
     GENERAL_TIMEZONE {
@@ -242,8 +242,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitGeneralTimezone);
+                position,
+                visitor::visitGeneralTimezone);
         }
     },
     RFC822_TIMEZONE {
@@ -252,8 +252,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::visitRfc822Timezone);
+                position,
+                visitor::visitRfc822Timezone);
         }
     },
     ISO8601_TIMEZONE {
@@ -262,8 +262,8 @@ enum SimpleDateFormatPatternComponent {
                      final int position,
                      final SimpleDateFormatPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    visitor::traverseIso8601Timezone);
+                position,
+                visitor::traverseIso8601Timezone);
         }
     },
     ESCAPE {

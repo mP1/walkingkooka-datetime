@@ -31,7 +31,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatterPatternVisitorTestCase<TestDateTimeFormatterPatternVisitor>
-        implements DateTimeFormatterPatternVisitorTesting<TestDateTimeFormatterPatternVisitor> {
+    implements DateTimeFormatterPatternVisitorTesting<TestDateTimeFormatterPatternVisitor> {
 
     // tests............................................................................................................
 
@@ -44,7 +44,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'G'
+            'G'
         );
     }
 
@@ -57,7 +57,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'u'
+            'u'
         );
     }
 
@@ -70,7 +70,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'y'
+            'y'
         );
     }
 
@@ -83,7 +83,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'D'
+            'D'
         );
     }
 
@@ -97,7 +97,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'M'
+            'M'
         );
     }
 
@@ -111,7 +111,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'L'
+            'L'
         );
     }
 
@@ -124,7 +124,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'd'
+            'd'
         );
     }
 
@@ -137,7 +137,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'g'
+            'g'
         );
     }
 
@@ -151,7 +151,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'Q'
+            'Q'
         );
     }
 
@@ -165,7 +165,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'q'
+            'q'
         );
     }
 
@@ -178,7 +178,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'Y'
+            'Y'
         );
     }
 
@@ -191,7 +191,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'w'
+            'w'
         );
     }
 
@@ -204,7 +204,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'W'
+            'W'
         );
     }
 
@@ -218,7 +218,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'E'
+            'E'
         );
     }
 
@@ -232,7 +232,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'e'
+            'e'
         );
     }
 
@@ -251,7 +251,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'c'
+            'c'
         );
     }
 
@@ -263,7 +263,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'F'
+            'F'
         );
     }
 
@@ -277,7 +277,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'a'
+            'a'
         );
     }
 
@@ -289,7 +289,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'h'
+            'h'
         );
     }
 
@@ -301,7 +301,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'K'
+            'K'
         );
     }
 
@@ -313,7 +313,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'k'
+            'k'
         );
     }
 
@@ -325,7 +325,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'H'
+            'H'
         );
     }
 
@@ -337,7 +337,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'm'
+            'm'
         );
     }
 
@@ -349,7 +349,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                's'
+            's'
         );
     }
 
@@ -361,7 +361,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'S'
+            'S'
         );
     }
 
@@ -373,7 +373,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'A'
+            'A'
         );
     }
 
@@ -385,7 +385,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'n'
+            'n'
         );
     }
 
@@ -397,7 +397,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'N'
+            'N'
         );
     }
 
@@ -409,7 +409,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'V'
+            'V'
         );
     }
 
@@ -423,7 +423,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'v'
+            'v'
         );
     }
 
@@ -437,7 +437,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'z'
+            'z'
         );
     }
 
@@ -471,7 +471,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width, kind);
                                }
                            },
-                'O'
+            'O'
         );
     }
 
@@ -484,7 +484,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'X'
+            'X'
         );
     }
 
@@ -497,7 +497,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'x'
+            'x'
         );
     }
 
@@ -511,7 +511,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                'Z'
+            'Z'
         );
     }
 
@@ -524,7 +524,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                '['
+            '['
         );
     }
 
@@ -543,8 +543,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                "[]",
-                "s0 [,1,e0 [,s1 ],1,e1 ]"
+            "[]",
+            "s0 [,1,e0 [,s1 ],1,e1 ]"
         );
     }
 
@@ -556,7 +556,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(component);
                                }
                            },
-                '#'
+            '#'
         );
     }
 
@@ -568,7 +568,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(component);
                                }
                            },
-                '{'
+            '{'
         );
     }
 
@@ -580,7 +580,7 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(component);
                                }
                            },
-                '}'
+            '}'
         );
     }
 
@@ -602,8 +602,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(text);
                                }
                            },
-                "''",
-                "s0 '',',e0 ''"
+            "''",
+            "s0 '',',e0 ''"
         );
     }
 
@@ -615,37 +615,37 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(text);
                                }
                            },
-                "'hello'",
-                "s0 'hello',hello,e0 'hello'"
+            "'hello'",
+            "s0 'hello',hello,e0 'hello'"
         );
     }
 
     @Test
     public void testLiteralUnescaped() {
         this.visitAndCheck(
-                new TestDateTimeFormatterPatternVisitor() {
-                    @Override
-                    protected void visitLiteral(final String text) {
-                        checkEquals("hello\t", text, "text");
-                        this.add(text);
-                    }
-                },
-                "'hello\\t'",
-                "s0 'hello\\t',hello\t,e0 'hello\\t'"
+            new TestDateTimeFormatterPatternVisitor() {
+                @Override
+                protected void visitLiteral(final String text) {
+                    checkEquals("hello\t", text, "text");
+                    this.add(text);
+                }
+            },
+            "'hello\\t'",
+            "s0 'hello\\t',hello\t,e0 'hello\\t'"
         );
     }
 
     @Test
     public void testLiteralSlash() {
         this.visitAndCheck(
-                new TestDateTimeFormatterPatternVisitor() {
-                    @Override
-                    protected void visitLiteral(final String text) {
-                        this.add(text);
-                    }
-                },
-                "/",
-                "s0 /,/,e0 /"
+            new TestDateTimeFormatterPatternVisitor() {
+                @Override
+                protected void visitLiteral(final String text) {
+                    this.add(text);
+                }
+            },
+            "/",
+            "s0 /,/,e0 /"
         );
     }
 
@@ -667,8 +667,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                "pH",
-                "s0 p,1,e0 p,s1 H,1,e1 H"
+            "pH",
+            "s0 p,1,e0 p,s1 H,1,e1 H"
         );
     }
 
@@ -688,8 +688,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                "ppH",
-                "s0 pp,2,e0 pp,s2 H,1,e2 H"
+            "ppH",
+            "s0 pp,2,e0 pp,s2 H,1,e2 H"
         );
     }
 
@@ -709,8 +709,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                    this.add(width);
                                }
                            },
-                "pppH",
-                "s0 ppp,3,e0 ppp,s3 H,1,e3 H"
+            "pppH",
+            "s0 ppp,3,e0 ppp,s3 H,1,e3 H"
         );
     }
 
@@ -778,8 +778,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
                                        this.add(unescapedText);
                                    }
                                },
-                    pattern,
-                    "s0 " + c + "," + c + ",e0 " + c);
+                pattern,
+                "s0 " + c + "," + c + ",e0 " + c);
         }
     }
 
@@ -788,114 +788,114 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
     @Test
     public void testDDDmmuuuu() {
         this.visitAndCheck(
-                new TestDateTimeFormatterPatternVisitor() {
+            new TestDateTimeFormatterPatternVisitor() {
 
-                    @Override
-                    protected void visitDayOfYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayOfYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthOfYear(final int width,
-                                                    final DateTimeFormatterPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthOfYear(final int width,
+                                                final DateTimeFormatterPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "DDDMMuuuu",
-                "s0 DDD,3,e0 DDD,s3 MM,2,e3 MM,s5 uuuu,4,e5 uuuu"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "DDDMMuuuu",
+            "s0 DDD,3,e0 DDD,s3 MM,2,e3 MM,s5 uuuu,4,e5 uuuu"
         );
     }
 
     @Test
     public void testLiteralDDDmmuuuu() {
         this.visitAndCheck(
-                new TestDateTimeFormatterPatternVisitor() {
-                    @Override
-                    protected void visitLiteral(final String unescapedText) {
-                        checkEquals("hello", unescapedText);
-                        this.add(unescapedText);
-                    }
+            new TestDateTimeFormatterPatternVisitor() {
+                @Override
+                protected void visitLiteral(final String unescapedText) {
+                    checkEquals("hello", unescapedText);
+                    this.add(unescapedText);
+                }
 
-                    @Override
-                    protected void visitDayOfYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayOfYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthOfYear(final int width,
-                                                    final DateTimeFormatterPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthOfYear(final int width,
+                                                final DateTimeFormatterPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "'hello'DDDMMuuuu",
-                "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 uuuu,4,e12 uuuu"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "'hello'DDDMMuuuu",
+            "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 uuuu,4,e12 uuuu"
         );
     }
 
     @Test
     public void testLiteralDDDmmLiteraluuuu() {
         this.visitAndCheck(
-                new TestDateTimeFormatterPatternVisitor() {
-                    @Override
-                    protected void visitLiteral(final String unescapedText) {
-                        this.add(unescapedText);
-                    }
+            new TestDateTimeFormatterPatternVisitor() {
+                @Override
+                protected void visitLiteral(final String unescapedText) {
+                    this.add(unescapedText);
+                }
 
-                    @Override
-                    protected void visitDayOfYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayOfYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthOfYear(final int width,
-                                                    final DateTimeFormatterPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthOfYear(final int width,
+                                                final DateTimeFormatterPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(DateTimeFormatterPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "'hello'DDDMM/uuuu",
-                "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 /,/,e12 /,s13 uuuu,4,e13 uuuu"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "'hello'DDDMM/uuuu",
+            "s0 'hello',hello,e0 'hello',s7 DDD,3,e7 DDD,s10 MM,2,e10 MM,s12 /,/,e12 /,s13 uuuu,4,e13 uuuu"
         );
     }
 
@@ -925,8 +925,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
             }
             if (notIllegal) {
                 this.visitAndCheck(visitor,
-                        pattern,
-                        "s0 " + pattern + "," + width + ",e0 " + pattern);
+                    pattern,
+                    "s0 " + pattern + "," + width + ",e0 " + pattern);
             } else {
                 this.visitIllegalAndCheck(pattern);
             }
@@ -1074,9 +1074,9 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
         final void checkVisited(final String pattern,
                                 final String expected) {
             checkEquals(
-                    expected,
-                    String.join(",", this.visited),
-                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
+                expected,
+                String.join(",", this.visited),
+                () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
             );
         }
     }
@@ -1085,7 +1085,8 @@ public final class DateTimeFormatterPatternVisitorTest extends DateTimeFormatter
 
     @Override
     public TestDateTimeFormatterPatternVisitor createVisitor() {
-        return new TestDateTimeFormatterPatternVisitor() {};
+        return new TestDateTimeFormatterPatternVisitor() {
+        };
     }
 
     @Override

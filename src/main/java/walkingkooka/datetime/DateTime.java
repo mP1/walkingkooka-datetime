@@ -42,7 +42,7 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(date, "date");
 
         return Instant.ofEpochMilli(
-                date.getTime()
+            date.getTime()
         );
     }
 
@@ -53,9 +53,9 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(date, "date");
 
         return dateToInstant(
-                date
+            date
         ).atZone(UTC)
-                .toLocalDateTime();
+            .toLocalDateTime();
     }
 
     private final static ZoneId UTC = ZoneId.of("UTC");
@@ -67,7 +67,7 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(instant, "instant");
 
         return new Date(
-                instant.toEpochMilli()
+            instant.toEpochMilli()
         );
     }
 
@@ -78,8 +78,8 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(localDate, "localDate");
 
         return instantToDate(
-                localDate.atStartOfDay()
-                        .toInstant(ZoneOffset.UTC)
+            localDate.atStartOfDay()
+                .toInstant(ZoneOffset.UTC)
         );
     }
 
@@ -90,7 +90,7 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(localDateTime, "localDateTime");
 
         return instantToDate(
-                localDateTime.toInstant(ZoneOffset.UTC)
+            localDateTime.toInstant(ZoneOffset.UTC)
         );
     }
 
@@ -102,8 +102,8 @@ public final class DateTime implements PublicStaticHelper {
         Objects.requireNonNull(localTime, "localTime");
 
         return instantToDate(
-                localTime.atDate(LocalDate.EPOCH)
-                        .toInstant(ZoneOffset.UTC)
+            localTime.atDate(LocalDate.EPOCH)
+                .toInstant(ZoneOffset.UTC)
         );
     }
 
@@ -112,7 +112,7 @@ public final class DateTime implements PublicStaticHelper {
      */
     public static String simpleDateFormatPatternWithoutTimezone(final String pattern) {
         return DateTimeSimpleDateFormatPatternWithoutTimeZoneSimpleDateFormatPatternVisitor.removeTimeZonePatternComponents(pattern)
-                .trim();
+            .trim();
     }
 
     /**

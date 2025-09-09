@@ -23,7 +23,7 @@ import walkingkooka.reflect.TypeNameTesting;
 import java.time.format.DateTimeFormatter;
 
 public abstract class DateTimeFormatterPatternVisitorTestCase<T> implements ClassTesting2<T>,
-        TypeNameTesting<T> {
+    TypeNameTesting<T> {
 
     DateTimeFormatterPatternVisitorTestCase() {
         super();

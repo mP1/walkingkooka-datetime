@@ -31,7 +31,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPatternVisitorTestCase<TestSimpleDateFormatPatternVisitor>
-        implements SimpleDateFormatPatternVisitorTesting<TestSimpleDateFormatPatternVisitor> {
+    implements SimpleDateFormatPatternVisitorTesting<TestSimpleDateFormatPatternVisitor> {
 
     // tests............................................................................................................
 
@@ -44,7 +44,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'G'
+            'G'
         );
     }
 
@@ -57,7 +57,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'y'
+            'y'
         );
     }
 
@@ -70,7 +70,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'Y'
+            'Y'
         );
     }
 
@@ -84,7 +84,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width, kind);
                                }
                            },
-                'M'
+            'M'
         );
     }
 
@@ -99,7 +99,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width, kind);
                                }
                            },
-                'L'
+            'L'
         );
     }
 
@@ -112,7 +112,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'w'
+            'w'
         );
     }
 
@@ -125,7 +125,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'W'
+            'W'
         );
     }
 
@@ -138,7 +138,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'D'
+            'D'
         );
     }
 
@@ -151,7 +151,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'd'
+            'd'
         );
     }
 
@@ -164,7 +164,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'F'
+            'F'
         );
     }
 
@@ -178,7 +178,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width, kind);
                                }
                            },
-                'E'
+            'E'
         );
     }
 
@@ -191,7 +191,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'u'
+            'u'
         );
     }
 
@@ -204,7 +204,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'a'
+            'a'
         );
     }
 
@@ -217,7 +217,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'H'
+            'H'
         );
     }
 
@@ -230,7 +230,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'k'
+            'k'
         );
     }
 
@@ -243,7 +243,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'K'
+            'K'
         );
     }
 
@@ -256,7 +256,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'h'
+            'h'
         );
     }
 
@@ -269,7 +269,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'm'
+            'm'
         );
     }
 
@@ -282,7 +282,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                's'
+            's'
         );
     }
 
@@ -295,7 +295,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'S'
+            'S'
         );
     }
 
@@ -308,7 +308,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'z'
+            'z'
         );
     }
 
@@ -321,7 +321,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'Z'
+            'Z'
         );
     }
 
@@ -335,7 +335,7 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(width);
                                }
                            },
-                'X'
+            'X'
         );
     }
 
@@ -362,8 +362,8 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(text);
                                }
                            },
-                "''",
-                "s0 '',',e0 ''"
+            "''",
+            "s0 '',',e0 ''"
         );
     }
 
@@ -375,23 +375,23 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(text);
                                }
                            },
-                "'hello'",
-                "s0 'hello',hello,e0 'hello'"
+            "'hello'",
+            "s0 'hello',hello,e0 'hello'"
         );
     }
 
     @Test
     public void testLiteralUnescaped() {
         this.visitAndCheck(
-                new TestSimpleDateFormatPatternVisitor() {
-                    @Override
-                    protected void visitLiteral(final String text) {
-                        checkEquals("hello\t", text, "text");
-                        this.add(text);
-                    }
-                },
-                "'hello\\t'",
-                "s0 'hello\\t',hello\t,e0 'hello\\t'"
+            new TestSimpleDateFormatPatternVisitor() {
+                @Override
+                protected void visitLiteral(final String text) {
+                    checkEquals("hello\t", text, "text");
+                    this.add(text);
+                }
+            },
+            "'hello\\t'",
+            "s0 'hello\\t',hello\t,e0 'hello\\t'"
         );
     }
 
@@ -403,8 +403,8 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                    this.add(text);
                                }
                            },
-                "/",
-                "s0 /,/,e0 /"
+            "/",
+            "s0 /,/,e0 /"
         );
     }
 
@@ -469,8 +469,8 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
                                        this.add(unescapedText);
                                    }
                                },
-                    pattern,
-                    "s0 " + c + "," + c + ",e0 " + c);
+                pattern,
+                "s0 " + c + "," + c + ",e0 " + c);
         }
     }
 
@@ -479,115 +479,115 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
     @Test
     public void testDDDLLyyyy() {
         this.visitAndCheck(
-                new TestSimpleDateFormatPatternVisitor() {
+            new TestSimpleDateFormatPatternVisitor() {
 
-                    @Override
-                    protected void visitDayInYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayInYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthInYearStandaloneForm(final int width,
-                                                                  final SimpleDateFormatPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthInYearStandaloneForm(final int width,
+                                                              final SimpleDateFormatPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "DDDLLyyyy",
-                "s0 DDD,3,e0 DDD,s3 LL,2,e3 LL,s5 yyyy,4,e5 yyyy"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "DDDLLyyyy",
+            "s0 DDD,3,e0 DDD,s3 LL,2,e3 LL,s5 yyyy,4,e5 yyyy"
         );
     }
 
     @Test
     public void testLiteralDDDLLyyyy() {
         this.visitAndCheck(
-                new TestSimpleDateFormatPatternVisitor() {
+            new TestSimpleDateFormatPatternVisitor() {
 
-                    @Override
-                    protected void visitLiteral(final String unescapedText) {
-                        this.add(unescapedText);
-                    }
+                @Override
+                protected void visitLiteral(final String unescapedText) {
+                    this.add(unescapedText);
+                }
 
-                    @Override
-                    protected void visitDayInYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayInYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthInYearStandaloneForm(final int width,
-                                                                  final SimpleDateFormatPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthInYearStandaloneForm(final int width,
+                                                              final SimpleDateFormatPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "'hello' DDDLLyyyy",
-                "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "'hello' DDDLLyyyy",
+            "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
         );
     }
 
     @Test
     public void testLiteralDDDLLLiteralyyyy() {
         this.visitAndCheck(
-                new TestSimpleDateFormatPatternVisitor() {
+            new TestSimpleDateFormatPatternVisitor() {
 
-                    @Override
-                    protected void visitLiteral(final String unescapedText) {
-                        this.add(unescapedText);
-                    }
+                @Override
+                protected void visitLiteral(final String unescapedText) {
+                    this.add(unescapedText);
+                }
 
-                    @Override
-                    protected void visitDayInYear(final int width) {
-                        checkEquals(3, width);
-                        check(width);
-                        this.add(width);
-                    }
+                @Override
+                protected void visitDayInYear(final int width) {
+                    checkEquals(3, width);
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitMonthInYearStandaloneForm(final int width,
-                                                                  final SimpleDateFormatPatternComponentKind kind) {
-                        checkEquals(2, width);
-                        checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
+                @Override
+                protected void visitMonthInYearStandaloneForm(final int width,
+                                                              final SimpleDateFormatPatternComponentKind kind) {
+                    checkEquals(2, width);
+                    checkEquals(SimpleDateFormatPatternComponentKind.NUMBER, kind);
 
-                        check(width);
-                        this.add(width);
-                    }
+                    check(width);
+                    this.add(width);
+                }
 
-                    @Override
-                    protected void visitYear(final int width) {
-                        checkEquals(4, width);
+                @Override
+                protected void visitYear(final int width) {
+                    checkEquals(4, width);
 
-                        check(width);
-                        this.add(width);
-                    }
-                },
-                "'hello' DDDLLyyyy",
-                "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
+                    check(width);
+                    this.add(width);
+                }
+            },
+            "'hello' DDDLLyyyy",
+            "s0 'hello',hello,e0 'hello',s7  , ,e7  ,s8 DDD,3,e8 DDD,s11 LL,2,e11 LL,s13 yyyy,4,e13 yyyy"
         );
     }
 
@@ -617,8 +617,8 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
             }
             if (legal) {
                 this.visitAndCheck(visitor,
-                        pattern,
-                        "s0 " + pattern + "," + width + ",e0 " + pattern);
+                    pattern,
+                    "s0 " + pattern + "," + width + ",e0 " + pattern);
             } else {
                 this.visitIllegalAndCheck(pattern);
             }
@@ -740,9 +740,9 @@ public final class SimpleDateFormatPatternVisitorTest extends SimpleDateFormatPa
         final void checkVisited(final String pattern,
                                 final String expected) {
             checkEquals(
-                    expected,
-                    String.join(",", this.visited),
-                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
+                expected,
+                String.join(",", this.visited),
+                () -> "Pattern " + CharSequences.quoteAndEscape(pattern)
             );
         }
 

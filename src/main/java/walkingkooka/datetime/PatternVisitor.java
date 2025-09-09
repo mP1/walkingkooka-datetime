@@ -107,8 +107,8 @@ abstract class PatternVisitor extends Visitor<String> {
         final String escaped = pattern.substring(position, end);
         if (Visiting.CONTINUE == this.startVisitComponent(position, escaped)) {
             this.visitLiteral(escaped.length() == 2 ?
-                    ESCAPE_STRING :
-                    CharSequences.unescape(pattern.substring(position + 1, end - 1)).toString()
+                ESCAPE_STRING :
+                CharSequences.unescape(pattern.substring(position + 1, end - 1)).toString()
             );
         }
         this.endVisitComponent(position, escaped);
@@ -164,8 +164,8 @@ abstract class PatternVisitor extends Visitor<String> {
 
         while (i < patternLength) {
             i = this.traverseChar(pattern.charAt(i),
-                    pattern,
-                    i);
+                pattern,
+                i);
         }
     }
 

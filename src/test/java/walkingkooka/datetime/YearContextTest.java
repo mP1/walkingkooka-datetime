@@ -72,9 +72,9 @@ public final class YearContextTest implements ClassTesting2<YearContext> {
 
     private void twoToFourDigitYearAndCheck(final int two, final int four) {
         this.checkEquals(
-                four,
-                new TestYearContext().twoToFourDigitYear(two),
-                () -> "twoToFourDigitYear " + two
+            four,
+            new TestYearContext().twoToFourDigitYear(two),
+            () -> "twoToFourDigitYear " + two
         );
     }
 
