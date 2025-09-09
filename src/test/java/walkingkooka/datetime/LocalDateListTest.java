@@ -29,9 +29,9 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DateListTest implements ListTesting2<DateList, LocalDate>,
-    ClassTesting<DateList>,
-    ImmutableListTesting<DateList, LocalDate> {
+public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>,
+    ClassTesting<LocalDateList>,
+    ImmutableListTesting<LocalDateList, LocalDate> {
 
     private final static LocalDate DATE1 = LocalDate.of(
         1999,
@@ -49,24 +49,24 @@ public class DateListTest implements ListTesting2<DateList, LocalDate>,
     public void testWithNullFails() {
         assertThrows(
             NullPointerException.class,
-            () -> DateList.with(null)
+            () -> LocalDateList.with(null)
         );
     }
 
     @Test
     public void testWithDoesntDoubleWrap() {
-        final DateList list = this.createList();
+        final LocalDateList list = this.createList();
         assertSame(
             list,
-            DateList.with(list)
+            LocalDateList.with(list)
         );
     }
 
     @Test
     public void testWithEmpty() {
         assertSame(
-            DateList.EMPTY,
-            DateList.with(
+            LocalDateList.EMPTY,
+            LocalDateList.with(
                 Lists.empty()
             )
         );
@@ -103,7 +103,7 @@ public class DateListTest implements ListTesting2<DateList, LocalDate>,
 
     @Test
     public void testRemoveIndexFails() {
-        final DateList list = this.createList();
+        final LocalDateList list = this.createList();
 
         this.removeIndexFails(
             list,
@@ -113,7 +113,7 @@ public class DateListTest implements ListTesting2<DateList, LocalDate>,
 
     @Test
     public void testRemoveElementFails() {
-        final DateList list = this.createList();
+        final LocalDateList list = this.createList();
 
         this.removeFails(
             list,
@@ -140,8 +140,8 @@ public class DateListTest implements ListTesting2<DateList, LocalDate>,
     }
 
     @Override
-    public DateList createList() {
-        return DateList.with(
+    public LocalDateList createList() {
+        return LocalDateList.with(
             Lists.of(
                 DATE1,
                 DATE2
@@ -152,8 +152,8 @@ public class DateListTest implements ListTesting2<DateList, LocalDate>,
     // class............................................................................................................
 
     @Override
-    public Class<DateList> type() {
-        return DateList.class;
+    public Class<LocalDateList> type() {
+        return LocalDateList.class;
     }
 
     @Override
