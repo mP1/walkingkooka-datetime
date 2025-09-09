@@ -28,26 +28,26 @@ import java.util.Objects;
 /**
  * An immutable list of {@link LocalDate}.
  */
-public final class DateList extends AbstractList<LocalDate>
-    implements ImmutableListDefaults<DateList, LocalDate> {
+public final class LocalDateList extends AbstractList<LocalDate>
+    implements ImmutableListDefaults<LocalDateList, LocalDate> {
 
     /**
-     * An empty {@link DateList}.
+     * An empty {@link LocalDateList}.
      */
-    public final static DateList EMPTY = new DateList(
+    public final static LocalDateList EMPTY = new LocalDateList(
         Lists.empty()
     );
 
     /**
-     * Factory that creates a {@link DateList} from the list of {@link LocalDate dates}.
+     * Factory that creates a {@link LocalDateList} from the list of {@link LocalDate dates}.
      */
-    public static DateList with(final List<LocalDate> dates) {
+    public static LocalDateList with(final List<LocalDate> dates) {
         Objects.requireNonNull(dates, "dates");
 
-        DateList DateList;
+        LocalDateList list;
 
-        if (dates instanceof DateList) {
-            DateList = (DateList) dates;
+        if (dates instanceof LocalDateList) {
+            list = (LocalDateList) dates;
         } else {
             final List<LocalDate> copy = Lists.array();
             for (final LocalDate name : dates) {
@@ -58,18 +58,18 @@ public final class DateList extends AbstractList<LocalDate>
 
             switch (dates.size()) {
                 case 0:
-                    DateList = EMPTY;
+                    list = EMPTY;
                     break;
                 default:
-                    DateList = new DateList(copy);
+                    list = new LocalDateList(copy);
                     break;
             }
         }
 
-        return DateList;
+        return list;
     }
 
-    private DateList(final List<LocalDate> dates) {
+    private LocalDateList(final List<LocalDate> dates) {
         this.dates = dates;
     }
 
@@ -91,8 +91,8 @@ public final class DateList extends AbstractList<LocalDate>
     }
 
     @Override
-    public DateList setElements(final List<LocalDate> dates) {
-        final DateList copy = with(dates);
+    public LocalDateList setElements(final List<LocalDate> dates) {
+        final LocalDateList copy = with(dates);
         return this.equals(copy) ?
             this :
             copy;
