@@ -453,9 +453,9 @@ public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
                        final int max,
                        final IntConsumer dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                max,
-                dispatcher);
+            position,
+            max,
+            dispatcher);
     }
 
     @Override //
@@ -463,9 +463,9 @@ public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
                            final String pattern,
                            final int position) {
         return DateTimeFormatterPatternComponent.ofCharacter(c)
-                .traverse(pattern,
-                        position,
-                        this);
+            .traverse(pattern,
+                position,
+                this);
     }
 
     final int traverseNumber(final String pattern,
@@ -473,9 +473,9 @@ public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
                              final int max,
                              final IntConsumer dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                max,
-                dispatcher);
+            position,
+            max,
+            dispatcher);
     }
 
     final int traverseNumberOrText(final String pattern,
@@ -483,10 +483,10 @@ public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
                                    final int max,
                                    final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                max,
-                DateTimeFormatterPatternComponentKindFactory.NUMBER_OR_TEXT,
-                dispatcher);
+            position,
+            max,
+            DateTimeFormatterPatternComponentKindFactory.NUMBER_OR_TEXT,
+            dispatcher);
     }
 
     final int traverseText(final String pattern,
@@ -494,10 +494,10 @@ public abstract class DateTimeFormatterPatternVisitor extends PatternVisitor {
                            final int max,
                            final BiConsumer<Integer, DateTimeFormatterPatternComponentKind> dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                max,
-                DateTimeFormatterPatternComponentKindFactory.TEXT,
-                dispatcher);
+            position,
+            max,
+            DateTimeFormatterPatternComponentKindFactory.TEXT,
+            dispatcher);
     }
 
     /**

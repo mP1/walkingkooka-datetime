@@ -34,11 +34,11 @@ public final class DateTimeContexts implements PublicStaticHelper {
                                         final int twoDigitYear,
                                         final HasNow now) {
         return BasicDateTimeContext.with(
-                symbols,
-                locale,
-                defaultYear,
-                twoDigitYear,
-                now
+            symbols,
+            locale,
+            defaultYear,
+            twoDigitYear,
+            now
         );
     }
 

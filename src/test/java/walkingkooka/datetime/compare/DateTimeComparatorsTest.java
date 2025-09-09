@@ -30,16 +30,16 @@ import java.time.temporal.Temporal;
 import java.util.Comparator;
 
 final public class DateTimeComparatorsTest implements PublicStaticHelperTesting<DateTimeComparators>,
-        ComparatorTesting {
+    ComparatorTesting {
 
     // DateTimeComparators......................................................................................................
 
     @Test
     public void testCompareDayOfMonth() {
         this.compareAndCheckLess(
-                DateTimeComparators.<Temporal>dayOfMonth(),
-                LocalDate.of(2000, 12, 1),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            DateTimeComparators.<Temporal>dayOfMonth(),
+            LocalDate.of(2000, 12, 1),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
@@ -48,81 +48,81 @@ final public class DateTimeComparatorsTest implements PublicStaticHelperTesting<
         final Comparator<Temporal> comparator = DateTimeComparators.dayOfMonth();
 
         this.compareAndCheckLess(
-                comparator,
-                LocalDate.of(2000, 12, 1),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            comparator,
+            LocalDate.of(2000, 12, 1),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
     @Test
     public void testCompareDayOfWeek() {
         this.compareAndCheckLess(
-                DateTimeComparators.<Temporal>dayOfWeek(),
-                LocalDate.of(2024, 4, 19),
-                LocalDate.of(2024, 4, 20)
+            DateTimeComparators.<Temporal>dayOfWeek(),
+            LocalDate.of(2024, 4, 19),
+            LocalDate.of(2024, 4, 20)
         );
     }
 
     @Test
     public void testCompareHourOfAmpm() {
         this.compareAndCheckLess(
-                DateTimeComparators.hourOfAmPm(),
-                LocalTime.of(13, 59, 58),
-                LocalDateTime.of(2000, 12, 12, 11, 58, 59)
+            DateTimeComparators.hourOfAmPm(),
+            LocalTime.of(13, 59, 58),
+            LocalDateTime.of(2000, 12, 12, 11, 58, 59)
         );
     }
 
     @Test
     public void testCompareHourOfDay() {
         this.compareAndCheckLess(
-                DateTimeComparators.hourOfDay(),
-                LocalTime.of(1, 59, 58),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            DateTimeComparators.hourOfDay(),
+            LocalTime.of(1, 59, 58),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
     @Test
     public void testCompareMinuteOfHour() {
         this.compareAndCheckLess(
-                DateTimeComparators.minuteOfHour(),
-                LocalTime.of(12, 1, 58),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            DateTimeComparators.minuteOfHour(),
+            LocalTime.of(12, 1, 58),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
     @Test
     public void testCompareMonthOfYear() {
         this.compareAndCheckLess(
-                DateTimeComparators.monthOfYear(),
-                LocalDate.of(2000, 1, 31),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            DateTimeComparators.monthOfYear(),
+            LocalDate.of(2000, 1, 31),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
     @Test
     public void testCompareNanoOfSecond() {
         this.compareAndCheckLess(
-                DateTimeComparators.nanoOfSecond(),
-                LocalTime.of(12, 1, 1, 100),
-                LocalDateTime.of(2000, 12, 22, 12, 58, 59, 200)
+            DateTimeComparators.nanoOfSecond(),
+            LocalTime.of(12, 1, 1, 100),
+            LocalDateTime.of(2000, 12, 22, 12, 58, 59, 200)
         );
     }
 
     @Test
     public void testCompareSecondOfMinute() {
         this.compareAndCheckLess(
-                DateTimeComparators.secondOfMinute(),
-                LocalTime.of(12, 58, 1),
-                LocalDateTime.of(2000, 12, 12, 12, 58, 59)
+            DateTimeComparators.secondOfMinute(),
+            LocalTime.of(12, 58, 1),
+            LocalDateTime.of(2000, 12, 12, 12, 58, 59)
         );
     }
 
     @Test
     public void testCompareYear() {
         this.compareAndCheckLess(
-                DateTimeComparators.year(),
-                LocalDate.of(1999, 1, 31),
-                LocalDateTime.of(2000, 1, 31, 12, 58, 59)
+            DateTimeComparators.year(),
+            LocalDate.of(1999, 1, 31),
+            LocalDateTime.of(2000, 1, 31, 12, 58, 59)
         );
     }
 

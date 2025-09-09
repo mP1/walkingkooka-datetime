@@ -28,9 +28,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitEra);
+                position,
+                MAX_NARROW,
+                visitor::visitEra);
         }
     },
     YEAR {
@@ -39,9 +39,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    MAX_YEAR,
-                    visitor::visitYear);
+                position,
+                MAX_YEAR,
+                visitor::visitYear);
         }
     },
     YEAR_OF_ERA {
@@ -50,9 +50,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    MAX_YEAR,
-                    visitor::visitYearOfEra);
+                position,
+                MAX_YEAR,
+                visitor::visitYearOfEra);
         }
     },
     DAY_OF_YEAR {
@@ -61,9 +61,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_OF_YEAR,
-                    visitor::visitDayOfYear);
+                position,
+                MAX_DAY_OF_YEAR,
+                visitor::visitDayOfYear);
         }
     },
     MONTH_OF_YEAR {
@@ -72,9 +72,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitMonthOfYear);
+                position,
+                MAX_NARROW,
+                visitor::visitMonthOfYear);
         }
     },
     MONTH_OF_YEAR_STANDALONE {
@@ -83,9 +83,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitStandaloneMonthOfYear);
+                position,
+                MAX_NARROW,
+                visitor::visitStandaloneMonthOfYear);
         }
     },
     DAY_OF_MONTH {
@@ -94,9 +94,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitDayOfMonth);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitDayOfMonth);
         }
     },
     MODIFIED_JULIAN_DAY {
@@ -105,9 +105,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_JULIAN_DAY,
-                    visitor::visitModifiedJulianDay);
+                position,
+                MAX_JULIAN_DAY,
+                visitor::visitModifiedJulianDay);
         }
     },
     QUARTER_OF_YEAR {
@@ -116,9 +116,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitQuarterOfYear);
+                position,
+                MAX_NARROW,
+                visitor::visitQuarterOfYear);
         }
     },
     STANDALONE_QUARTER_OF_YEAR {
@@ -127,9 +127,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitStandaloneQuarterOfYear);
+                position,
+                MAX_NARROW,
+                visitor::visitStandaloneQuarterOfYear);
         }
     },
     WEEK_BASED_YEAR {
@@ -138,9 +138,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    MAX_YEAR,
-                    visitor::visitWeekBasedYear);
+                position,
+                MAX_YEAR,
+                visitor::visitWeekBasedYear);
         }
     },
     WEEK_OF_WEEK_BASED_YEAR {
@@ -149,9 +149,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_WEEK_OF_WEEK_BASED_YEAR,
-                    visitor::visitWeekOfWeekBasedYear);
+                position,
+                MAX_WEEK_OF_WEEK_BASED_YEAR,
+                visitor::visitWeekOfWeekBasedYear);
         }
     },
     WEEK_OF_MONTH {
@@ -160,9 +160,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_WEEK_OF_MONTH,
-                    visitor::visitWeekOfMonthW);
+                position,
+                MAX_WEEK_OF_MONTH,
+                visitor::visitWeekOfMonthW);
         }
     },
     DAY_OF_WEEK {
@@ -171,9 +171,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitDayOfWeek);
+                position,
+                MAX_NARROW,
+                visitor::visitDayOfWeek);
         }
     },
     LOCALIZED_DAY_OF_WEEK {
@@ -182,9 +182,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitLocalizedDayOfWeek);
+                position,
+                MAX_NARROW,
+                visitor::visitLocalizedDayOfWeek);
         }
     },
     STANDALONE_LOCALIZED_DAY_OF_WEEK {
@@ -193,9 +193,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::traverseStandaloneLocalizedDayOfWeek);
+                position,
+                MAX_NARROW,
+                visitor::traverseStandaloneLocalizedDayOfWeek);
         }
     },
     WEEK_OF_MONTH_F {
@@ -204,9 +204,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_WEEK_OF_MONTH,
-                    visitor::visitWeekOfMonthF);
+                position,
+                MAX_WEEK_OF_MONTH,
+                visitor::visitWeekOfMonthF);
         }
     },
     AMPM_OF_DAY {
@@ -215,9 +215,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseText(pattern,
-                    position,
-                    MAX_AMPM,
-                    visitor::visitAmpmOfDay);
+                position,
+                MAX_AMPM,
+                visitor::visitAmpmOfDay);
         }
     },
     CLOCK_HOUR_OF_AMPM12 {
@@ -226,9 +226,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitClockHourOfAmpm12);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitClockHourOfAmpm12);
         }
     },
     HOUR_OF_AMPM11 {
@@ -237,9 +237,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitHourOfAmpm11);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitHourOfAmpm11);
         }
     },
     CLOCK_HOUR_OF_AMPM24 {
@@ -248,9 +248,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitClockHourOfAmpm24);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitClockHourOfAmpm24);
         }
     },
     HOUR_OF_DAY {
@@ -259,9 +259,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitHourOfDay23);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitHourOfDay23);
         }
     },
     MINUTE_OF_HOUR {
@@ -270,9 +270,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitMinuteOfHour);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitMinuteOfHour);
         }
     },
     SECOND_OF_MINUTE {
@@ -281,9 +281,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_DAY_HOUR_MINUTE_SEC,
-                    visitor::visitSecondOfMinute);
+                position,
+                MAX_DAY_HOUR_MINUTE_SEC,
+                visitor::visitSecondOfMinute);
         }
     },
     FRACTION_OF_SECOND {
@@ -292,9 +292,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_FRACTION_OF_SECOND,
-                    visitor::visitFractionOfSecond);
+                position,
+                MAX_FRACTION_OF_SECOND,
+                visitor::visitFractionOfSecond);
         }
     },
     MILLI_OF_DAY {
@@ -303,9 +303,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    Integer.MAX_VALUE,
-                    visitor::visitMilliOfDay);
+                position,
+                Integer.MAX_VALUE,
+                visitor::visitMilliOfDay);
         }
     },
     NANO_OF_SECOND {
@@ -314,9 +314,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    Integer.MAX_VALUE,
-                    visitor::visitNanoOfSecond);
+                position,
+                Integer.MAX_VALUE,
+                visitor::visitNanoOfSecond);
         }
     },
     NANO_OF_DAY {
@@ -325,9 +325,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    Integer.MAX_VALUE,
-                    visitor::visitNanoOfDay);
+                position,
+                Integer.MAX_VALUE,
+                visitor::visitNanoOfDay);
         }
     },
     TIMEZONE_ID {
@@ -336,9 +336,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::traverseTimezoneId);
+                position,
+                MAX_NARROW,
+                visitor::traverseTimezoneId);
         }
     },
     TIMEZONE_NAME {
@@ -353,9 +353,9 @@ enum DateTimeFormatterPatternComponent {
              * </pre>
              */
             return visitor.traverseText(pattern,
-                    position,
-                    MAX_TIMEZONE_NAME,
-                    visitor::visitTimeZoneName);
+                position,
+                MAX_TIMEZONE_NAME,
+                visitor::visitTimeZoneName);
         }
     },
     GENERIC_TIMEZONE_NAME {
@@ -364,9 +364,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseText(pattern,
-                    position,
-                    Integer.MAX_VALUE,
-                    visitor::traverseGenericTimeZoneName);
+                position,
+                Integer.MAX_VALUE,
+                visitor::traverseGenericTimeZoneName);
         }
     },
     LOCALIZED_ZONE_OFFSET {
@@ -375,9 +375,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumberOrText(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::traverseLocalizedZoneOffset);
+                position,
+                MAX_NARROW,
+                visitor::traverseLocalizedZoneOffset);
         }
     },
     ZONE_OFFSET_BIGX {
@@ -386,9 +386,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitZoneOffsetBigX);
+                position,
+                MAX_NARROW,
+                visitor::visitZoneOffsetBigX);
         }
     },
     ZONE_OFFSET_SMALLX {
@@ -397,9 +397,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitZoneOffsetSmallX);
+                position,
+                MAX_NARROW,
+                visitor::visitZoneOffsetSmallX);
         }
     },
     ZONE_OFFSET_Z {
@@ -408,9 +408,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitZoneOffsetZ);
+                position,
+                MAX_NARROW,
+                visitor::visitZoneOffsetZ);
         }
     },
     PAD {
@@ -419,9 +419,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverseNumber(pattern,
-                    position,
-                    MAX_NARROW,
-                    visitor::visitPad);
+                position,
+                MAX_NARROW,
+                visitor::visitPad);
         }
     },
     ESCAPE {
@@ -438,9 +438,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    MAX_OPTIONAL,
-                    visitor::visitOptionalStart);
+                position,
+                MAX_OPTIONAL,
+                visitor::visitOptionalStart);
         }
     },
     OPTIONAL_END {
@@ -449,9 +449,9 @@ enum DateTimeFormatterPatternComponent {
                      final int position,
                      final DateTimeFormatterPatternVisitor visitor) {
             return visitor.traverse(pattern,
-                    position,
-                    MAX_OPTIONAL,
-                    visitor::visitOptionalEnd);
+                position,
+                MAX_OPTIONAL,
+                visitor::visitOptionalEnd);
         }
     },
     RESERVED_HASH {

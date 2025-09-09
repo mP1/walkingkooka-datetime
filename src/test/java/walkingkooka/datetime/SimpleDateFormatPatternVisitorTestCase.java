@@ -23,7 +23,7 @@ import walkingkooka.reflect.TypeNameTesting;
 import java.text.SimpleDateFormat;
 
 public abstract class SimpleDateFormatPatternVisitorTestCase<T> implements ClassTesting2<T>,
-        TypeNameTesting<T> {
+    TypeNameTesting<T> {
 
     SimpleDateFormatPatternVisitorTestCase() {
         super();

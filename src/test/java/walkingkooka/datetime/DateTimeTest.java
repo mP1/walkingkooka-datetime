@@ -39,46 +39,46 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testDateToInstantWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.dateToInstant(null)
+            NullPointerException.class,
+            () -> DateTime.dateToInstant(null)
         );
     }
 
     @Test
     public void testDateToInstant() {
         final Date date = new Date(
-                Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
+            Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
         );
 
         this.checkEquals(
-                date.toInstant(),
-                DateTime.dateToInstant(date)
+            date.toInstant(),
+            DateTime.dateToInstant(date)
         );
     }
 
     @Test
     public void testDateToInstant2() {
         final Date date = new Date(
-                Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+            Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
         );
 
         this.checkEquals(
-                date.toInstant(),
-                DateTime.dateToInstant(date)
+            date.toInstant(),
+            DateTime.dateToInstant(date)
         );
     }
 
     @Test
     public void testDateToInstantToDate() {
         final Date date = new Date(
-                Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+            Date.UTC(1999 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
         );
 
         this.checkEquals(
-                date,
-                DateTime.instantToDate(
-                        DateTime.dateToInstant(date)
-                )
+            date,
+            DateTime.instantToDate(
+                DateTime.dateToInstant(date)
+            )
         );
     }
 
@@ -87,127 +87,127 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testDateToDateTimeWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.dateToLocalDateTime(null)
+            NullPointerException.class,
+            () -> DateTime.dateToLocalDateTime(null)
         );
     }
 
     @Test
     public void testDateToLocalDateTime() {
         this.checkEquals(
-                LocalDateTime.of(
-                        1900,
-                        1,
+            LocalDateTime.of(
+                1900,
+                1,
+                1,
+                0,
+                0
+            ),
+            DateTime.dateToLocalDateTime(
+                new Date(
+                    Date.UTC(
+                        1900 - 1900,
+                        Calendar.JANUARY,
                         1,
                         0,
+                        0,
                         0
-                ),
-                DateTime.dateToLocalDateTime(
-                        new Date(
-                                Date.UTC(
-                                        1900 - 1900,
-                                        Calendar.JANUARY,
-                                        1,
-                                        0,
-                                        0,
-                                        0
-                                )
-                        )
+                    )
                 )
+            )
         );
     }
 
     @Test
     public void testDateToLocalDateTime2() {
         this.checkEquals(
-                LocalDateTime.of(
-                        1999,
-                        12,
+            LocalDateTime.of(
+                1999,
+                12,
+                31,
+                12,
+                58,
+                59
+            ),
+            DateTime.dateToLocalDateTime(
+                new Date(
+                    Date.UTC(
+                        1999 - 1900,
+                        Calendar.DECEMBER,
                         31,
                         12,
                         58,
                         59
-                ),
-                DateTime.dateToLocalDateTime(
-                        new Date(
-                                Date.UTC(
-                                        1999 - 1900,
-                                        Calendar.DECEMBER,
-                                        31,
-                                        12,
-                                        58,
-                                        59
-                                )
-                        )
+                    )
                 )
+            )
         );
     }
 
     @Test
     public void testDateToLocalDateTime3() {
         this.checkEquals(
-                LocalDateTime.of(
-                        2000,
-                        1,
+            LocalDateTime.of(
+                2000,
+                1,
+                1,
+                12,
+                58,
+                59
+            ),
+            DateTime.dateToLocalDateTime(
+                new Date(
+                    Date.UTC(
+                        2000 - 1900,
+                        Calendar.JANUARY,
                         1,
                         12,
                         58,
                         59
-                ),
-                DateTime.dateToLocalDateTime(
-                        new Date(
-                                Date.UTC(
-                                        2000 - 1900,
-                                        Calendar.JANUARY,
-                                        1,
-                                        12,
-                                        58,
-                                        59
-                                )
-                        )
+                    )
                 )
+            )
         );
     }
 
     @Test
     public void testDateToLocalDateTimeToDate() {
         final Date date = new Date(
-                Date.UTC(
-                        1999 - 1900,
-                        Calendar.DECEMBER,
-                        31,
-                        12,
-                        58,
-                        0
-                )
+            Date.UTC(
+                1999 - 1900,
+                Calendar.DECEMBER,
+                31,
+                12,
+                58,
+                0
+            )
         );
 
         this.checkEquals(
-                date,
-                DateTime.localDateTimeToDate(
-                        DateTime.dateToLocalDateTime(date)
-                )
+            date,
+            DateTime.localDateTimeToDate(
+                DateTime.dateToLocalDateTime(date)
+            )
         );
     }
 
     @Test
     public void testDateToLocalDateTimeToDate2() {
         final Date date = new Date(
-                Date.UTC(
-                        2000 - 1900,
-                        Calendar.JANUARY,
-                        1,
-                        12,
-                        58,
-                        0
-                )
+            Date.UTC(
+                2000 - 1900,
+                Calendar.JANUARY,
+                1,
+                12,
+                58,
+                0
+            )
         );
 
         this.checkEquals(
-                date,
-                DateTime.localDateTimeToDate(
-                        DateTime.dateToLocalDateTime(date)
-                )
+            date,
+            DateTime.localDateTimeToDate(
+                DateTime.dateToLocalDateTime(date)
+            )
         );
     }
 
@@ -216,22 +216,22 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testInstantToDateWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.instantToDate(null)
+            NullPointerException.class,
+            () -> DateTime.instantToDate(null)
         );
     }
 
     @Test
     public void testInstantToDate() {
         final Date date = new Date(
-                Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
+            Date.UTC(1900 - 1900, Calendar.JANUARY, 1, 0, 0, 0)
         );
 
         this.checkEquals(
-                date,
-                DateTime.instantToDate(
-                        date.toInstant()
-                )
+            date,
+            DateTime.instantToDate(
+                date.toInstant()
+            )
         );
     }
 
@@ -240,81 +240,81 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testLocalDateToDateWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.localDateToDate(null)
+            NullPointerException.class,
+            () -> DateTime.localDateToDate(null)
         );
     }
 
     @Test
     public void testLocalDateToDate() {
         this.checkEquals(
-                new Date(
-                        Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
-                ),
-                DateTime.localDateToDate(
-                        LocalDate.of(2000, 12, 31)
-                )
+            new Date(
+                Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 0, 0, 0)
+            ),
+            DateTime.localDateToDate(
+                LocalDate.of(2000, 12, 31)
+            )
         );
     }
 
     @Test
     public void testLocalDateTimeToDateWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.localDateTimeToDate(null)
+            NullPointerException.class,
+            () -> DateTime.localDateTimeToDate(null)
         );
     }
 
     @Test
     public void testLocalDateTimeToDate() {
         this.checkEquals(
-                new Date(
-                        Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 12, 58, 59)
-                ),
-                DateTime.localDateTimeToDate(
-                        LocalDateTime.of(2000, 12, 31, 12, 58, 59)
-                )
+            new Date(
+                Date.UTC(2000 - 1900, Calendar.DECEMBER, 31, 12, 58, 59)
+            ),
+            DateTime.localDateTimeToDate(
+                LocalDateTime.of(2000, 12, 31, 12, 58, 59)
+            )
         );
     }
 
     @Test
     public void testLocalDateTimeToDateToLocalDateTime() {
         final LocalDateTime localDateTime = LocalDateTime.of(
-                2023,
-                8,
-                29,
-                1,
-                2,
-                59
+            2023,
+            8,
+            29,
+            1,
+            2,
+            59
         );
 
         this.checkEquals(
-                localDateTime,
-                DateTime.dateToLocalDateTime(
-                        DateTime.localDateTimeToDate(
-                                localDateTime
-                        )
+            localDateTime,
+            DateTime.dateToLocalDateTime(
+                DateTime.localDateTimeToDate(
+                    localDateTime
                 )
+            )
         );
     }
 
     @Test
     public void testLocalTimeToDateWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.localTimeToDate(null)
+            NullPointerException.class,
+            () -> DateTime.localTimeToDate(null)
         );
     }
 
     @Test
     public void testLocalTimeToDate() {
         this.checkEquals(
-                new Date(
-                        Date.UTC(1970 - 1900, Calendar.JANUARY, 1, 12, 58, 59)
-                ),
-                DateTime.localTimeToDate(
-                        LocalTime.of(12, 58, 59)
-                )
+            new Date(
+                Date.UTC(1970 - 1900, Calendar.JANUARY, 1, 12, 58, 59)
+            ),
+            DateTime.localTimeToDate(
+                LocalTime.of(12, 58, 59)
+            )
         );
     }
 
@@ -323,34 +323,34 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Test
     public void testSimpleDateFormatPatternWithoutTimezoneWithNullFails() {
         assertThrows(
-                NullPointerException.class,
-                () -> DateTime.simpleDateFormatPatternWithoutTimezone(null)
+            NullPointerException.class,
+            () -> DateTime.simpleDateFormatPatternWithoutTimezone(null)
         );
     }
 
     @Test
     public void testSimpleDateFormatPatternWithoutTimezoneWithInvalidComponentFails() {
         final InvalidCharacterException thrown = assertThrows(
-                InvalidCharacterException.class,
-                () -> DateTime.simpleDateFormatPatternWithoutTimezone("AM")
+            InvalidCharacterException.class,
+            () -> DateTime.simpleDateFormatPatternWithoutTimezone("AM")
         );
 
         this.checkEquals(
-                "Invalid character 'A' at 0",
-                thrown.getMessage()
+            "Invalid character 'A' at 0",
+            thrown.getMessage()
         );
     }
 
     @Test
     public void testSimpleDateFormatPatternWithoutTimezoneWithInvalidComponentFails2() {
         final InvalidCharacterException thrown = assertThrows(
-                InvalidCharacterException.class,
-                () -> DateTime.simpleDateFormatPatternWithoutTimezone("dd/MM/yyyy AM")
+            InvalidCharacterException.class,
+            () -> DateTime.simpleDateFormatPatternWithoutTimezone("dd/MM/yyyy AM")
         );
 
         this.checkEquals(
-                "Invalid character 'A' at 11",
-                thrown.getMessage()
+            "Invalid character 'A' at 11",
+            thrown.getMessage()
         );
     }
 
@@ -359,8 +359,8 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
         this.simpleDateFormatPatternWithoutTimezoneAndCheck(
-                pattern,
-                pattern
+            pattern,
+            pattern
         );
     }
 
@@ -369,8 +369,8 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
         this.simpleDateFormatPatternWithoutTimezoneAndCheck(
-                pattern + " z",
-                pattern
+            pattern + " z",
+            pattern
         );
     }
 
@@ -379,8 +379,8 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
         this.simpleDateFormatPatternWithoutTimezoneAndCheck(
-                pattern + " Z",
-                pattern
+            pattern + " Z",
+            pattern
         );
     }
 
@@ -389,17 +389,17 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
         final String pattern = "dd/MM/yyyy hh:mm:ss.00";
 
         this.simpleDateFormatPatternWithoutTimezoneAndCheck(
-                pattern + " X",
-                pattern
+            pattern + " X",
+            pattern
         );
     }
 
     private void simpleDateFormatPatternWithoutTimezoneAndCheck(final String pattern,
                                                                 final String expected) {
         this.checkEquals(
-                expected,
-                DateTime.simpleDateFormatPatternWithoutTimezone(pattern),
-                () -> "simpleDateFormatPatternWithoutTimezone " + CharSequences.quoteAndEscape(pattern)
+            expected,
+            DateTime.simpleDateFormatPatternWithoutTimezone(pattern),
+            () -> "simpleDateFormatPatternWithoutTimezone " + CharSequences.quoteAndEscape(pattern)
         );
     }
 

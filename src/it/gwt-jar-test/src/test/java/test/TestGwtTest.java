@@ -25,8 +25,8 @@ public class TestGwtTest extends GWTTestCase {
 
     public void testAssertEquals() {
         assertEquals(
-                1,
-                1
+            1,
+            1
         );
     }
 
@@ -34,56 +34,56 @@ public class TestGwtTest extends GWTTestCase {
         final Locale locale = Locale.getDefault();
 
         this.checkEquals(
-                Lists.of(
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December"
+            Lists.of(
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ),
+            DateTimeContexts.basic(
+                DateTimeSymbols.fromDateFormatSymbols(
+                    new DateFormatSymbols(locale)
                 ),
-                DateTimeContexts.basic(
-                        DateTimeSymbols.fromDateFormatSymbols(
-                                new DateFormatSymbols(locale)
-                        ),
-                        locale,
-                        2000,
-                        50,
-                        () -> LocalDateTime.now()
-                ).monthNames()
+                locale,
+                2000,
+                50,
+                () -> LocalDateTime.now()
+            ).monthNames()
         );
     }
 
     @Test
     public void testDateTimeLocalDateToDate() {
         this.checkEquals(
-                new Date(
-                        Date.UTC(
-                                2000 - 1900,
-                                Calendar.DECEMBER,
-                                31,
-                                0,
-                                0,
-                                0
-                        )
-                ),
-                DateTime.localDateToDate(
-                        LocalDate.of(2000, 12, 31)
+            new Date(
+                Date.UTC(
+                    2000 - 1900,
+                    Calendar.DECEMBER,
+                    31,
+                    0,
+                    0,
+                    0
                 )
+            ),
+            DateTime.localDateToDate(
+                LocalDate.of(2000, 12, 31)
+            )
         );
     }
 
     public void checkEquals(final Object expected,
                             final Object actual) {
         assertEquals(
-                expected,
-                actual
+            expected,
+            actual
         );
     }
 }

@@ -33,7 +33,7 @@ final class TemporalFieldComparator<T extends Temporal> implements Comparator<T>
 
     static <T extends Temporal> TemporalFieldComparator<T> with(final TemporalField field) {
         return new TemporalFieldComparator<>(
-                Objects.requireNonNull(field, "field")
+            Objects.requireNonNull(field, "field")
         );
     }
 
@@ -59,7 +59,7 @@ final class TemporalFieldComparator<T extends Temporal> implements Comparator<T>
     @Override
     public boolean equals(final Object other) {
         return this == other ||
-                other instanceof TemporalFieldComparator && this.equals0(Cast.to(other));
+            other instanceof TemporalFieldComparator && this.equals0(Cast.to(other));
     }
 
     private boolean equals0(final TemporalFieldComparator<?> other) {
@@ -69,8 +69,8 @@ final class TemporalFieldComparator<T extends Temporal> implements Comparator<T>
     @Override
     public String toString() {
         return CaseKind.CAMEL.change(
-                this.field.toString(),
-                CaseKind.KEBAB
+            this.field.toString(),
+            CaseKind.KEBAB
         ).toString();
     }
 }

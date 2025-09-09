@@ -42,8 +42,8 @@ public interface YearContext extends Context {
             throw new IllegalArgumentException("Invalid two digit year " + year + " expected between 0 and 100");
         }
         return year +
-                (year < this.twoDigitYear() ?
-                        2000 :
-                        1900);
+            (year < this.twoDigitYear() ?
+                2000 :
+                1900);
     }
 }

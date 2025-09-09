@@ -96,7 +96,7 @@ public interface DateTimeContextDelegator extends DateTimeContext {
     @Override
     default DateTimeSymbols dateTimeSymbols() {
         return this.dateTimeContext()
-                .dateTimeSymbols();
+            .dateTimeSymbols();
     }
 
     @Override

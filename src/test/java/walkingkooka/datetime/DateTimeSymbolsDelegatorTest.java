@@ -29,7 +29,7 @@ public final class DateTimeSymbolsDelegatorTest implements ClassTesting<DateTime
         @Override
         public DateTimeSymbols dateTimeSymbols() {
             return DateTimeSymbols.fromDateFormatSymbols(
-                    new DateFormatSymbols(Locale.ENGLISH)
+                new DateFormatSymbols(Locale.ENGLISH)
             );
         }
     }

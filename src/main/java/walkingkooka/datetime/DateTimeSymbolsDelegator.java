@@ -27,7 +27,7 @@ public interface DateTimeSymbolsDelegator extends DateTimeSymbolsLike {
     @Override
     default List<String> ampms() {
         return this.dateTimeSymbols()
-                .ampms();
+            .ampms();
     }
 
     /**
@@ -36,7 +36,7 @@ public interface DateTimeSymbolsDelegator extends DateTimeSymbolsLike {
     @Override
     default List<String> monthNames() {
         return this.dateTimeSymbols()
-                .monthNames();
+            .monthNames();
     }
 
     /**
@@ -45,7 +45,7 @@ public interface DateTimeSymbolsDelegator extends DateTimeSymbolsLike {
     @Override
     default List<String> monthNameAbbreviations() {
         return this.dateTimeSymbols()
-                .monthNameAbbreviations();
+            .monthNameAbbreviations();
     }
 
     /**
@@ -54,7 +54,7 @@ public interface DateTimeSymbolsDelegator extends DateTimeSymbolsLike {
     @Override
     default List<String> weekDayNames() {
         return this.dateTimeSymbols()
-                .weekDayNames();
+            .weekDayNames();
     }
 
     /**

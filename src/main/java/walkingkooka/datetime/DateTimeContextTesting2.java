@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * Mixing interface that provides methods to test a {@link DateTimeContext}
  */
 public interface DateTimeContextTesting2<C extends DateTimeContext> extends ContextTesting<C>,
-        DateTimeContextTesting {
+    DateTimeContextTesting {
 
     @Test
     default void testAmpms() {

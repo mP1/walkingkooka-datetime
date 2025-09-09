@@ -23,8 +23,8 @@ import walkingkooka.util.HasLocale;
  * Context that typically accompanies another stateless component such as a parser or formatter that involves dates or times.
  */
 public interface DateTimeContext extends YearContext,
-        HasLocale,
-        HasNow,
-        DateTimeSymbolsLike,
-        HasDateTimeSymbols{
+    HasLocale,
+    HasNow,
+    DateTimeSymbolsLike,
+    HasDateTimeSymbols {
 }

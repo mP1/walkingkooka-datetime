@@ -25,7 +25,7 @@ import java.util.stream.IntStream;
  * Mixing interface that provides methods to test a {@link DateTimeContext}
  */
 public interface DateTimeContextTesting extends HasLocaleTesting,
-        HasDateTimeSymbolsTesting{
+    HasDateTimeSymbolsTesting {
 
     default void amPmAndCheck(final DateTimeContext context,
                               final int hourOfDay,
@@ -36,9 +36,9 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void defaultYearAndCheck(final DateTimeContext context,
                                      final int defaultYear) {
         this.checkEquals(
-                defaultYear,
-                context.defaultYear(),
-                () -> "defaultYear=" + defaultYear
+            defaultYear,
+            context.defaultYear(),
+            () -> "defaultYear=" + defaultYear
         );
     }
 
@@ -51,7 +51,7 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void monthNamesCheck(final DateTimeContext context) {
         final List<String> names = context.monthNames();
         IntStream.range(0, names.size())
-                .forEach(i -> this.monthNameAndCheck(context, i, names.get(i)));
+            .forEach(i -> this.monthNameAndCheck(context, i, names.get(i)));
     }
 
     default void monthNameAbbreviationAndCheck(final DateTimeContext context,
@@ -63,14 +63,14 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void monthNameAbbreviationsCheck(final DateTimeContext context) {
         final List<String> names = context.monthNameAbbreviations();
         IntStream.range(0, names.size())
-                .forEach(i -> this.monthNameAbbreviationAndCheck(context, i, names.get(i)));
+            .forEach(i -> this.monthNameAbbreviationAndCheck(context, i, names.get(i)));
     }
 
     default void twoDigitYearAndCheck(final DateTimeContext context,
                                       final int twoDigitYear) {
         this.checkEquals(true,
-                twoDigitYear >= 0 && twoDigitYear <= 100,
-                () -> "twoDigitYear " + twoDigitYear + " " + context);
+            twoDigitYear >= 0 && twoDigitYear <= 100,
+            () -> "twoDigitYear " + twoDigitYear + " " + context);
     }
 
     default void weekDayNameAndCheck(final DateTimeContext context,
@@ -82,7 +82,7 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void weekDayNamesCheck(final DateTimeContext context) {
         final List<String> names = context.weekDayNames();
         IntStream.range(0, names.size())
-                .forEach(i -> this.weekDayNameAndCheck(context, i, names.get(i)));
+            .forEach(i -> this.weekDayNameAndCheck(context, i, names.get(i)));
     }
 
     default void weekDayNameAbbreviationAndCheck(final DateTimeContext context,
@@ -94,6 +94,6 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void weekDayNameAbbreviationCheck(final DateTimeContext context) {
         final List<String> names = context.weekDayNameAbbreviations();
         IntStream.range(0, names.size())
-                .forEach(i -> this.weekDayNameAbbreviationAndCheck(context, i, names.get(i)));
+            .forEach(i -> this.weekDayNameAbbreviationAndCheck(context, i, names.get(i)));
     }
 }

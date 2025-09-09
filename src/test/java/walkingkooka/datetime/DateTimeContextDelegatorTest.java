@@ -49,13 +49,13 @@ public final class DateTimeContextDelegatorTest implements DateTimeContextTestin
             final Locale locale = Locale.forLanguageTag("EN-AU");
 
             return DateTimeContexts.basic(
-                    DateTimeSymbols.fromDateFormatSymbols(
-                            new DateFormatSymbols(locale)
-                    ),
-                    locale,
-                    1950, // defaultYear
-                    50, // twoDigitYear
-                    LocalDateTime::now
+                DateTimeSymbols.fromDateFormatSymbols(
+                    new DateFormatSymbols(locale)
+                ),
+                locale,
+                1950, // defaultYear
+                50, // twoDigitYear
+                LocalDateTime::now
             );
         }
 

@@ -161,8 +161,8 @@ public final class DateTimeFormatterBuilderDateTimeFormatterPatternVisitorTest i
         final DateTimeFormatter formatter = builder.toFormatter(locale);
 
         this.checkEquals(expectedFormatter.toString(),
-                formatter.toString(),
-                () -> "Pattern " + CharSequences.quoteAndEscape(pattern));
+            formatter.toString(),
+            () -> "Pattern " + CharSequences.quoteAndEscape(pattern));
 
         String expected;
         try {
@@ -173,8 +173,8 @@ public final class DateTimeFormatterBuilderDateTimeFormatterPatternVisitorTest i
 
         if (null != expected) {
             this.checkEquals(expected,
-                    formatter.format(dateTime),
-                    () -> "Pattern " + CharSequences.quoteAndEscape(pattern) + " value=" + dateTime);
+                formatter.format(dateTime),
+                () -> "Pattern " + CharSequences.quoteAndEscape(pattern) + " value=" + dateTime);
         }
     }
 

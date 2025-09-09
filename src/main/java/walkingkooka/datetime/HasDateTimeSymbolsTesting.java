@@ -24,9 +24,9 @@ public interface HasDateTimeSymbolsTesting extends Testing {
     default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has,
                                          final DateTimeSymbols expected) {
         this.checkEquals(
-                expected,
-                has.dateTimeSymbols(),
-                has::toString
+            expected,
+            has.dateTimeSymbols(),
+            has::toString
         );
     }
 }

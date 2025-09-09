@@ -25,25 +25,25 @@ public interface HasOptionalDateTimeSymbolsTesting extends Testing {
 
     default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has) {
         this.dateTimeSymbolsAndCheck(
-                has,
-                Optional.empty()
+            has,
+            Optional.empty()
         );
     }
 
     default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has,
                                          final DateTimeSymbols expected) {
         this.dateTimeSymbolsAndCheck(
-                has,
-                Optional.of(expected)
+            has,
+            Optional.of(expected)
         );
     }
 
     default void dateTimeSymbolsAndCheck(final HasOptionalDateTimeSymbols has,
                                          final Optional<DateTimeSymbols> expected) {
         this.checkEquals(
-                expected,
-                has.dateTimeSymbols(),
-                has::toString
+            expected,
+            has.dateTimeSymbols(),
+            has::toString
         );
     }
 }

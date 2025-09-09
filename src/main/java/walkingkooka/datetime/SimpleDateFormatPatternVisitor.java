@@ -285,25 +285,25 @@ public abstract class SimpleDateFormatPatternVisitor extends PatternVisitor {
                            final String pattern,
                            final int position) {
         return SimpleDateFormatPatternComponent.ofCharacter(c)
-                .traverse(pattern,
-                        position,
-                        this);
+            .traverse(pattern,
+                position,
+                this);
     }
 
     final int traverse(final String pattern,
                        final int position,
                        final IntConsumer dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                dispatcher);
+            position,
+            dispatcher);
     }
 
     final int traverseNumber(final String pattern,
                              final int position,
                              final IntConsumer dispatcher) {
         return this.traverseRepeating(pattern,
-                position,
-                dispatcher);
+            position,
+            dispatcher);
     }
 
     /**
