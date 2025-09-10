@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * An immutable list of {@link LocalDateTime}.
+ * An immutable list of {@link LocalDateTime}, which allow null elements
  */
 public final class LocalDateTimeList extends AbstractList<LocalDateTime>
     implements ImmutableListDefaults<LocalDateTimeList, LocalDateTime> {
@@ -44,29 +44,25 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
     public static LocalDateTimeList with(final List<LocalDateTime> dateTimes) {
         Objects.requireNonNull(dateTimes, "dateTimes");
 
-        LocalDateTimeList DateList;
+        LocalDateTimeList dateTimeList;
 
         if (dateTimes instanceof LocalDateTimeList) {
-            DateList = (LocalDateTimeList) dateTimes;
+            dateTimeList = (LocalDateTimeList) dateTimes;
         } else {
             final List<LocalDateTime> copy = Lists.array();
-            for (final LocalDateTime name : dateTimes) {
-                copy.add(
-                    Objects.requireNonNull(name, "includes null " + LocalDateTime.class.getSimpleName())
-                );
-            }
+            copy.addAll(dateTimes);
 
             switch (dateTimes.size()) {
                 case 0:
-                    DateList = EMPTY;
+                    dateTimeList = EMPTY;
                     break;
                 default:
-                    DateList = new LocalDateTimeList(copy);
+                    dateTimeList = new LocalDateTimeList(copy);
                     break;
             }
         }
 
-        return DateList;
+        return dateTimeList;
     }
 
     private LocalDateTimeList(final List<LocalDateTime> dateTimes) {
@@ -86,8 +82,8 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
     private final List<LocalDateTime> dateTimes;
 
     @Override
-    public void elementCheck(final LocalDateTime dateTimes) {
-        Objects.requireNonNull(dateTimes, "dateTimes");
+    public void elementCheck(final LocalDateTime dateTime) {
+        // allow nulls
     }
 
     @Override
