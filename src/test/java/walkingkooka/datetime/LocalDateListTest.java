@@ -122,20 +122,19 @@ public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>
     }
 
     @Test
-    public void testSetElementsIncludesNullFails() {
-        final NullPointerException thrown = assertThrows(
-            NullPointerException.class,
-            () -> this.createList()
-                .setElements(
-                    Lists.of(
-                        DATE1,
-                        null
-                    )
+    public void testReplaceWithNull() {
+        final LocalDateList numbers = this.createList();
+
+        this.replaceAndCheck(
+            numbers,
+            1,
+            null,
+            LocalDateList.with(
+                Lists.of(
+                    DATE1,
+                    null
                 )
-        );
-        this.checkEquals(
-            "includes null LocalDate",
-            thrown.getMessage()
+            )
         );
     }
 
