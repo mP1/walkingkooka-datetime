@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * An immutable list of {@link LocalDate}.
+ * An immutable list of {@link LocalDate}, which allows null elements.
  */
 public final class LocalDateList extends AbstractList<LocalDate>
     implements ImmutableListDefaults<LocalDateList, LocalDate> {
@@ -50,11 +50,7 @@ public final class LocalDateList extends AbstractList<LocalDate>
             list = (LocalDateList) dates;
         } else {
             final List<LocalDate> copy = Lists.array();
-            for (final LocalDate name : dates) {
-                copy.add(
-                    Objects.requireNonNull(name, "includes null " + LocalDate.class.getSimpleName())
-                );
-            }
+            copy.addAll(dates);
 
             switch (dates.size()) {
                 case 0:
@@ -86,8 +82,8 @@ public final class LocalDateList extends AbstractList<LocalDate>
     private final List<LocalDate> dates;
 
     @Override
-    public void elementCheck(final LocalDate dates) {
-        Objects.requireNonNull(dates, "dates");
+    public void elementCheck(final LocalDate date) {
+        // allow null
     }
 
     @Override
