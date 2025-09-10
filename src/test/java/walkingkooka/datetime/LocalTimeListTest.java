@@ -122,20 +122,19 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
     }
 
     @Test
-    public void testSetElementsIncludesNullFails() {
-        final NullPointerException thrown = assertThrows(
-            NullPointerException.class,
-            () -> this.createList()
-                .setElements(
-                    Lists.of(
-                        TIME1,
-                        null
-                    )
+    public void testReplaceWithNull() {
+        final LocalTimeList numbers = this.createList();
+
+        this.replaceAndCheck(
+            numbers,
+            1,
+            null,
+            LocalTimeList.with(
+                Lists.of(
+                    TIME1,
+                    null
                 )
-        );
-        this.checkEquals(
-            "includes null LocalTime",
-            thrown.getMessage()
+            )
         );
     }
 
