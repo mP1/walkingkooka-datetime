@@ -27,7 +27,6 @@ import walkingkooka.reflect.JavaVisibility;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>,
     ClassTesting<LocalTimeList>,
@@ -44,33 +43,6 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
         22,
         59
     );
-
-    @Test
-    public void testWithNullFails() {
-        assertThrows(
-            NullPointerException.class,
-            () -> LocalTimeList.with(null)
-        );
-    }
-
-    @Test
-    public void testWithDoesntDoubleWrap() {
-        final LocalTimeList list = this.createList();
-        assertSame(
-            list,
-            LocalTimeList.with(list)
-        );
-    }
-
-    @Test
-    public void testWithEmpty() {
-        assertSame(
-            LocalTimeList.EMPTY,
-            LocalTimeList.with(
-                Lists.empty()
-            )
-        );
-    }
 
     // list.............................................................................................................
 
@@ -129,7 +101,7 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
             numbers,
             1,
             null,
-            LocalTimeList.with(
+            new LocalTimeList(
                 Lists.of(
                     TIME1,
                     null
@@ -138,9 +110,33 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
         );
     }
 
+    // setElements......................................................................................................
+
+    @Test
+    public void testSetElementsWithSame() {
+        final LocalTimeList list = this.createList();
+        assertSame(
+            list,
+            list.setElements(list)
+        );
+    }
+
+    @Test
+    public void testSetElementsWithEmpty() {
+        assertSame(
+            LocalTimeList.EMPTY,
+            new LocalTimeList(
+                Lists.of(
+                    TIME1,
+                    TIME2
+                )
+            ).setElements(Lists.empty())
+        );
+    }
+
     @Override
     public LocalTimeList createList() {
-        return LocalTimeList.with(
+        return new LocalTimeList(
             Lists.of(
                 TIME1,
                 TIME2
