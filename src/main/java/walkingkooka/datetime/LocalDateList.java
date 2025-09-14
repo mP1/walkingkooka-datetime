@@ -39,34 +39,8 @@ public final class LocalDateList extends AbstractList<LocalDate>
         Lists.empty()
     );
 
-    /**
-     * Factory that creates a {@link LocalDateList} from the collection of {@link LocalDate dates}.
-     */
-    public static LocalDateList with(final Collection<LocalDate> dates) {
-        Objects.requireNonNull(dates, "dates");
-
-        LocalDateList list;
-
-        if (dates instanceof LocalDateList) {
-            list = (LocalDateList) dates;
-        } else {
-            final List<LocalDate> copy = Lists.array();
-            copy.addAll(dates);
-
-            switch (dates.size()) {
-                case 0:
-                    list = EMPTY;
-                    break;
-                default:
-                    list = new LocalDateList(copy);
-                    break;
-            }
-        }
-
-        return list;
-    }
-
-    private LocalDateList(final List<LocalDate> dates) {
+    // @VisibleForTesting
+    LocalDateList(final List<LocalDate> dates) {
         this.dates = dates;
     }
 
@@ -89,9 +63,28 @@ public final class LocalDateList extends AbstractList<LocalDate>
 
     @Override
     public LocalDateList setElements(final Collection<LocalDate> dates) {
-        final LocalDateList copy = with(dates);
-        return this.equals(copy) ?
+        Objects.requireNonNull(dates, "dates");
+
+        LocalDateList localDateList;
+
+        if (dates instanceof LocalDateList) {
+            localDateList = (LocalDateList) dates;
+        } else {
+            final List<LocalDate> copy = Lists.array();
+            copy.addAll(dates);
+
+            switch (dates.size()) {
+                case 0:
+                    localDateList = EMPTY;
+                    break;
+                default:
+                    localDateList = new LocalDateList(copy);
+                    break;
+            }
+        }
+
+        return this.equals(localDateList) ?
             this :
-            copy;
+            localDateList;
     }
 }
