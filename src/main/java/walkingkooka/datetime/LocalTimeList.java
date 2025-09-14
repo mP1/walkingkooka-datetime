@@ -39,34 +39,8 @@ public final class LocalTimeList extends AbstractList<LocalTime>
         Lists.empty()
     );
 
-    /**
-     * Factory that creates a {@link LocalTimeList} from the collection of {@link LocalTime times}.
-     */
-    public static LocalTimeList with(final Collection<LocalTime> times) {
-        Objects.requireNonNull(times, "times");
-
-        LocalTimeList localTimeList;
-
-        if (times instanceof LocalTimeList) {
-            localTimeList = (LocalTimeList) times;
-        } else {
-            final List<LocalTime> copy = Lists.array();
-            copy.addAll(times);
-
-            switch (times.size()) {
-                case 0:
-                    localTimeList = EMPTY;
-                    break;
-                default:
-                    localTimeList = new LocalTimeList(copy);
-                    break;
-            }
-        }
-
-        return localTimeList;
-    }
-
-    private LocalTimeList(final List<LocalTime> times) {
+    // @VisibleForTesting
+    LocalTimeList(final List<LocalTime> times) {
         this.times = times;
     }
 
@@ -89,9 +63,27 @@ public final class LocalTimeList extends AbstractList<LocalTime>
 
     @Override
     public LocalTimeList setElements(final Collection<LocalTime> times) {
-        final LocalTimeList copy = with(times);
-        return this.equals(copy) ?
+        LocalTimeList localTimeList;
+
+        if (times instanceof LocalTimeList) {
+            localTimeList = (LocalTimeList) times;
+        } else {
+            final List<LocalTime> copy = Lists.array();
+            copy.addAll(
+                Objects.requireNonNull(times, "times")
+            );
+
+            switch (times.size()) {
+                case 0:
+                    localTimeList = EMPTY;
+                    break;
+                default:
+                    localTimeList = new LocalTimeList(copy);
+                    break;
+            }
+        }
+        return this.equals(localTimeList) ?
             this :
-            copy;
+            localTimeList;
     }
 }
