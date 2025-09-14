@@ -22,6 +22,7 @@ import walkingkooka.collect.list.Lists;
 
 import java.time.LocalDate;
 import java.util.AbstractList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,9 +40,9 @@ public final class LocalDateList extends AbstractList<LocalDate>
     );
 
     /**
-     * Factory that creates a {@link LocalDateList} from the list of {@link LocalDate dates}.
+     * Factory that creates a {@link LocalDateList} from the collection of {@link LocalDate dates}.
      */
-    public static LocalDateList with(final List<LocalDate> dates) {
+    public static LocalDateList with(final Collection<LocalDate> dates) {
         Objects.requireNonNull(dates, "dates");
 
         LocalDateList list;
@@ -87,7 +88,7 @@ public final class LocalDateList extends AbstractList<LocalDate>
     }
 
     @Override
-    public LocalDateList setElements(final List<LocalDate> dates) {
+    public LocalDateList setElements(final Collection<LocalDate> dates) {
         final LocalDateList copy = with(dates);
         return this.equals(copy) ?
             this :
