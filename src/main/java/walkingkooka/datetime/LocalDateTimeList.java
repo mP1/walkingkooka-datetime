@@ -39,34 +39,8 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
         Lists.empty()
     );
 
-    /**
-     * Factory that creates a {@link LocalDateTimeList} from the collection of {@link LocalDateTime dateTimes}.
-     */
-    public static LocalDateTimeList with(final Collection<LocalDateTime> dateTimes) {
-        Objects.requireNonNull(dateTimes, "dateTimes");
-
-        LocalDateTimeList dateTimeList;
-
-        if (dateTimes instanceof LocalDateTimeList) {
-            dateTimeList = (LocalDateTimeList) dateTimes;
-        } else {
-            final List<LocalDateTime> copy = Lists.array();
-            copy.addAll(dateTimes);
-
-            switch (dateTimes.size()) {
-                case 0:
-                    dateTimeList = EMPTY;
-                    break;
-                default:
-                    dateTimeList = new LocalDateTimeList(copy);
-                    break;
-            }
-        }
-
-        return dateTimeList;
-    }
-
-    private LocalDateTimeList(final List<LocalDateTime> dateTimes) {
+    // @VisibleForTesting
+    LocalDateTimeList(final List<LocalDateTime> dateTimes) {
         this.dateTimes = dateTimes;
     }
 
@@ -89,9 +63,27 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
 
     @Override
     public LocalDateTimeList setElements(final Collection<LocalDateTime> dateTimes) {
-        final LocalDateTimeList copy = with(dateTimes);
-        return this.equals(copy) ?
+        LocalDateTimeList dateTimeList;
+
+        if (dateTimes instanceof LocalDateTimeList) {
+            dateTimeList = (LocalDateTimeList) dateTimes;
+        } else {
+            final List<LocalDateTime> copy = Lists.array();
+            copy.addAll(
+                Objects.requireNonNull(dateTimes, "dateTimes")
+            );
+
+            switch (dateTimes.size()) {
+                case 0:
+                    dateTimeList = EMPTY;
+                    break;
+                default:
+                    dateTimeList = new LocalDateTimeList(copy);
+                    break;
+            }
+        }
+        return this.equals(dateTimeList) ?
             this :
-            copy;
+            dateTimeList;
     }
 }
