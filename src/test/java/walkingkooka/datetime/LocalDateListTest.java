@@ -27,7 +27,6 @@ import walkingkooka.reflect.JavaVisibility;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>,
     ClassTesting<LocalDateList>,
@@ -44,33 +43,6 @@ public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>
         2,
         1
     );
-
-    @Test
-    public void testWithNullFails() {
-        assertThrows(
-            NullPointerException.class,
-            () -> LocalDateList.with(null)
-        );
-    }
-
-    @Test
-    public void testWithDoesntDoubleWrap() {
-        final LocalDateList list = this.createList();
-        assertSame(
-            list,
-            LocalDateList.with(list)
-        );
-    }
-
-    @Test
-    public void testWithEmpty() {
-        assertSame(
-            LocalDateList.EMPTY,
-            LocalDateList.with(
-                Lists.empty()
-            )
-        );
-    }
 
     // list.............................................................................................................
 
@@ -129,7 +101,7 @@ public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>
             numbers,
             1,
             null,
-            LocalDateList.with(
+            new LocalDateList(
                 Lists.of(
                     DATE1,
                     null
@@ -138,9 +110,33 @@ public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>
         );
     }
 
+    // setElements......................................................................................................
+
+    @Test
+    public void testWithDoesntDoubleWrap() {
+        final LocalDateList list = this.createList();
+        assertSame(
+            list,
+            list.setElements(list)
+        );
+    }
+
+    @Test
+    public void testSetElementsWithEmpty() {
+        assertSame(
+            LocalDateList.EMPTY,
+            new LocalDateList(
+                Lists.of(
+                    DATE1,
+                    DATE2
+                )
+            ).setElements(Lists.empty())
+        );
+    }
+
     @Override
     public LocalDateList createList() {
-        return LocalDateList.with(
+        return new LocalDateList(
             Lists.of(
                 DATE1,
                 DATE2
