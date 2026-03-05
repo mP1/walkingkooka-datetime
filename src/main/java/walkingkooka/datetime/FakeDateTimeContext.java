@@ -29,11 +29,6 @@ public class FakeDateTimeContext implements DateTimeContext {
     }
 
     @Override
-    public String ampm(final int hourOfDay) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public int defaultYear() {
         throw new UnsupportedOperationException();
     }
@@ -49,17 +44,7 @@ public class FakeDateTimeContext implements DateTimeContext {
     }
 
     @Override
-    public String monthName(final int month) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public List<String> monthNameAbbreviations() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public String monthNameAbbreviation(final int month) {
         throw new UnsupportedOperationException();
     }
 
@@ -79,17 +64,7 @@ public class FakeDateTimeContext implements DateTimeContext {
     }
 
     @Override
-    public String weekDayName(final int day) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public List<String> weekDayNameAbbreviations() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public String weekDayNameAbbreviation(final int day) {
         throw new UnsupportedOperationException();
     }
 
