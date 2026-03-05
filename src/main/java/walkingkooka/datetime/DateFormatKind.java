@@ -27,10 +27,9 @@ public enum DateFormatKind {
         this.dateFormatStyle = dateFormatStyle;
     }
 
-    final int dateFormatStyle;
-
-    String styleToString() {
-        return this.name()
-            .toLowerCase();
+    public int dateFormatStyle() {
+        return this.dateFormatStyle;
     }
+
+    private final int dateFormatStyle;
 }
