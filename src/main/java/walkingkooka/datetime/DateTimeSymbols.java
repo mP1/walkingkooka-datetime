@@ -362,6 +362,42 @@ public final class DateTimeSymbols implements HasProperties,
             .text();
     }
 
+    // fromProperties...................................................................................................
+
+    public static DateTimeSymbols fromProperties(final Properties properties) {
+        Objects.requireNonNull(properties, "properties");
+
+        return DateTimeSymbols.with(
+            parseCsv(
+                properties,
+                AMPM_PROPERTIES_KEY
+            ),
+            parseCsv(
+                properties,
+                MONTH_NAMES_PROPERTIES_KEY
+            ),
+            parseCsv(
+                properties,
+                MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY
+            ),
+            parseCsv(
+                properties,
+                WEEK_DAY_NAMES_PROPERTIES_KEY
+            ),
+            parseCsv(
+                properties,
+                WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY
+            )
+        );
+    }
+
+    private static List<String> parseCsv(final Properties properties,
+                                         final PropertiesPath path) {
+        return CsvStringList.parse(
+            properties.getOrFail(path)
+        );
+    }
+
     // HasProperties....................................................................................................
 
     @Override
@@ -384,9 +420,9 @@ public final class DateTimeSymbols implements HasProperties,
         );
     }
 
-    private final PropertiesPath AMPM_PROPERTIES_KEY = PropertiesPath.parse("ampms");
-    private final PropertiesPath MONTH_NAMES_PROPERTIES_KEY = PropertiesPath.parse("monthNames");
-    private final PropertiesPath MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("monthNameAbbreviations");
-    private final PropertiesPath WEEK_DAY_NAMES_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
-    private final PropertiesPath WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("weekDayNameAbbreviations");
+    private final static PropertiesPath AMPM_PROPERTIES_KEY = PropertiesPath.parse("ampms");
+    private final static PropertiesPath MONTH_NAMES_PROPERTIES_KEY = PropertiesPath.parse("monthNames");
+    private final static PropertiesPath MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("monthNameAbbreviations");
+    private final static PropertiesPath WEEK_DAY_NAMES_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
+    private final static PropertiesPath WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("weekDayNameAbbreviations");
 }
