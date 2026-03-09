@@ -376,7 +376,7 @@ public final class DateTimeSymbols implements HasProperties,
             MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY,
             csv(this.monthNameAbbreviations)
         ).set(
-            WEEK_DAY_NAME_PROPERTIES_KEY,
+            WEEK_DAY_NAMES_PROPERTIES_KEY,
             csv(this.weekDayNames)
         ).set(
             WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY,
@@ -387,6 +387,6 @@ public final class DateTimeSymbols implements HasProperties,
     private final PropertiesPath AMPM_PROPERTIES_KEY = PropertiesPath.parse("ampms");
     private final PropertiesPath MONTH_NAMES_PROPERTIES_KEY = PropertiesPath.parse("monthNames");
     private final PropertiesPath MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("monthNameAbbreviations");
-    private final PropertiesPath WEEK_DAY_NAME_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
+    private final PropertiesPath WEEK_DAY_NAMES_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
     private final PropertiesPath WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("weekDayNameAbbreviations");
 }
