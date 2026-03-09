@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
@@ -39,6 +40,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
+    HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DateTimeSymbols>,
     ToStringTesting<DateTimeSymbols>,
@@ -614,6 +616,20 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
                 "    Thu\n" +
                 "    Fri\n" +
                 "    Sat\n"
+        );
+    }
+
+    // HasProperties....................................................................................................
+
+    @Test
+    public void testProperties() {
+        this.propertiesAndCheck(
+            this.createObject(),
+            "ampms=am,pm\r\n" +
+                "monthNameAbbreviations=Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\r\n" +
+                "monthNames=January,February,March,April,May,June,July,August,September,October,November,December\r\n" +
+                "weekDayNameAbbreviations=Sun,Mon,Tu,Wed,Thu,Fri,Sat\r\n" +
+                "weekDayNames=Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
         );
     }
 
