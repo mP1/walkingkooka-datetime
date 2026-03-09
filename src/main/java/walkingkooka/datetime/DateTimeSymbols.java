@@ -20,6 +20,9 @@ package walkingkooka.datetime;
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.props.HasProperties;
+import walkingkooka.props.Properties;
+import walkingkooka.props.PropertiesPath;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasText;
 import walkingkooka.text.printer.IndentingPrinter;
@@ -34,7 +37,8 @@ import java.util.Objects;
 /**
  * Holds the Locale related data for dates and times.
  */
-public final class DateTimeSymbols implements HasText,
+public final class DateTimeSymbols implements HasProperties,
+    HasText,
     TreePrintable {
 
     public final static int AMPM_COUNT_MIN = 2;
@@ -357,4 +361,32 @@ public final class DateTimeSymbols implements HasText,
         return CsvStringList.EMPTY.concatAll(csv)
             .text();
     }
+
+    // HasProperties....................................................................................................
+
+    @Override
+    public Properties properties() {
+        return Properties.EMPTY.set(
+            AMPM_PROPERTIES_KEY,
+            csv(this.ampms)
+        ).set(
+            MONTH_NAMES_PROPERTIES_KEY,
+            csv(this.monthNames)
+        ).set(
+            MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY,
+            csv(this.monthNameAbbreviations)
+        ).set(
+            WEEK_DAY_NAME_PROPERTIES_KEY,
+            csv(this.weekDayNames)
+        ).set(
+            WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY,
+            csv(this.weekDayNameAbbreviations)
+        );
+    }
+
+    private final PropertiesPath AMPM_PROPERTIES_KEY = PropertiesPath.parse("ampms");
+    private final PropertiesPath MONTH_NAMES_PROPERTIES_KEY = PropertiesPath.parse("monthNames");
+    private final PropertiesPath MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("monthNameAbbreviations");
+    private final PropertiesPath WEEK_DAY_NAME_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
+    private final PropertiesPath WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("weekDayNameAbbreviations");
 }
