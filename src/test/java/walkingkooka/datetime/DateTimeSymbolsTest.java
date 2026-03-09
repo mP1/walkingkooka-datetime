@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.props.HasPropertiesTesting;
+import walkingkooka.props.Properties;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.test.ParseStringTesting;
@@ -616,6 +617,32 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
                 "    Thu\n" +
                 "    Fri\n" +
                 "    Sat\n"
+        );
+    }
+
+    // fromProperties...................................................................................................
+
+    @Test
+    public void testFromPropertiesWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DateTimeSymbols.fromProperties(null)
+        );
+    }
+
+    @Test
+    public void testFromProperties() {
+        this.checkEquals(
+            DateTimeSymbols.fromProperties(
+                Properties.parse(
+                    "ampms=am,pm\r\n" +
+                        "monthNameAbbreviations=Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\r\n" +
+                        "monthNames=January,February,March,April,May,June,July,August,September,October,November,December\r\n" +
+                        "weekDayNameAbbreviations=Sun,Mon,Tu,Wed,Thu,Fri,Sat\r\n" +
+                        "weekDayNames=Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+                )
+            ),
+            this.createObject()
         );
     }
 
