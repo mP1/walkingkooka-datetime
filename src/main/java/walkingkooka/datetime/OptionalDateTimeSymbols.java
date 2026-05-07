@@ -1,7 +1,7 @@
 package walkingkooka.datetime;
 
 import walkingkooka.Cast;
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * A typed {@link Optional} necessary because generic types are lost in java.
  */
-public final class OptionalDateTimeSymbols implements Value<Optional<DateTimeSymbols>> {
+public final class OptionalDateTimeSymbols implements HasValue<Optional<DateTimeSymbols>> {
 
     public final static OptionalDateTimeSymbols EMPTY = new OptionalDateTimeSymbols(Optional.empty());
 
