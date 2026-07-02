@@ -26,7 +26,7 @@ which is identical to a `java.util.Comparator`. These may be enabled to supporti
 - temporalField
 - year
 
-# `DateTimeFormatterPatternVisitor`
+# [DateTimeFormatterPatternVisitor](https://github.com/mP1/walkingkooka-datetime/blob/master/src/main/java/walkingkooka/datetime/DateTimeFormatterPatternVisitor.java)
 
 One feature missing from `DateTimeFormatter` is a visitor that can provide each of the components in the pattern.
 
@@ -36,7 +36,7 @@ One feature missing from `DateTimeFormatter` is a visitor that can provide each 
 - `visitLiteral` Aggregates any sequence of literals with support for escaping.
 - `visitIllegal` Attempts to identify illegal sequences that are compatible with those identify by `DateTimeFormatter#parse`.
 
-# `SimpleDateFormatPatternVisitor`
+# [SimpleDateFormatPatternVisitor](https://github.com/mP1/walkingkooka-datetime/blob/master/src/main/java/walkingkooka/datetime/SimpleDateFormatPatternVisitor.java)
 
 Supports visiting the individual components, identifying sequences and providing some hints to the matching visitor method.
 This can be useful when attempting to translate a `SimpleDateFormat` pattern to another pattern. 
