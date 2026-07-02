@@ -6,12 +6,8 @@
 ![](https://tokei.rs/b1/github/mP1/walkingkooka-datetime)
 [![J2CL compatible](https://img.shields.io/badge/J2CL-compatible-brightgreen.svg)](https://github.com/mP1/j2cl-central)
 
-
-
 A collection of mostly Contexts with a datetime focus and a few other utilities which can be useful, when working with
 date, times, formatters and parsers within `java.time` and support packages.
-
-
 
 # `DateTimeFormatterPatternVisitor`
 
@@ -22,8 +18,6 @@ One feature missing from `DateTimeFormatter` is a visitor that can provide each 
 - visit methods are named with their pretty form.
 - `visitLiteral` Aggregates any sequence of literals with support for escaping.
 - `visitIllegal` Attempts to identify illegal sequences that are compatible with those identify by `DateTimeFormatter#parse`.
-
-
 
 # `SimpleDateFormatPatternVisitor`
 
