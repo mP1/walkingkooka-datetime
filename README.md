@@ -9,6 +9,23 @@
 A collection of mostly Contexts with a datetime focus and a few other utilities which can be useful, when working with
 date, times, formatters and parsers within `java.time` and support packages.
 
+### [DateTimeComparators](https://github.com/mP1/walkingkooka-datetime/blob/master/src/main/java/walkingkooka/datetime/compare/DateTimeComparators.java)
+
+All sorting is performed by using a selected [SpreadsheetComparator](https://github.com/mP1/walkingkooka-spreadsheet/blob/master/src/main/java/walkingkooka/spreadsheet/compare/SpreadsheetComparator.java),
+which is identical to a `java.util.Comparator`. These may be enabled to supporting sorting one or more column/row/cell-range.
+
+- alignedWeekOfYear
+- dayOfMonth
+- dayOfWeek
+- hourOfAmPm
+- hourOfDay
+- minuteOfHour
+- monthOfYear
+- nanoOfSecond
+- secondOfMinute
+- temporalField
+- year
+
 # `DateTimeFormatterPatternVisitor`
 
 One feature missing from `DateTimeFormatter` is a visitor that can provide each of the components in the pattern.
