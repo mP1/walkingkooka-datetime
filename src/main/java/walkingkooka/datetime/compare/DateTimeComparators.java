@@ -30,56 +30,56 @@ final public class DateTimeComparators implements PublicStaticHelper {
         return ALIGNED_WEEK_OF_YEAR;
     }
 
-    private final static Comparator<Temporal> ALIGNED_WEEK_OF_YEAR = TemporalFieldComparator.with(ChronoField.ALIGNED_WEEK_OF_YEAR);
+    private final static Comparator<Temporal> ALIGNED_WEEK_OF_YEAR = temporalField(ChronoField.ALIGNED_WEEK_OF_YEAR);
 
     public static Comparator<Temporal> dayOfMonth() {
         return DAY_OF_MONTH;
     }
 
-    private final static Comparator<Temporal> DAY_OF_MONTH = TemporalFieldComparator.with(ChronoField.DAY_OF_MONTH);
+    private final static Comparator<Temporal> DAY_OF_MONTH = temporalField(ChronoField.DAY_OF_MONTH);
 
     public static Comparator<Temporal> dayOfWeek() {
         return DAY_OF_WEEK;
     }
 
-    private final static Comparator<Temporal> DAY_OF_WEEK = TemporalFieldComparator.with(ChronoField.DAY_OF_WEEK);
+    private final static Comparator<Temporal> DAY_OF_WEEK = temporalField(ChronoField.DAY_OF_WEEK);
 
 
     public static Comparator<Temporal> hourOfAmPm() {
         return HOUR_OF_AMPM;
     }
 
-    private final static Comparator<Temporal> HOUR_OF_AMPM = TemporalFieldComparator.with(ChronoField.HOUR_OF_AMPM);
+    private final static Comparator<Temporal> HOUR_OF_AMPM = temporalField(ChronoField.HOUR_OF_AMPM);
 
     public static Comparator<Temporal> hourOfDay() {
         return HOUR_OF_DAY;
     }
 
-    private final static Comparator<Temporal> HOUR_OF_DAY = TemporalFieldComparator.with(ChronoField.HOUR_OF_DAY);
+    private final static Comparator<Temporal> HOUR_OF_DAY = temporalField(ChronoField.HOUR_OF_DAY);
 
     public static Comparator<Temporal> minuteOfHour() {
         return MINUTE_OF_HOUR;
     }
 
-    private final static Comparator<Temporal> MINUTE_OF_HOUR = TemporalFieldComparator.with(ChronoField.MINUTE_OF_HOUR);
+    private final static Comparator<Temporal> MINUTE_OF_HOUR = temporalField(ChronoField.MINUTE_OF_HOUR);
 
     public static Comparator<Temporal> monthOfYear() {
         return MONTH_OF_YEAR;
     }
 
-    private final static Comparator<Temporal> MONTH_OF_YEAR = TemporalFieldComparator.with(ChronoField.MONTH_OF_YEAR);
+    private final static Comparator<Temporal> MONTH_OF_YEAR = temporalField(ChronoField.MONTH_OF_YEAR);
 
     public static Comparator<Temporal> nanoOfSecond() {
         return NANO_OF_SECOND;
     }
 
-    private final static Comparator<Temporal> NANO_OF_SECOND = TemporalFieldComparator.with(ChronoField.NANO_OF_SECOND);
+    private final static Comparator<Temporal> NANO_OF_SECOND = temporalField(ChronoField.NANO_OF_SECOND);
 
     public static Comparator<Temporal> secondOfMinute() {
         return SECOND_OF_MINUTE;
     }
 
-    private final static Comparator<Temporal> SECOND_OF_MINUTE = TemporalFieldComparator.with(ChronoField.SECOND_OF_MINUTE);
+    private final static Comparator<Temporal> SECOND_OF_MINUTE = temporalField(ChronoField.SECOND_OF_MINUTE);
 
     /**
      * {@see TemporalFieldComparator}
@@ -92,7 +92,7 @@ final public class DateTimeComparators implements PublicStaticHelper {
         return YEAR;
     }
 
-    private final static Comparator<Temporal> YEAR = TemporalFieldComparator.with(ChronoField.YEAR);
+    private final static Comparator<Temporal> YEAR = temporalField(ChronoField.YEAR);
 
     /**
      * Stop creation
