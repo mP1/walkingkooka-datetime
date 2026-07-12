@@ -41,6 +41,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
+    HasDateTimeSymbolsTesting,
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DateTimeSymbols>,
@@ -741,6 +742,17 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
             MONTH_NAME_ABBREVIATIONS,
             WEEKDAY_NAMES,
             WEEKDAY_NAME_ABBREVIATIONS
+        );
+    }
+
+    // HasDateTimeSymbols...............................................................................................
+
+    @Test
+    public void testHasDateTimeSymbols() {
+        final DateTimeSymbols symbols = this.createObject();
+        this.dateTimeSymbolsAndCheck(
+            symbols,
+            symbols
         );
     }
 
