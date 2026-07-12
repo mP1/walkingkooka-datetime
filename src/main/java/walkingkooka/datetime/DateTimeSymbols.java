@@ -37,7 +37,8 @@ import java.util.Objects;
 /**
  * Holds the Locale related data for dates and times.
  */
-public final class DateTimeSymbols implements HasProperties,
+public final class DateTimeSymbols implements HasDateTimeSymbols,
+    HasProperties,
     HasText,
     TreePrintable {
 
@@ -396,6 +397,13 @@ public final class DateTimeSymbols implements HasProperties,
         return CsvStringList.parse(
             properties.getOrFail(path)
         );
+    }
+
+    // HasDateTimeSymbols...............................................................................................
+
+    @Override
+    public DateTimeSymbols dateTimeSymbols() {
+        return this;
     }
 
     // HasProperties....................................................................................................
