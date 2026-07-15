@@ -27,8 +27,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class BasicDateTimeContextTest implements DateTimeContextTesting2<BasicDateTimeContext> {
 
-    private final static Locale LOCALE = Locale.ENGLISH;
-
     private final static DateTimeSymbols SYMBOLS = DateTimeSymbols.fromDateFormatSymbols(
         new DateFormatSymbols(LOCALE)
     );
@@ -111,22 +109,22 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
 
     @Test
     public void testAmpmMidnight() {
-        this.amPmAndCheck(0, "AM");
+        this.amPmAndCheck(0, "am");
     }
 
     @Test
     public void testAmpm600() {
-        this.amPmAndCheck(6, "AM");
+        this.amPmAndCheck(6, "am");
     }
 
     @Test
     public void testAmpmNoon() {
-        this.amPmAndCheck(12, "PM");
+        this.amPmAndCheck(12, "pm");
     }
 
     @Test
     public void testAmpm1800() {
-        this.amPmAndCheck(18, "PM");
+        this.amPmAndCheck(18, "pm");
     }
 
     // defaultYear......................................................................................................
@@ -167,17 +165,17 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
 
     @Test
     public void testMonthNameAbbreviation0() {
-        this.monthNameAbbreviationAndCheck(0, "Jan");
+        this.monthNameAbbreviationAndCheck(0, "Jan.");
     }
 
     @Test
     public void testMonthNameAbbreviation1() {
-        this.monthNameAbbreviationAndCheck(1, "Feb");
+        this.monthNameAbbreviationAndCheck(1, "Feb.");
     }
 
     @Test
     public void testMonthNameAbbreviation11() {
-        this.monthNameAbbreviationAndCheck(11, "Dec");
+        this.monthNameAbbreviationAndCheck(11, "Dec.");
     }
 
     // weekDayName......................................................................................................
@@ -201,17 +199,17 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
 
     @Test
     public void testWeekDayNameAbbreviation1() {
-        this.weekDayNameAbbreviationAndCheck(0, "Sun");
+        this.weekDayNameAbbreviationAndCheck(0, "Sun.");
     }
 
     @Test
     public void testWeekDayNameAbbreviation2() {
-        this.weekDayNameAbbreviationAndCheck(1, "Mon");
+        this.weekDayNameAbbreviationAndCheck(1, "Mon.");
     }
 
     @Test
     public void testWeekDayNameAbbreviation6() {
-        this.weekDayNameAbbreviationAndCheck(6, "Sat");
+        this.weekDayNameAbbreviationAndCheck(6, "Sat.");
     }
 
     @Override
@@ -231,7 +229,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testToString() {
         this.toStringAndCheck(
             this.createContext(),
-            "symbols=ampms=\"AM\", \"PM\" monthNames=\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\" monthNameAbbreviations=\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\" weekDayNames=\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\" weekDayNameAbbreviations=\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\" locale=\"en\" twoDigitYear=1"
+            "symbols=ampms=\"am\", \"pm\" monthNames=\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\" monthNameAbbreviations=\"Jan.\", \"Feb.\", \"Mar.\", \"Apr.\", \"May\", \"Jun.\", \"Jul.\", \"Aug.\", \"Sep.\", \"Oct.\", \"Nov.\", \"Dec.\" weekDayNames=\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\" weekDayNameAbbreviations=\"Sun.\", \"Mon.\", \"Tue.\", \"Wed.\", \"Thu.\", \"Fri.\", \"Sat.\" locale=\"en-AU\" twoDigitYear=1"
         );
     }
 
