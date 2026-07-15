@@ -18,6 +18,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.util.HasLocaleTesting;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -26,6 +27,21 @@ import java.util.stream.IntStream;
  */
 public interface DateTimeContextTesting extends HasLocaleTesting,
     HasDateTimeSymbolsTesting {
+
+    int DEFAULT_YEAR = 1900;
+
+    LocalDateTime NOW = LocalDateTime.of(
+        1999,
+        12,
+        31,
+        12,
+        58,
+        59
+    );
+
+    HasNow HAS_NOW = () -> NOW;
+
+    int TWO_DIGIT_YEAR = 50;
 
     default void amPmAndCheck(final DateTimeContext context,
                               final int hourOfDay,
