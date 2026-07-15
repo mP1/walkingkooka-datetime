@@ -35,7 +35,11 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void amPmAndCheck(final DateTimeContext context,
                               final int hourOfDay,
                               final String ampm) {
-        this.checkEquals(ampm, context.ampm(hourOfDay), () -> "ampm hourOfDay=" + hourOfDay);
+        this.checkEquals(
+            ampm,
+            context.ampm(hourOfDay),
+            () -> "ampm hourOfDay=" + hourOfDay
+        );
     }
 
     default void defaultYearAndCheck(final DateTimeContext context,
@@ -50,7 +54,11 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void monthNameAndCheck(final DateTimeContext context,
                                    final int month,
                                    final String monthName) {
-        this.checkEquals(monthName, context.monthName(month), () -> "monthName month=" + month);
+        this.checkEquals(
+            monthName,
+            context.monthName(month),
+            () -> "monthName month=" + month
+        );
     }
 
     default void monthNamesCheck(final DateTimeContext context) {
@@ -62,7 +70,11 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void monthNameAbbreviationAndCheck(final DateTimeContext context,
                                                final int month,
                                                final String monthName) {
-        this.checkEquals(monthName, context.monthNameAbbreviation(month), () -> "monthNameAbbreviation month=" + month);
+        this.checkEquals(
+            monthName,
+            context.monthNameAbbreviation(month),
+            () -> "monthNameAbbreviation month=" + month
+        );
     }
 
     default void monthNameAbbreviationsCheck(final DateTimeContext context) {
@@ -73,15 +85,21 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
 
     default void twoDigitYearAndCheck(final DateTimeContext context,
                                       final int twoDigitYear) {
-        this.checkEquals(true,
+        this.checkEquals(
+            true,
             twoDigitYear >= 0 && twoDigitYear <= 100,
-            () -> "twoDigitYear " + twoDigitYear + " " + context);
+            () -> "twoDigitYear " + twoDigitYear + " " + context
+        );
     }
 
     default void weekDayNameAndCheck(final DateTimeContext context,
                                      final int day,
                                      final String dayName) {
-        this.checkEquals(dayName, context.weekDayName(day), () -> "weekDayName day=" + day);
+        this.checkEquals(
+            dayName,
+            context.weekDayName(day),
+            () -> "weekDayName day=" + day
+        );
     }
 
     default void weekDayNamesCheck(final DateTimeContext context) {
@@ -93,7 +111,11 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
     default void weekDayNameAbbreviationAndCheck(final DateTimeContext context,
                                                  final int day,
                                                  final String dayName) {
-        this.checkEquals(dayName, context.weekDayNameAbbreviation(day), () -> "weekDayNameAbbreviation day=" + day);
+        this.checkEquals(
+            dayName,
+            context.weekDayNameAbbreviation(day),
+            () -> "weekDayNameAbbreviation day=" + day
+        );
     }
 
     default void weekDayNameAbbreviationCheck(final DateTimeContext context) {
