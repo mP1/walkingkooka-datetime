@@ -21,7 +21,6 @@ import walkingkooka.datetime.DateTimeContextDelegatorTest.TestDateTimeContextDel
 
 import java.text.DateFormatSymbols;
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 public final class DateTimeContextDelegatorTest implements DateTimeContextTesting2<TestDateTimeContextDelegator> {
 
@@ -46,13 +45,11 @@ public final class DateTimeContextDelegatorTest implements DateTimeContextTestin
 
         @Override
         public DateTimeContext dateTimeContext() {
-            final Locale locale = Locale.forLanguageTag("EN-AU");
-
             return DateTimeContexts.basic(
                 DateTimeSymbols.fromDateFormatSymbols(
-                    new DateFormatSymbols(locale)
+                    new DateFormatSymbols(LOCALE)
                 ),
-                locale,
+                LOCALE,
                 1950, // defaultYear
                 50, // twoDigitYear
                 LocalDateTime::now
