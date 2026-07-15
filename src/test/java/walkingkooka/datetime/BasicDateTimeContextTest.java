@@ -20,7 +20,6 @@ package walkingkooka.datetime;
 import org.junit.jupiter.api.Test;
 
 import java.text.DateFormatSymbols;
-import java.time.LocalDateTime;
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -31,10 +30,6 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
         new DateFormatSymbols(LOCALE)
     );
 
-    private final static int DEFAULT_YEAR = 1901;
-
-    private final static HasNow NOW = () -> LocalDateTime.of(1999, 12, 31, 12, 58, 59);
-
     @Test
     public void testWithNullDateTimeSymbolsFails() {
         assertThrows(
@@ -44,7 +39,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
                 LOCALE,
                 DEFAULT_YEAR,
                 50,
-                NOW
+                HAS_NOW
             )
         );
     }
@@ -58,7 +53,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
                 null,
                 DEFAULT_YEAR,
                 50,
-                NOW
+                HAS_NOW
             )
         );
     }
@@ -72,7 +67,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
                 Locale.ENGLISH,
                 DEFAULT_YEAR,
                 -1,
-                NOW
+                HAS_NOW
             )
         );
     }
@@ -86,7 +81,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
                 Locale.ENGLISH,
                 DEFAULT_YEAR,
                 100,
-                NOW
+                HAS_NOW
             )
         );
     }
@@ -219,7 +214,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
             LOCALE,
             DEFAULT_YEAR,
             1,
-            NOW
+            HAS_NOW
         );
     }
 

@@ -20,7 +20,6 @@ package walkingkooka.datetime;
 import walkingkooka.datetime.DateTimeContextDelegatorTest.TestDateTimeContextDelegator;
 
 import java.text.DateFormatSymbols;
-import java.time.LocalDateTime;
 
 public final class DateTimeContextDelegatorTest implements DateTimeContextTesting2<TestDateTimeContextDelegator> {
 
@@ -50,9 +49,9 @@ public final class DateTimeContextDelegatorTest implements DateTimeContextTestin
                     new DateFormatSymbols(LOCALE)
                 ),
                 LOCALE,
-                1950, // defaultYear
-                50, // twoDigitYear
-                LocalDateTime::now
+                DEFAULT_YEAR,
+                TWO_DIGIT_YEAR,
+                HAS_NOW
             );
         }
 
