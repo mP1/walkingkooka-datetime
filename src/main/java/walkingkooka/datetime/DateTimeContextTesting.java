@@ -32,6 +32,14 @@ public interface DateTimeContextTesting extends HasLocaleTesting,
 
     int TWO_DIGIT_YEAR = 50;
 
+    DateTimeContext DATE_TIME_CONTEXT = DateTimeContexts.basic(
+        DATE_TIME_SYMBOLS,
+        LOCALE,
+        DEFAULT_YEAR,
+        TWO_DIGIT_YEAR,
+        HAS_NOW
+    );
+
     default void amPmAndCheck(final DateTimeContext context,
                               final int hourOfDay,
                               final String ampm) {
