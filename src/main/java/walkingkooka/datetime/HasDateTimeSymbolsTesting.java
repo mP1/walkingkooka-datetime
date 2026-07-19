@@ -20,12 +20,15 @@ package walkingkooka.datetime;
 import walkingkooka.util.HasLocaleTesting;
 
 import java.text.DateFormatSymbols;
+import java.util.Optional;
 
 public interface HasDateTimeSymbolsTesting extends HasLocaleTesting {
 
     DateTimeSymbols DATE_TIME_SYMBOLS = DateTimeSymbols.fromDateFormatSymbols(
         new DateFormatSymbols(LOCALE)
     );
+
+    Optional<DateTimeSymbols> OPTIONAL_DATE_TIME_SYMBOLS = Optional.of(DATE_TIME_SYMBOLS);
 
     default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has,
                                          final DateTimeSymbols expected) {
