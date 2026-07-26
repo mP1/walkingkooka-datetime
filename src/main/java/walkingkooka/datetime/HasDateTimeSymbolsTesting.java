@@ -30,6 +30,10 @@ public interface HasDateTimeSymbolsTesting extends HasLocaleTesting {
 
     Optional<DateTimeSymbols> OPTIONAL_DATE_TIME_SYMBOLS = Optional.of(DATE_TIME_SYMBOLS);
 
+    DateTimeSymbols DIFFERENT_DATE_TIME_SYMBOLS = DateTimeSymbols.fromDateFormatSymbols(
+        new DateFormatSymbols(DIFFERENT_LOCALE)
+    );
+
     default void dateTimeSymbolsAndCheck(final HasDateTimeSymbols has,
                                          final DateTimeSymbols expected) {
         this.checkEquals(
