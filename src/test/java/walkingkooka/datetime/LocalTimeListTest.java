@@ -144,6 +144,24 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
         );
     }
 
+    // firstOrEmpty.....................................................................................................
+
+    @Test
+    public void testFirstOrEmptyWhenEmpty() {
+        this.firstOrEmptyAndCheck(
+            LocalTimeList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFirstOrEmptyWhenNotEmpty() {
+        this.firstOrEmptyAndCheck(
+            LocalTimeList.EMPTY.concat(TIME1)
+                .concat(TIME2),
+            TIME1
+        );
+    }
+
     // class............................................................................................................
 
     @Override
