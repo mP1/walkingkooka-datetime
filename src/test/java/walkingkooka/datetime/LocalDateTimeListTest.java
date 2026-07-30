@@ -150,6 +150,24 @@ public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, Lo
         );
     }
 
+    // firstOrEmpty.....................................................................................................
+
+    @Test
+    public void testFirstOrEmptyWhenEmpty() {
+        this.firstOrEmptyAndCheck(
+            LocalDateTimeList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFirstOrEmptyWhenNotEmpty() {
+        this.firstOrEmptyAndCheck(
+            LocalDateTimeList.EMPTY.concat(DATE_TIME1)
+                .concat(DATE_TIME2),
+            DATE_TIME1
+        );
+    }
+
     // class............................................................................................................
 
     @Override
