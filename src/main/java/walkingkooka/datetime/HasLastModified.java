@@ -24,6 +24,8 @@ import java.util.Optional;
  */
 public interface HasLastModified {
 
+    Optional<LocalDateTimeList> NO_LAST_MODIFIED = Optional.empty();
+
     /**
      * Returns the {@link java.time.LocalDateTime} for this value.
      */
