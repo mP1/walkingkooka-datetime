@@ -17,6 +17,7 @@
 
 package walkingkooka.datetime;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -24,10 +25,10 @@ import java.util.Optional;
  */
 public interface HasLastModified {
 
-    Optional<LocalDateTimeList> NO_LAST_MODIFIED = Optional.empty();
+    Optional<LocalDateTime> NO_LAST_MODIFIED = Optional.empty();
 
     /**
-     * Returns the {@link java.time.LocalDateTime} for this value.
+     * Returns the {@link LocalDateTime} for this value.
      */
-    Optional<LocalDateTimeList> lastModified();
+    Optional<LocalDateTime> lastModified();
 }
