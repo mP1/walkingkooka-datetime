@@ -34,6 +34,15 @@ public interface HasNowTesting extends TreePrintableTesting {
 
     HasNow HAS_NOW = () -> NOW;
 
+    LocalDateTime DIFFERENT_NOW = LocalDateTime.of(
+        2000,
+        1,
+        31,
+        12,
+        58,
+        59
+    );
+
     default void nowAndCheck(final HasNow has,
                              final LocalDateTime expected) {
         this.checkEquals(
