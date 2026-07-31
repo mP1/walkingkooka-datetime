@@ -23,6 +23,8 @@ import java.time.LocalDateTime;
  */
 public interface HasLastModifiedTesting extends LastModifiedTesting {
 
+    HasLastModified HAS_LAST_MODIFIED = () -> LAST_MODIFIED;
+
     // lastModified.....................................................................................................
 
     default void lastModifiedAndCheck(final HasLastModified has,
