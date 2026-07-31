@@ -25,8 +25,8 @@ public final class HasLastModifiedTestingTest implements HasLastModifiedTesting,
     ClassTesting<HasLastModified> {
 
     @Test
-    public void testHasLastModifiedAndCheck() {
-        this.hasLastModifiedAndCheck(
+    public void testLastModifiedAndCheck() {
+        this.lastModifiedAndCheck(
             () -> OPTIONAL_LAST_MODIFIED,
             LAST_MODIFIED
         );
