@@ -23,7 +23,7 @@ import java.util.Optional;
 /**
  * Supports querying for the last modified timestamp.
  */
-public interface HasLastModified {
+public interface HasOptionalLastModified {
 
     Optional<LocalDateTime> NO_LAST_MODIFIED = Optional.empty();
 
