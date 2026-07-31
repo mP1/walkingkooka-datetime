@@ -33,25 +33,25 @@ public interface HasLastModifiedTesting extends TreePrintableTesting,
 
     LocalDateTime DIFFERENT_LAST_MODIFIED = DIFFERENT_NOW;
 
-    // user.............................................................................................................
+    // lastModified.....................................................................................................
 
-    default void hasLastModifiedAndCheck(final HasLastModified has) {
-        this.hasLastModifiedAndCheck(
+    default void lastModifiedAndCheck(final HasLastModified has) {
+        this.lastModifiedAndCheck(
             has,
             Optional.empty()
         );
     }
 
-    default void hasLastModifiedAndCheck(final HasLastModified has,
-                                         final LocalDateTime expected) {
-        this.hasLastModifiedAndCheck(
+    default void lastModifiedAndCheck(final HasLastModified has,
+                                      final LocalDateTime expected) {
+        this.lastModifiedAndCheck(
             has,
             Optional.of(expected)
         );
     }
 
-    default void hasLastModifiedAndCheck(final HasLastModified has,
-                                         final Optional<LocalDateTime> expected) {
+    default void lastModifiedAndCheck(final HasLastModified has,
+                                      final Optional<LocalDateTime> expected) {
         this.checkEquals(
             expected,
             has.lastModified()
