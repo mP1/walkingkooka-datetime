@@ -17,7 +17,6 @@
 package walkingkooka.datetime;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * Mixing interface that provides methods to test a {@link HasLastModified}
@@ -27,7 +26,7 @@ public interface HasLastModifiedTesting extends LastModifiedTesting {
     // lastModified.....................................................................................................
 
     default void lastModifiedAndCheck(final HasOptionalLastModified has,
-                                      final Optional<LocalDateTime> expected) {
+                                      final LocalDateTime expected) {
         this.checkEquals(
             expected,
             has.lastModified()
