@@ -24,6 +24,8 @@ import java.util.Optional;
  */
 public interface HasOptionalLastModifiedTesting extends LastModifiedTesting {
 
+    HasOptionalLastModified HAS_OPTIONAL_LAST_MODIFIED = () -> OPTIONAL_LAST_MODIFIED;
+
     // lastModified.....................................................................................................
 
     default void lastModifiedAndCheck(final HasOptionalLastModified has) {
