@@ -16,22 +16,13 @@
  */
 package walkingkooka.datetime;
 
-import walkingkooka.text.printer.TreePrintableTesting;
-
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
  * Mixing interface that provides methods to test a {@link HasOptionalLastModified}
  */
-public interface HasOptionalLastModifiedTesting extends TreePrintableTesting,
-    HasNowTesting {
-
-    LocalDateTime LAST_MODIFIED = NOW;
-
-    Optional<LocalDateTime> OPTIONAL_LAST_MODIFIED = Optional.of(LAST_MODIFIED);
-
-    LocalDateTime DIFFERENT_LAST_MODIFIED = DIFFERENT_NOW;
+public interface HasOptionalLastModifiedTesting extends LastModifiedTesting {
 
     // lastModified.....................................................................................................
 
