@@ -24,7 +24,7 @@ import java.util.Optional;
 /**
  * Mixing interface that provides methods to test a {@link DateTimeContext}
  */
-public interface HasLastModifiedTesting extends TreePrintableTesting,
+public interface HasOptionalLastModifiedTesting extends TreePrintableTesting,
     HasNowTesting {
 
     LocalDateTime LAST_MODIFIED = NOW;
@@ -35,14 +35,14 @@ public interface HasLastModifiedTesting extends TreePrintableTesting,
 
     // lastModified.....................................................................................................
 
-    default void lastModifiedAndCheck(final HasLastModified has) {
+    default void lastModifiedAndCheck(final HasOptionalLastModified has) {
         this.lastModifiedAndCheck(
             has,
             Optional.empty()
         );
     }
 
-    default void lastModifiedAndCheck(final HasLastModified has,
+    default void lastModifiedAndCheck(final HasOptionalLastModified has,
                                       final LocalDateTime expected) {
         this.lastModifiedAndCheck(
             has,
@@ -50,7 +50,7 @@ public interface HasLastModifiedTesting extends TreePrintableTesting,
         );
     }
 
-    default void lastModifiedAndCheck(final HasLastModified has,
+    default void lastModifiedAndCheck(final HasOptionalLastModified has,
                                       final Optional<LocalDateTime> expected) {
         this.checkEquals(
             expected,

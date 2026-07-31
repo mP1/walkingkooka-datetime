@@ -21,8 +21,8 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting;
 import walkingkooka.reflect.JavaVisibility;
 
-public final class HasLastModifiedTestingTest implements HasLastModifiedTesting,
-    ClassTesting<HasLastModified> {
+public final class HasOptionalLastModifiedTestingTest implements HasOptionalLastModifiedTesting,
+    ClassTesting<HasOptionalLastModified> {
 
     @Test
     public void testLastModifiedAndCheck() {
@@ -43,8 +43,8 @@ public final class HasLastModifiedTestingTest implements HasLastModifiedTesting,
     // class............................................................................................................
 
     @Override
-    public Class<HasLastModified> type() {
-        return HasLastModified.class;
+    public Class<HasOptionalLastModified> type() {
+        return HasOptionalLastModified.class;
     }
 
     @Override
