@@ -25,7 +25,7 @@ public interface HasLastModifiedTesting extends LastModifiedTesting {
 
     // lastModified.....................................................................................................
 
-    default void lastModifiedAndCheck(final HasOptionalLastModified has,
+    default void lastModifiedAndCheck(final HasLastModified has,
                                       final LocalDateTime expected) {
         this.checkEquals(
             expected,
