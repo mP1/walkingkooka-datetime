@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
- * Mixing interface that provides methods to test a {@link DateTimeContext}
+ * Mixing interface that provides methods to test a {@link HasOptionalLastModified}
  */
 public interface HasOptionalLastModifiedTesting extends TreePrintableTesting,
     HasNowTesting {
