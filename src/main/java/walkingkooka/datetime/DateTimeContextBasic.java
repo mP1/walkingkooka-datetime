@@ -26,10 +26,10 @@ import java.util.Objects;
 /**
  * A {@link DateTimeContext} that uses the dependencies to source values.
  */
-final class BasicDateTimeContext implements DateTimeContext,
+final class DateTimeContextBasic implements DateTimeContext,
     DateTimeSymbolsDelegator {
 
-    static BasicDateTimeContext with(final DateTimeSymbols symbols,
+    static DateTimeContextBasic with(final DateTimeSymbols symbols,
                                      final Locale locale,
                                      final int defaultYear,
                                      final int twoDigitYear,
@@ -41,7 +41,7 @@ final class BasicDateTimeContext implements DateTimeContext,
         }
         Objects.requireNonNull(now, "now");
 
-        return new BasicDateTimeContext(
+        return new DateTimeContextBasic(
             symbols,
             locale,
             defaultYear,
@@ -50,7 +50,7 @@ final class BasicDateTimeContext implements DateTimeContext,
         );
     }
 
-    private BasicDateTimeContext(final DateTimeSymbols symbols,
+    private DateTimeContextBasic(final DateTimeSymbols symbols,
                                  final Locale locale,
                                  final int defaultYear,
                                  final int twoDigitYear,
