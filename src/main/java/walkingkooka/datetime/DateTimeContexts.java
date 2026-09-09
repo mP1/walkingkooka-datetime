@@ -26,14 +26,14 @@ import java.util.Locale;
 public final class DateTimeContexts implements PublicStaticHelper {
 
     /**
-     * {@see BasicDateTimeContext}
+     * {@see DateTimeContextBasic}
      */
     public static DateTimeContext basic(final DateTimeSymbols symbols,
                                         final Locale locale,
                                         final int defaultYear,
                                         final int twoDigitYear,
                                         final HasNow now) {
-        return BasicDateTimeContext.with(
+        return DateTimeContextBasic.with(
             symbols,
             locale,
             defaultYear,

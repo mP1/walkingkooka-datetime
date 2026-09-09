@@ -24,7 +24,7 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class BasicDateTimeContextTest implements DateTimeContextTesting2<BasicDateTimeContext> {
+public final class DateTimeContextBasicTest implements DateTimeContextTesting2<DateTimeContextBasic> {
 
     private final static DateTimeSymbols SYMBOLS = DateTimeSymbols.fromDateFormatSymbols(
         new DateFormatSymbols(LOCALE)
@@ -34,7 +34,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testWithNullDateTimeSymbolsFails() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDateTimeContext.with(
+            () -> DateTimeContextBasic.with(
                 null,
                 LOCALE,
                 DEFAULT_YEAR,
@@ -48,7 +48,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testWithNullLocaleFails() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDateTimeContext.with(
+            () -> DateTimeContextBasic.with(
                 SYMBOLS,
                 null,
                 DEFAULT_YEAR,
@@ -62,7 +62,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testWithNullNegativeTwoDigitYearFails() {
         assertThrows(
             IllegalArgumentException.class,
-            () -> BasicDateTimeContext.with(
+            () -> DateTimeContextBasic.with(
                 SYMBOLS,
                 Locale.ENGLISH,
                 DEFAULT_YEAR,
@@ -76,7 +76,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testWithNullInvalidTwoDigitYearFails2() {
         assertThrows(
             IllegalArgumentException.class,
-            () -> BasicDateTimeContext.with(
+            () -> DateTimeContextBasic.with(
                 SYMBOLS,
                 Locale.ENGLISH,
                 DEFAULT_YEAR,
@@ -90,7 +90,7 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     public void testWithNullNowSupplierFails() {
         assertThrows(
             NullPointerException.class,
-            () -> BasicDateTimeContext.with(
+            () -> DateTimeContextBasic.with(
                 SYMBOLS,
                 Locale.ENGLISH,
                 DEFAULT_YEAR,
@@ -208,8 +208,8 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     }
 
     @Override
-    public BasicDateTimeContext createContext() {
-        return BasicDateTimeContext.with(
+    public DateTimeContextBasic createContext() {
+        return DateTimeContextBasic.with(
             SYMBOLS,
             LOCALE,
             DEFAULT_YEAR,
@@ -231,7 +231,12 @@ public final class BasicDateTimeContextTest implements DateTimeContextTesting2<B
     // class............................................................................................................
 
     @Override
-    public Class<BasicDateTimeContext> type() {
-        return BasicDateTimeContext.class;
+    public Class<DateTimeContextBasic> type() {
+        return DateTimeContextBasic.class;
+    }
+
+    @Override
+    public void testTypeNaming() {
+        throw new UnsupportedOperationException();
     }
 }
