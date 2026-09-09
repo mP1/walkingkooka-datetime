@@ -40,6 +40,11 @@ public final class DateTimeContextDelegatorTest implements DateTimeContextTestin
         return TestDateTimeContextDelegator.class;
     }
 
+    @Override
+    public void testTestNaming() {
+        throw new UnsupportedOperationException();
+    }
+
     static class TestDateTimeContextDelegator implements DateTimeContextDelegator {
 
         @Override
