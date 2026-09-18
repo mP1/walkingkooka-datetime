@@ -19,7 +19,6 @@ package walkingkooka.datetime;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.InvalidCharacterException;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 import walkingkooka.text.CharSequences;
 
@@ -413,10 +412,5 @@ public final class DateTimeTest implements PublicStaticHelperTesting<DateTime> {
     @Override
     public Class<DateTime> type() {
         return DateTime.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }

@@ -19,7 +19,6 @@ package walkingkooka.datetime.compare;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.compare.ComparatorTesting;
-import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.reflect.PublicStaticHelperTesting;
 
 import java.lang.reflect.Method;
@@ -136,11 +135,6 @@ final public class DateTimeComparatorsTest implements PublicStaticHelperTesting<
     @Override
     public boolean canHavePublicTypes(final Method method) {
         return false;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
 
