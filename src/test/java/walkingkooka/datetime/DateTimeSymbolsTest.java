@@ -52,7 +52,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     // constants........................................................................................................
 
     @Test
-    public void testAMPM_COUNT_MIN() {
+    public void testAmpmCountMin() {
         this.checkEquals(
             DateTimeSymbols.AMPM_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
@@ -63,7 +63,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     }
 
     @Test
-    public void testAMPM_COUNT_MAX() {
+    public void testAmpmCountMax() {
         this.checkEquals(
             DateTimeSymbols.AMPM_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
@@ -74,7 +74,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     }
 
     @Test
-    public void testMONTH_COUNT_MIN() {
+    public void testMonthCountMin() {
         this.checkEquals(
             DateTimeSymbols.MONTH_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
@@ -85,7 +85,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     }
 
     @Test
-    public void testMONTH_COUNT_MAX() {
+    public void testMonthCountMax() {
         this.checkEquals(
             DateTimeSymbols.MONTH_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
@@ -96,7 +96,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     }
 
     @Test
-    public void testWEEK_DAY_COUNT_MIN() {
+    public void testWeekDayCountMin() {
         this.checkEquals(
             DateTimeSymbols.WEEK_DAY_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
@@ -107,7 +107,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     }
 
     @Test
-    public void testWEEK_DAY_COUNT_MAX() {
+    public void testWeekDayCountMax() {
         this.checkEquals(
             DateTimeSymbols.WEEK_DAY_COUNT_MIN,
             Arrays.stream(Locale.getAvailableLocales())
