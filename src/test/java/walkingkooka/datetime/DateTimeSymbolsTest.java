@@ -668,6 +668,30 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         );
     }
 
+    @Test
+    public void testPropertiesAndFromPropertiesRoundtrip() {
+        final DateTimeSymbols dateTimeSymbols = this.createObject();
+
+        this.fromPropertiesAndCheck(
+            dateTimeSymbols.properties(),
+            dateTimeSymbols
+        );
+    }
+
+    @Test
+    public void testPropertiesAndFromPropertiesRoundtripAllLocales() {
+        for (final Locale locale : Locale.getAvailableLocales()) {
+            final DateTimeSymbols dateTimeSymbols = DateTimeSymbols.fromDateFormatSymbols(
+                new DateFormatSymbols(locale)
+            );
+
+            this.fromPropertiesAndCheck(
+                dateTimeSymbols.properties(),
+                dateTimeSymbols
+            );
+        }
+    }
+
     // hashCode/equals..................................................................................................
 
     @Test
