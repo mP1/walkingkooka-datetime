@@ -26,7 +26,8 @@ import java.util.Optional;
 /**
  * A typed {@link Optional} necessary because generic types are lost in java.
  */
-public final class OptionalDateTimeSymbols implements HasValue<Optional<DateTimeSymbols>> {
+public final class OptionalDateTimeSymbols implements HasValue<Optional<DateTimeSymbols>>,
+    HasOptionalDateTimeSymbols{
 
     public final static OptionalDateTimeSymbols EMPTY = new OptionalDateTimeSymbols(Optional.empty());
 
@@ -50,6 +51,13 @@ public final class OptionalDateTimeSymbols implements HasValue<Optional<DateTime
     }
 
     private final Optional<DateTimeSymbols> value;
+
+    // HasDateTimeSymbols...............................................................................................
+
+    @Override
+    public Optional<DateTimeSymbols> dateTimeSymbols() {
+        return this.value;
+    }
 
     // Object...........................................................................................................
 

@@ -32,6 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class OptionalDateTimeSymbolsTest implements ClassTesting<OptionalDateTimeSymbols>,
     HashCodeEqualsDefinedTesting2<OptionalDateTimeSymbols>,
+    HasOptionalDateTimeSymbolsTesting,
     ToStringTesting<OptionalDateTimeSymbols> {
 
     private final static Optional<DateTimeSymbols> DATE_TIME_SYMBOLS = Optional.of(
@@ -67,6 +68,23 @@ public final class OptionalDateTimeSymbolsTest implements ClassTesting<OptionalD
         assertSame(
             DATE_TIME_SYMBOLS,
             optional.value()
+        );
+    }
+
+    // HasDateTimeSymbols...............................................................................................
+
+    @Test
+    public void testDateTimeSymbolsWithEmpty() {
+        this.dateTimeSymbolsAndCheck(
+            OptionalDateTimeSymbols.EMPTY
+        );
+    }
+
+    @Test
+    public void testDateTimeSymbolsWithNotEmpty() {
+        this.dateTimeSymbolsAndCheck(
+            OptionalDateTimeSymbols.with(DATE_TIME_SYMBOLS),
+            DATE_TIME_SYMBOLS
         );
     }
 
