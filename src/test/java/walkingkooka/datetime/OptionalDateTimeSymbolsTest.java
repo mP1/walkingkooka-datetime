@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public final class OptionalDateTimeSymbolsTest implements ClassTesting<OptionalDateTimeSymbols>,
     HashCodeEqualsDefinedTesting2<OptionalDateTimeSymbols>,
     HasOptionalDateTimeSymbolsTesting,
-    ToStringTesting<OptionalDateTimeSymbols> {
+    ToStringTesting {
 
     private final static Optional<DateTimeSymbols> DATE_TIME_SYMBOLS = Optional.of(
         DateTimeSymbols.fromDateFormatSymbols(

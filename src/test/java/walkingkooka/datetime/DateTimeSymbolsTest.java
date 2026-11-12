@@ -45,7 +45,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DateTimeSymbols>,
-    ToStringTesting<DateTimeSymbols>,
+    ToStringTesting,
     TreePrintableTesting,
     ClassTesting<DateTimeSymbols> {
 
