@@ -23,8 +23,7 @@ import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 import walkingkooka.test.ParseStringTesting;
 import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasTextTesting;
@@ -47,7 +46,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     ParseStringTesting<DateTimeSymbols>,
     ToStringTesting,
     TreePrintableTesting,
-    ClassTesting<DateTimeSymbols> {
+    PublicClassTesting<DateTimeSymbols> {
 
     // constants........................................................................................................
 
@@ -802,10 +801,5 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     @Override
     public Class<DateTimeSymbols> type() {
         return DateTimeSymbols.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
