@@ -37,6 +37,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 /**
  * Holds the Locale related data for dates and times.
@@ -76,17 +77,34 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
     public static DateTimeSymbols fromCsvStringList(final CsvStringList csvStringList) {
         Objects.requireNonNull(csvStringList, "csvStringList");
 
-        final int tokenCount = csvStringList.size();
+        return fromDelimiterStringImmutableList(
+            csvStringList,
+            CsvStringList::parse
+        );
+    }
+
+    public static DateTimeSymbols fromTsvStringList(final TsvStringList tsvStringList) {
+        Objects.requireNonNull(tsvStringList, "tsvStringList");
+
+        return fromDelimiterStringImmutableList(
+            tsvStringList,
+            TsvStringList::parse
+        );
+    }
+
+    private static <T extends DelimiterStringImmutableList> DateTimeSymbols fromDelimiterStringImmutableList(final T list,
+                                                                                                             final Function<String, T> componentParser) {
+        final int tokenCount = list.size();
         if (5 != tokenCount) {
             throw new IllegalArgumentException("Expected 5 tokens but got " + tokenCount);
         }
 
         return with(
-            CsvStringList.parse(csvStringList.get(0)),
-            CsvStringList.parse(csvStringList.get(1)),
-            CsvStringList.parse(csvStringList.get(2)),
-            CsvStringList.parse(csvStringList.get(3)),
-            CsvStringList.parse(csvStringList.get(4))
+            componentParser.apply(list.get(0)),
+            componentParser.apply(list.get(1)),
+            componentParser.apply(list.get(2)),
+            componentParser.apply(list.get(3)),
+            componentParser.apply(list.get(4))
         );
     }
 

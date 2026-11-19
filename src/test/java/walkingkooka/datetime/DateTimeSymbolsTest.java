@@ -24,6 +24,7 @@ import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
 import walkingkooka.reflect.PublicClassTesting;
@@ -166,6 +167,49 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         this.checkEquals(
             expected,
             DateTimeSymbols.fromCsvStringList(strings),
+            strings::toString
+        );
+    }
+
+    // fromTsvStringList................................................................................................
+
+    @Test
+    public void testFromTsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DateTimeSymbols.fromTsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithTsvStringList() {
+        this.fromTsvStringListAndCheck(
+            TsvStringList.parse(
+                "\"am\tpm\"\n" +
+                    "\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\n" +
+                    "\"Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\"\n" +
+                    "\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\n" +
+                    "\"Sun\tMon\tTu\tWed\tThu\tFri\tSat\""
+            ),
+            this.createObject()
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithDateTimeSymbolsText() {
+        final DateTimeSymbols dateTimeSymbols = this.createObject();
+
+        this.fromTsvStringListAndCheck(
+            dateTimeSymbols.tsvStringList(),
+            dateTimeSymbols
+        );
+    }
+
+    private void fromTsvStringListAndCheck(final TsvStringList strings,
+                                           final DateTimeSymbols expected) {
+        this.checkEquals(
+            expected,
+            DateTimeSymbols.fromTsvStringList(strings),
             strings::toString
         );
     }
