@@ -22,6 +22,7 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
+import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
@@ -46,6 +47,7 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     HasCsvStringListTesting,
     HasPropertiesTesting,
     HasTextTesting,
+    HasTsvStringListTesting,
     ParseStringTesting<DateTimeSymbols>,
     ToStringTesting,
     TreePrintableTesting,
@@ -537,8 +539,12 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     public void testCsvStringList() {
         this.csvStringListAndCheck(
             this.createObject(),
-            CsvStringList.EMPTY.concatAll(
-                Lists.of("am,pm")
+            CsvStringList.EMPTY.concat(
+                CsvStringList.EMPTY.concatAll(
+                    Lists.of(
+                        "am,pm".split(",")
+                    )
+                ).text()
             ).concat(
                 CsvStringList.EMPTY.concatAll(
                     Lists.of(
@@ -568,6 +574,20 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
                     )
                 ).text()
             )
+        );
+    }
+
+    // HasCsvStringList.................................................................................................
+
+    @Test
+    public void testTsvStringList() {
+        this.tsvStringListAndCheck(
+            this.createObject(),
+            "\"am\tpm\"\n" +
+                "\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\n" +
+                "\"Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\"\n" +
+                "\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\n" +
+                "\"Sun\tMon\tTu\tWed\tThu\tFri\tSat\""
         );
     }
 

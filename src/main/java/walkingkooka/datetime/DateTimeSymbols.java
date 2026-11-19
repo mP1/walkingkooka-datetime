@@ -19,8 +19,11 @@ package walkingkooka.datetime;
 
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
+import walkingkooka.collect.list.DelimiterStringImmutableList;
 import walkingkooka.collect.list.HasCsvStringList;
+import walkingkooka.collect.list.HasTsvStringList;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.props.HasProperties;
 import walkingkooka.props.Properties;
 import walkingkooka.props.PropertiesPath;
@@ -42,6 +45,7 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
     HasCsvStringList,
     HasProperties,
     HasText,
+    HasTsvStringList,
     TreePrintable {
 
     public final static int AMPM_COUNT_MIN = 2;
@@ -355,22 +359,59 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
 
     @Override
     public CsvStringList csvStringList() {
-        return CsvStringList.EMPTY.concat(
-            csv(this.ampms)
-        ).concat(
-            csv(this.monthNames)
-        ).concat(
-            csv(this.monthNameAbbreviations)
-        ).concat(
-            csv(this.weekDayNames)
-        ).concat(
-            csv(this.weekDayNameAbbreviations)
-        );
+        return toStringList(CsvStringList.EMPTY);
     }
 
     private static String csv(final List<String> strings) {
         return CsvStringList.EMPTY.concatAll(strings)
             .text();
+    }
+
+    // HasTsvStringList.................................................................................................
+
+    @Override
+    public TsvStringList tsvStringList() {
+        return toStringList(TsvStringList.EMPTY);
+    }
+
+    private <T extends DelimiterStringImmutableList> T toStringList(final T empty) {
+        return (T) (
+            empty.concat(
+                toCsvOrTsvString(
+                    this.ampms,
+                    empty
+                )
+            ).concat(
+                toCsvOrTsvString(
+                    this.monthNames,
+                    empty
+                )
+            ).concat(
+                toCsvOrTsvString(
+                    this.monthNameAbbreviations,
+                    empty
+                )
+            ).concat(
+                toCsvOrTsvString(
+                    this.weekDayNames,
+                    empty
+                )
+            ).concat(
+                toCsvOrTsvString(
+                    this.weekDayNameAbbreviations,
+                    empty
+                )
+            )
+        );
+    }
+
+    private static String toCsvOrTsvString(final List<String> strings,
+                                           final DelimiterStringImmutableList empty) {
+        return (
+            (HasText) (
+                empty.setElements(strings)
+            )
+        ).text();
     }
 
     // fromProperties...................................................................................................
