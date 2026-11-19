@@ -362,11 +362,6 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
         return toStringList(CsvStringList.EMPTY);
     }
 
-    private static String csv(final List<String> strings) {
-        return CsvStringList.EMPTY.concatAll(strings)
-            .text();
-    }
-
     // HasTsvStringList.................................................................................................
 
     @Override
@@ -463,19 +458,19 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
     public Properties properties() {
         return Properties.EMPTY.set(
             AMPM_PROPERTIES_KEY,
-            csv(this.ampms)
+            toCsvString(this.ampms)
         ).set(
             MONTH_NAMES_PROPERTIES_KEY,
-            csv(this.monthNames)
+            toCsvString(this.monthNames)
         ).set(
             MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY,
-            csv(this.monthNameAbbreviations)
+            toCsvString(this.monthNameAbbreviations)
         ).set(
             WEEK_DAY_NAMES_PROPERTIES_KEY,
-            csv(this.weekDayNames)
+            toCsvString(this.weekDayNames)
         ).set(
             WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY,
-            csv(this.weekDayNameAbbreviations)
+            toCsvString(this.weekDayNameAbbreviations)
         );
     }
 
@@ -484,4 +479,9 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
     private final static PropertiesPath MONTH_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("monthNameAbbreviations");
     private final static PropertiesPath WEEK_DAY_NAMES_PROPERTIES_KEY = PropertiesPath.parse("weekDayNames");
     private final static PropertiesPath WEEK_DAY_NAME_ABBREVIATIONS_PROPERTIES_KEY = PropertiesPath.parse("weekDayNameAbbreviations");
+
+    private static String toCsvString(final List<String> strings) {
+        return CsvStringList.EMPTY.concatAll(strings)
+            .text();
+    }
 }
