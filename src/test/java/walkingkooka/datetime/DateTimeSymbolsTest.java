@@ -20,6 +20,8 @@ package walkingkooka.datetime;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
+import walkingkooka.collect.list.CsvStringList;
+import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.props.HasPropertiesTesting;
 import walkingkooka.props.Properties;
@@ -41,6 +43,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<DateTimeSymbols>,
     HasDateTimeSymbolsTesting,
+    HasCsvStringListTesting,
     HasPropertiesTesting,
     HasTextTesting,
     ParseStringTesting<DateTimeSymbols>,
@@ -525,6 +528,46 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         this.weekDayNameAbbreviationsAndCheck(
             symbols,
             Lists.of("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.")
+        );
+    }
+
+    // HasCsvStringList.................................................................................................
+
+    @Test
+    public void testCsvStringList() {
+        this.csvStringListAndCheck(
+            this.createObject(),
+            CsvStringList.EMPTY.concatAll(
+                Lists.of("am,pm")
+            ).concat(
+                CsvStringList.EMPTY.concatAll(
+                    Lists.of(
+                        "January,February,March,April,May,June,July,August,September,October,November,December"
+                            .split(",")
+                    )
+                ).text()
+            ).concat(
+                CsvStringList.EMPTY.concatAll(
+                    Lists.of(
+                        "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+                            .split(",")
+                    )
+                ).text()
+            ).concat(
+                CsvStringList.EMPTY.concatAll(
+                    Lists.of(
+                        "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+                            .split(",")
+                    )
+                ).text()
+            ).concat(
+                CsvStringList.EMPTY.concatAll(
+                    Lists.of(
+                        "Sun,Mon,Tu,Wed,Thu,Fri,Sat"
+                            .split(",")
+                    )
+                ).text()
+            )
         );
     }
 

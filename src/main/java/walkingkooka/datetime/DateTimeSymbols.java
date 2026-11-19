@@ -19,6 +19,7 @@ package walkingkooka.datetime;
 
 import walkingkooka.ToStringBuilder;
 import walkingkooka.collect.list.CsvStringList;
+import walkingkooka.collect.list.HasCsvStringList;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.props.HasProperties;
 import walkingkooka.props.Properties;
@@ -38,6 +39,7 @@ import java.util.Objects;
  * Holds the Locale related data for dates and times.
  */
 public final class DateTimeSymbols implements HasDateTimeSymbols,
+    HasCsvStringList,
     HasProperties,
     HasText,
     TreePrintable {
@@ -345,6 +347,14 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
      */
     @Override
     public String text() {
+        return this.csvStringList()
+            .text();
+    }
+
+    // HasCsvStringList.................................................................................................
+
+    @Override
+    public CsvStringList csvStringList() {
         return CsvStringList.EMPTY.concat(
             csv(this.ampms)
         ).concat(
@@ -355,11 +365,11 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
             csv(this.weekDayNames)
         ).concat(
             csv(this.weekDayNameAbbreviations)
-        ).text();
+        );
     }
 
-    private static String csv(final List<String> csv) {
-        return CsvStringList.EMPTY.concatAll(csv)
+    private static String csv(final List<String> strings) {
+        return CsvStringList.EMPTY.concatAll(strings)
             .text();
     }
 
