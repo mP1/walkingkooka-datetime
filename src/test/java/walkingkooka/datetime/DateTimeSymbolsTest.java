@@ -577,6 +577,18 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         );
     }
 
+    @Test
+    public void testCsvStringList2() {
+        this.csvStringListAndCheck(
+            this.createObject(),
+            "\"am,pm\"\n" +
+                "\"January,February,March,April,May,June,July,August,September,October,November,December\"\n" +
+                "\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\n" +
+                "\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\n" +
+                "\"Sun,Mon,Tu,Wed,Thu,Fri,Sat\""
+        );
+    }
+
     // HasCsvStringList.................................................................................................
 
     @Test
