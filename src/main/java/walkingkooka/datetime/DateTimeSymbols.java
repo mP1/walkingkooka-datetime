@@ -68,24 +68,26 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
      * of the {@link DateTimeSymbols} properties. This is the inverse of {@link #text()}.
      */
     public static DateTimeSymbols parse(final String text) {
-        final CsvStringList csv = CsvStringList.parse(text);
+        return fromCsvStringList(
+            CsvStringList.parse(text)
+        );
+    }
 
-        final int tokenCount = csv.size();
+    public static DateTimeSymbols fromCsvStringList(final CsvStringList csvStringList) {
+        Objects.requireNonNull(csvStringList, "csvStringList");
+
+        final int tokenCount = csvStringList.size();
         if (5 != tokenCount) {
             throw new IllegalArgumentException("Expected 5 tokens but got " + tokenCount);
         }
 
         return with(
-            parseList(csv.get(0)),
-            parseList(csv.get(1)),
-            parseList(csv.get(2)),
-            parseList(csv.get(3)),
-            parseList(csv.get(4))
+            CsvStringList.parse(csvStringList.get(0)),
+            CsvStringList.parse(csvStringList.get(1)),
+            CsvStringList.parse(csvStringList.get(2)),
+            CsvStringList.parse(csvStringList.get(3)),
+            CsvStringList.parse(csvStringList.get(4))
         );
-    }
-
-    private static List<String> parseList(final String text) {
-        return CsvStringList.parse(text);
     }
 
     /**

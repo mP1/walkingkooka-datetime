@@ -127,6 +127,49 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
             .count();
     }
 
+    // fromCsvStringList................................................................................................
+
+    @Test
+    public void testFromCsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DateTimeSymbols.fromCsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithCsvStringList() {
+        this.fromCsvStringListAndCheck(
+            CsvStringList.parse(
+                "\"am,pm\"\n" +
+                    "\"January,February,March,April,May,June,July,August,September,October,November,December\"\n" +
+                    "\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\n" +
+                    "\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\n" +
+                    "\"Sun,Mon,Tu,Wed,Thu,Fri,Sat\""
+            ),
+            this.createObject()
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithDateTimeSymbolsText() {
+        final DateTimeSymbols dateTimeSymbols = this.createObject();
+
+        this.fromCsvStringListAndCheck(
+            dateTimeSymbols.csvStringList(),
+            dateTimeSymbols
+        );
+    }
+
+    private void fromCsvStringListAndCheck(final CsvStringList strings,
+                                           final DateTimeSymbols expected) {
+        this.checkEquals(
+            expected,
+            DateTimeSymbols.fromCsvStringList(strings),
+            strings::toString
+        );
+    }
+    
     // with.............................................................................................................
 
     private final static List<String> AM_PMS = Lists.of("am", "pm");
