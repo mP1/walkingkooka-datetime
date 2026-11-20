@@ -21,15 +21,14 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.ListTesting2;
 import walkingkooka.collect.list.Lists;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, LocalDateTime>,
-    ClassTesting<LocalDateTimeList>,
+    PublicClassTesting<LocalDateTimeList>,
     ImmutableListTesting<LocalDateTimeList, LocalDateTime> {
 
     private final static LocalDateTime DATE_TIME1 = LocalDateTime.of(
@@ -173,10 +172,5 @@ public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, Lo
     @Override
     public Class<LocalDateTimeList> type() {
         return LocalDateTimeList.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
