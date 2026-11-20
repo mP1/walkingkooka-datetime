@@ -19,17 +19,13 @@ package walkingkooka.datetime;
 
 import walkingkooka.reflect.PublicClassTesting;
 
-import java.text.DateFormatSymbols;
-import java.util.Locale;
-
-public final class DateTimeSymbolsDelegatorTest implements PublicClassTesting<DateTimeSymbolsDelegator> {
+public final class DateTimeSymbolsDelegatorTest implements PublicClassTesting<DateTimeSymbolsDelegator>,
+    HasDateTimeSymbolsTesting{
 
     static class TestDateTimeSymbolsDelegator implements DateTimeSymbolsDelegator {
         @Override
         public DateTimeSymbols dateTimeSymbols() {
-            return DateTimeSymbols.fromDateFormatSymbols(
-                new DateFormatSymbols(Locale.ENGLISH)
-            );
+            return DATE_TIME_SYMBOLS;
         }
     }
 
