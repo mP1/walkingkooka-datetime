@@ -18,11 +18,10 @@
 package walkingkooka.datetime;
 
 import org.junit.jupiter.api.Test;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 public final class HasOptionalLastModifiedTestingTest implements HasOptionalLastModifiedTesting,
-    ClassTesting<HasOptionalLastModified> {
+    PublicClassTesting<HasOptionalLastModified> {
 
     @Test
     public void testLastModifiedAndCheck() {
@@ -45,11 +44,6 @@ public final class HasOptionalLastModifiedTestingTest implements HasOptionalLast
     @Override
     public Class<HasOptionalLastModified> type() {
         return HasOptionalLastModified.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 
     @Override
