@@ -20,8 +20,7 @@ package walkingkooka.datetime;
 import org.junit.jupiter.api.Test;
 import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 import java.text.DateFormatSymbols;
 import java.util.Locale;
@@ -30,7 +29,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class OptionalDateTimeSymbolsTest implements ClassTesting<OptionalDateTimeSymbols>,
+public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<OptionalDateTimeSymbols>,
     HashCodeEqualsDefinedTesting2<OptionalDateTimeSymbols>,
     HasOptionalDateTimeSymbolsTesting,
     ToStringTesting {
@@ -132,10 +131,5 @@ public final class OptionalDateTimeSymbolsTest implements ClassTesting<OptionalD
     @Override
     public Class<OptionalDateTimeSymbols> type() {
         return OptionalDateTimeSymbols.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
