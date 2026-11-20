@@ -17,13 +17,12 @@
 
 package walkingkooka.datetime;
 
-import walkingkooka.reflect.ClassTesting;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
 import java.text.DateFormatSymbols;
 import java.util.Locale;
 
-public final class DateTimeSymbolsDelegatorTest implements ClassTesting<DateTimeSymbolsDelegator> {
+public final class DateTimeSymbolsDelegatorTest implements PublicClassTesting<DateTimeSymbolsDelegator> {
 
     static class TestDateTimeSymbolsDelegator implements DateTimeSymbolsDelegator {
         @Override
@@ -39,10 +38,5 @@ public final class DateTimeSymbolsDelegatorTest implements ClassTesting<DateTime
     @Override
     public Class<DateTimeSymbolsDelegator> type() {
         return DateTimeSymbolsDelegator.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
