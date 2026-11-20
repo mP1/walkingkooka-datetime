@@ -22,23 +22,16 @@ import walkingkooka.HashCodeEqualsDefinedTesting2;
 import walkingkooka.ToStringTesting;
 import walkingkooka.reflect.PublicClassTesting;
 
-import java.text.DateFormatSymbols;
-import java.util.Locale;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<OptionalDateTimeSymbols>,
+    HasDateTimeSymbolsTesting,
     HashCodeEqualsDefinedTesting2<OptionalDateTimeSymbols>,
     HasOptionalDateTimeSymbolsTesting,
     ToStringTesting {
-
-    private final static Optional<DateTimeSymbols> DATE_TIME_SYMBOLS = Optional.of(
-        DateTimeSymbols.fromDateFormatSymbols(
-            new DateFormatSymbols(Locale.forLanguageTag("en-AU"))
-        )
-    );
 
     // with.............................................................................................................
 
@@ -62,10 +55,10 @@ public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<Opt
 
     @Test
     public void testWithNotEmpty() {
-        final OptionalDateTimeSymbols optional = OptionalDateTimeSymbols.with(DATE_TIME_SYMBOLS);
+        final OptionalDateTimeSymbols optional = OptionalDateTimeSymbols.with(OPTIONAL_DATE_TIME_SYMBOLS);
 
         assertSame(
-            DATE_TIME_SYMBOLS,
+            OPTIONAL_DATE_TIME_SYMBOLS,
             optional.value()
         );
     }
@@ -82,7 +75,7 @@ public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<Opt
     @Test
     public void testDateTimeSymbolsWithNotEmpty() {
         this.dateTimeSymbolsAndCheck(
-            OptionalDateTimeSymbols.with(DATE_TIME_SYMBOLS),
+            OptionalDateTimeSymbols.with(OPTIONAL_DATE_TIME_SYMBOLS),
             DATE_TIME_SYMBOLS
         );
     }
@@ -92,19 +85,13 @@ public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<Opt
     @Test
     public void testEqualsDifferent() {
         this.checkNotEquals(
-            OptionalDateTimeSymbols.with(
-                Optional.of(
-                    DateTimeSymbols.fromDateFormatSymbols(
-                        new DateFormatSymbols(Locale.forLanguageTag("en-NZ"))
-                    )
-                )
-            )
+            OptionalDateTimeSymbols.with(OPTIONAL_DIFFERENT_DATE_TIME_SYMBOLS)
         );
     }
 
     @Override
     public OptionalDateTimeSymbols createObject() {
-        return OptionalDateTimeSymbols.with(DATE_TIME_SYMBOLS);
+        return OptionalDateTimeSymbols.with(OPTIONAL_DATE_TIME_SYMBOLS);
     }
 
     // toString.........................................................................................................
@@ -113,8 +100,7 @@ public final class OptionalDateTimeSymbolsTest implements PublicClassTesting<Opt
     public void testToString() {
         this.toStringAndCheck(
             this.createObject(),
-            DATE_TIME_SYMBOLS.get()
-                .toString()
+            DATE_TIME_SYMBOLS.toString()
         );
     }
 
