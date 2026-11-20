@@ -17,18 +17,12 @@
 
 package walkingkooka.datetime;
 
-import walkingkooka.reflect.ClassTesting2;
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PackagePrivateClassTesting;
 
-public final class DateTimeContextGetterTest implements ClassTesting2<DateTimeContextGetter> {
+public final class DateTimeContextGetterTest implements PackagePrivateClassTesting<DateTimeContextGetter> {
 
     @Override
     public Class<DateTimeContextGetter> type() {
         return DateTimeContextGetter.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
     }
 }
