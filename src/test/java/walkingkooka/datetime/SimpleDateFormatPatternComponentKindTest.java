@@ -17,16 +17,13 @@
 
 package walkingkooka.datetime;
 
-import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.PublicClassTesting;
 
-public final class SimpleDateFormatPatternComponentKindTest extends SimpleDateFormatPatternVisitorTestCase<SimpleDateFormatPatternComponentKind> {
+public final class SimpleDateFormatPatternComponentKindTest extends SimpleDateFormatPatternVisitorTestCase<SimpleDateFormatPatternComponentKind>
+    implements PublicClassTesting<SimpleDateFormatPatternComponentKind> {
+
     @Override
     public Class<SimpleDateFormatPatternComponentKind> type() {
         return SimpleDateFormatPatternComponentKind.class;
-    }
-
-    @Override
-    public JavaVisibility typeVisibility() {
-        return JavaVisibility.PUBLIC;
     }
 }
