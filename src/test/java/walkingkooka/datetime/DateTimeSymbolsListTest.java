@@ -22,11 +22,13 @@ import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.text.HasMultiLineTextTesting;
 
 public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateTimeSymbolsList, DateTimeSymbols>,
     HasDateTimeSymbolsTesting,
     HasCsvStringListTesting,
-    HasTsvStringListTesting {
+    HasTsvStringListTesting,
+    HasMultiLineTextTesting {
 
     // setElements......................................................................................................
 
@@ -57,6 +59,51 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
     @Override
     public DateTimeSymbolsList createList() {
         return DateTimeSymbolsList.EMPTY;
+    }
+
+    // HasMultiLineText.................................................................................................
+
+    @Test
+    public void testMultiLineTextWithEmpty() {
+        this.multiLineTextAndCheck(
+            this.createList(),
+            LINE_ENDING,
+            ""
+        );
+    }
+
+    @Test
+    public void testMultiLineTextWithOne() {
+        this.multiLineTextAndCheck(
+            this.createList()
+                .concat(DATE_TIME_SYMBOLS),
+            LINE_ENDING,
+            "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\""
+        );
+    }
+
+    @Test
+    public void testMultiLineText() {
+        this.multiLineTextAndCheck(
+            this.createList()
+                .concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            LINE_ENDING,
+            "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\n" +
+                "\"AM,PM\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\""
+        );
+    }
+
+    @Test
+    public void testMultiLineTextWithDifferentLineEnding() {
+        this.multiLineTextAndCheck(
+            this.createList()
+                .concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            DIFFERENT_LINE_ENDING,
+            "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\r\n" +
+                "\"AM,PM\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\""
+        );
     }
 
     // class............................................................................................................
