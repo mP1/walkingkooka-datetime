@@ -20,14 +20,12 @@ package walkingkooka.datetime;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.text.HasMultiLineText;
-import walkingkooka.text.LineEnding;
 import walkingkooka.text.MultiLineText;
 import walkingkooka.text.TextContext;
 
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A {@link List} that holds nullable {@link DateTimeSymbols symbols}.
@@ -87,25 +85,11 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
 
     @Override
     public MultiLineText multiLineText(final TextContext context) {
-        Objects.requireNonNull(context, "context");
-
-        final StringBuilder b = new StringBuilder();
-
-        final LineEnding lineEnding = context.lineEnding();
-        boolean separatorRequired = false;
-
-        for(final DateTimeSymbols dateTimeSymbols : this.list) {
-            if(separatorRequired) {
-                b.append(lineEnding);
-            }
-            b.append(
-                dateTimeSymbols.csvStringList()
-                    .text()
-            );
-
-            separatorRequired = true;
-        }
-
-        return MultiLineText.EMPTY.setText(b.toString());
+        return MultiLineText.fromCollection(
+            this,
+            (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.csvStringList()
+                .text(),
+            context
+        );
     }
 }
