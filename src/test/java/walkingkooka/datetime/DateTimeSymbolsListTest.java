@@ -94,7 +94,19 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         this.csvStringListAndCheck(
             DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
                 .concat(DIFFERENT_DATE_TIME_SYMBOLS),
-            "\"\"\"am,pm\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\"\",\"\"\"AM,PM\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\"\"\""
+            "\"\"\"am,pm\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\"\"\n" +
+                "\"\"\"AM,PM\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\"\"\"\n"
+        );
+    }
+
+    @Test
+    public void testCsvStringListAndMultiLineText() {
+        this.multiLineTextAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            TEXT_CONTEXT,
+            "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\n" +
+                "\"AM,PM\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\""
         );
     }
 
@@ -113,7 +125,19 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         this.tsvStringListAndCheck(
             DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
                 .concat(DIFFERENT_DATE_TIME_SYMBOLS),
-            "\"\"\"am\tpm\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan.\tFeb.\tMar.\tApr.\tMay\tJun.\tJul.\tAug.\tSep.\tOct.\tNov.\tDec.\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun.\tMon.\tTue.\tWed.\tThu.\tFri.\tSat.\"\"\"\t\"\"\"AM\tPM\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun\tMon\tTue\tWed\tThu\tFri\tSat\"\"\""
+            "\"\"\"am\tpm\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan.\tFeb.\tMar.\tApr.\tMay\tJun.\tJul.\tAug.\tSep.\tOct.\tNov.\tDec.\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun.\tMon.\tTue.\tWed.\tThu.\tFri.\tSat.\"\"\"\n" +
+                "\"\"\"AM\tPM\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun\tMon\tTue\tWed\tThu\tFri\tSat\"\"\"\n"
+        );
+    }
+
+    @Test
+    public void testTsvStringListAndMultiLineText() {
+        this.multiLineTextAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            TEXT_CONTEXT,
+            "\"am,pm\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\n" +
+                "\"AM,PM\",\"January,February,March,April,May,June,July,August,September,October,November,December\",\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\",\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\",\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\""
         );
     }
 

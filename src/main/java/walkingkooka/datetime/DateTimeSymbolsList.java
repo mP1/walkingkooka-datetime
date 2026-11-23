@@ -95,7 +95,7 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             this,
             (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.csvStringList()
                 .text()
-        );
+        ).setAllLineBreaks();
     }
 
     // HasTsvStringList.................................................................................................
@@ -106,7 +106,7 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             this,
             (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.tsvStringList()
                 .text()
-        );
+        ).setAllLineBreaks();
     }
 
     // HasMultiLineText.................................................................................................
