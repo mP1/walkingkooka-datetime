@@ -22,6 +22,7 @@ import walkingkooka.collect.list.HasCsvStringList;
 import walkingkooka.collect.list.HasTsvStringList;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineText;
 import walkingkooka.text.MultiLineText;
@@ -31,6 +32,7 @@ import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -45,13 +47,31 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     public static DateTimeSymbolsList fromCsvStringList(final CsvStringList csvStringList) {
         Objects.requireNonNull(csvStringList, "csvStringList");
 
+        return fromStringLikeList(
+            csvStringList,
+            (final String string) -> DateTimeSymbols.fromCsvStringList(
+                CsvStringList.parse(string)
+            )
+        );
+    }
+
+    public static DateTimeSymbolsList fromTsvStringList(final TsvStringList tsvStringList) {
+        Objects.requireNonNull(tsvStringList, "tsvStringList");
+
+        return fromStringLikeList(
+            tsvStringList,
+            (final String string) -> DateTimeSymbols.fromTsvStringList(
+                TsvStringList.parse(string)
+            )
+        );
+    }
+
+    private static DateTimeSymbolsList fromStringLikeList(final StringLikeList stringLikeList,
+                                                          final Function<String, DateTimeSymbols> parser) {
         return EMPTY.setElements(
-            csvStringList.stream()
-                .map(
-                    (final String string) -> DateTimeSymbols.fromCsvStringList(
-                        CsvStringList.parse(string)
-                    )
-                ).collect(Collectors.toList())
+            stringLikeList.stream()
+                .map(parser::apply)
+                .collect(Collectors.toList())
         );
     }
 

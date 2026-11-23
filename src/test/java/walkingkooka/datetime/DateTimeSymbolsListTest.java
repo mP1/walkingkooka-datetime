@@ -23,6 +23,7 @@ import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineTextTesting;
 
 import java.util.List;
@@ -69,6 +70,43 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         this.checkEquals(
             expected,
             DateTimeSymbolsList.fromCsvStringList(csvStringList)
+        );
+    }
+
+    // fromTsvStringList................................................................................................
+
+    @Test
+    public void testFromTsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DateTimeSymbolsList.fromTsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithEmpty() {
+        this.fromTsvStringListAndCheck(
+            TsvStringList.EMPTY,
+            DateTimeSymbolsList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFromTsvStringListWithNotEmpty() {
+        final DateTimeSymbolsList list = DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+            .concat(DIFFERENT_DATE_TIME_SYMBOLS);
+
+        this.fromTsvStringListAndCheck(
+            list.tsvStringList(),
+            list
+        );
+    }
+
+    private void fromTsvStringListAndCheck(final TsvStringList tsvStringList,
+                                           final DateTimeSymbolsList expected) {
+        this.checkEquals(
+            expected,
+            DateTimeSymbolsList.fromTsvStringList(tsvStringList)
         );
     }
 
