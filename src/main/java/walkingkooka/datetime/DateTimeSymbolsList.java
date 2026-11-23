@@ -30,6 +30,8 @@ import walkingkooka.text.TextContext;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * A {@link List} that holds nullable {@link DateTimeSymbols symbols}.
@@ -39,6 +41,19 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     HasCsvStringList,
     HasTsvStringList,
     HasMultiLineText {
+
+    public static DateTimeSymbolsList fromCsvStringList(final CsvStringList csvStringList) {
+        Objects.requireNonNull(csvStringList, "csvStringList");
+
+        return EMPTY.setElements(
+            csvStringList.stream()
+                .map(
+                    (final String string) -> DateTimeSymbols.fromCsvStringList(
+                        CsvStringList.parse(string)
+                    )
+                ).collect(Collectors.toList())
+        );
+    }
 
     public final static DateTimeSymbolsList EMPTY = new DateTimeSymbolsList(Lists.empty());
 

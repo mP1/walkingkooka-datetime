@@ -18,6 +18,7 @@
 package walkingkooka.datetime;
 
 import org.junit.jupiter.api.Test;
+import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringListTesting;
 import walkingkooka.collect.list.HasTsvStringListTesting;
 import walkingkooka.collect.list.ImmutableListTesting;
@@ -26,11 +27,50 @@ import walkingkooka.text.HasMultiLineTextTesting;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateTimeSymbolsList, DateTimeSymbols>,
     HasDateTimeSymbolsTesting,
     HasCsvStringListTesting,
     HasTsvStringListTesting,
     HasMultiLineTextTesting {
+
+    // fromCsvStringList................................................................................................
+
+    @Test
+    public void testFromCsvStringListWithNullFails() {
+        assertThrows(
+            NullPointerException.class,
+            () -> DateTimeSymbolsList.fromCsvStringList(null)
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithEmpty() {
+        this.fromCsvStringListAndCheck(
+            CsvStringList.EMPTY,
+            DateTimeSymbolsList.EMPTY
+        );
+    }
+
+    @Test
+    public void testFromCsvStringListWithNotEmpty() {
+        final DateTimeSymbolsList list = DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+            .concat(DIFFERENT_DATE_TIME_SYMBOLS);
+
+        this.fromCsvStringListAndCheck(
+            list.csvStringList(),
+            list
+        );
+    }
+
+    private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
+                                           final DateTimeSymbolsList expected) {
+        this.checkEquals(
+            expected,
+            DateTimeSymbolsList.fromCsvStringList(csvStringList)
+        );
+    }
 
     // setElements......................................................................................................
 
