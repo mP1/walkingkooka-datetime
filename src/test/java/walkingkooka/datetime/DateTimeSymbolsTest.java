@@ -717,16 +717,6 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
         return DateTimeSymbols.parse(text);
     }
 
-    @Override
-    public Class<? extends RuntimeException> parseStringFailedExpected(final Class<? extends RuntimeException> expected) {
-        return expected;
-    }
-
-    @Override
-    public RuntimeException parseStringFailedExpected(final RuntimeException expected) {
-        return expected;
-    }
-
     // TreePrintable....................................................................................................
 
     @Test
