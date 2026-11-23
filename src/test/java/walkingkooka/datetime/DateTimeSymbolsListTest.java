@@ -61,6 +61,25 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         return DateTimeSymbolsList.EMPTY;
     }
 
+    // CsvStringList....................................................................................................
+
+    @Test
+    public void testCsvStringListWithEmpty() {
+        this.csvStringListAndCheck(
+            DateTimeSymbolsList.EMPTY,
+            ""
+        );
+    }
+
+    @Test
+    public void testCsvStringListWithNotEmpty() {
+        this.csvStringListAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            "\"\"\"am,pm\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\"\",\"\"\"AM,PM\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\"\"\""
+        );
+    }
+
     // HasMultiLineText.................................................................................................
 
     @Test
