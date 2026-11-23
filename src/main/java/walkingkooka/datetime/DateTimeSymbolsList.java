@@ -19,8 +19,10 @@ package walkingkooka.datetime;
 
 import walkingkooka.collect.list.CsvStringList;
 import walkingkooka.collect.list.HasCsvStringList;
+import walkingkooka.collect.list.HasTsvStringList;
 import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
+import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineText;
 import walkingkooka.text.MultiLineText;
 import walkingkooka.text.TextContext;
@@ -35,6 +37,7 @@ import java.util.List;
 public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     implements ImmutableListDefaults<DateTimeSymbolsList, DateTimeSymbols>,
     HasCsvStringList,
+    HasTsvStringList,
     HasMultiLineText {
 
     public final static DateTimeSymbolsList EMPTY = new DateTimeSymbolsList(Lists.empty());
@@ -91,6 +94,17 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
         return CsvStringList.makeCsvStringList(
             this,
             (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.csvStringList()
+                .text()
+        );
+    }
+
+    // HasTsvStringList.................................................................................................
+
+    @Override
+    public TsvStringList tsvStringList() {
+        return TsvStringList.makeTsvStringList(
+            this,
+            (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.tsvStringList()
                 .text()
         );
     }

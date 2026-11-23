@@ -80,6 +80,25 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         );
     }
 
+    // TsvStringList....................................................................................................
+
+    @Test
+    public void testTsvStringListWithEmpty() {
+        this.tsvStringListAndCheck(
+            DateTimeSymbolsList.EMPTY,
+            ""
+        );
+    }
+
+    @Test
+    public void testTsvStringListWithNotEmpty() {
+        this.tsvStringListAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            "\"\"\"am\tpm\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan.\tFeb.\tMar.\tApr.\tMay\tJun.\tJul.\tAug.\tSep.\tOct.\tNov.\tDec.\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun.\tMon.\tTue.\tWed.\tThu.\tFri.\tSat.\"\"\"\t\"\"\"AM\tPM\"\"\t\"\"January\tFebruary\tMarch\tApril\tMay\tJune\tJuly\tAugust\tSeptember\tOctober\tNovember\tDecember\"\"\t\"\"Jan\tFeb\tMar\tApr\tMay\tJun\tJul\tAug\tSep\tOct\tNov\tDec\"\"\t\"\"Sunday\tMonday\tTuesday\tWednesday\tThursday\tFriday\tSaturday\"\"\t\"\"Sun\tMon\tTue\tWed\tThu\tFri\tSat\"\"\""
+        );
+    }
+
     // HasMultiLineText.................................................................................................
 
     @Test
