@@ -24,6 +24,8 @@ import walkingkooka.collect.list.ImmutableListTesting;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.text.HasMultiLineTextTesting;
 
+import java.util.List;
+
 public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateTimeSymbolsList, DateTimeSymbols>,
     HasDateTimeSymbolsTesting,
     HasCsvStringListTesting,
@@ -53,6 +55,22 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
             ),
             Lists.empty(),
             DateTimeSymbolsList.EMPTY
+        );
+    }
+
+
+    @Test
+    public void testSetElementsIncludesNull() {
+        final List<DateTimeSymbols> list = Lists.of(
+            DATE_TIME_SYMBOLS,
+            null,
+            DIFFERENT_DATE_TIME_SYMBOLS
+        );
+
+        this.setElementsAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS),
+            list,
+            new DateTimeSymbolsList(list)
         );
     }
 
