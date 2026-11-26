@@ -24,6 +24,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.PublicClassTesting;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -143,6 +144,71 @@ public class LocalDateListTest implements ListTesting2<LocalDateList, LocalDate>
         );
     }
 
+    // subList..........................................................................................................
+
+    private final static LocalDate LOCAL_DATE1 = LocalDate.of(2000, 1, 1);
+    private final static LocalDate LOCAL_DATE2 = LocalDate.of(2000, 2, 2);
+    private final static LocalDate LOCAL_DATE3 = LocalDate.of(2000, 3, 3);
+    private final static LocalDate LOCAL_DATE4 = LocalDate.of(2000, 4, 4);
+    private final static LocalDate LOCAL_DATE5 = LocalDate.of(2000, 5, 5);
+
+    private final static List<LocalDate> ELEMENTS = Lists.of(
+        LOCAL_DATE1,
+        LOCAL_DATE2,
+        LOCAL_DATE3,
+        LOCAL_DATE4,
+        LOCAL_DATE5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new LocalDateList(ELEMENTS),
+            0,
+            2,
+            new LocalDateList(
+                Lists.of(
+                    LOCAL_DATE1,
+                    LOCAL_DATE2
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new LocalDateList(ELEMENTS),
+            2,
+            4,
+            new LocalDateList(
+                Lists.of(
+                    LOCAL_DATE3,
+                    LOCAL_DATE4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new LocalDateList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new LocalDateList(
+                Lists.of(
+                    LOCAL_DATE3,
+                    LOCAL_DATE4
+                )
+            )
+        );
+    }
+    
     // firstOrEmpty.....................................................................................................
 
     @Test

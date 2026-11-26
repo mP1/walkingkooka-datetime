@@ -57,13 +57,8 @@ public final class LocalTimeList extends AbstractList<LocalTime>
     private final List<LocalTime> times;
 
     @Override
-    public void elementCheck(final LocalTime time) {
-        // allow nulls
-    }
-
-    @Override
     public LocalTimeList setElements(final Collection<LocalTime> times) {
-        LocalTimeList localTimeList;
+        final LocalTimeList localTimeList;
 
         if (times instanceof LocalTimeList) {
             localTimeList = (LocalTimeList) times;
@@ -73,17 +68,35 @@ public final class LocalTimeList extends AbstractList<LocalTime>
                 Objects.requireNonNull(times, "times")
             );
 
-            switch (times.size()) {
-                case 0:
-                    localTimeList = EMPTY;
-                    break;
-                default:
-                    localTimeList = new LocalTimeList(copy);
-                    break;
-            }
+            localTimeList = this.equals(copy) ?
+                this :
+                this.replaceTime(copy);
         }
-        return this.equals(localTimeList) ?
+
+        return localTimeList;
+    }
+
+    @Override
+    public void elementCheck(final LocalTime time) {
+        // allow nulls
+    }
+
+    @Override
+    public LocalTimeList subList(final int from,
+                                 final int to) {
+        return 0 == from && this.size() == to ?
             this :
-            localTimeList;
+            this.replaceTime(
+                this.times.subList(
+                    from,
+                    to
+                )
+            );
+    }
+
+    private LocalTimeList replaceTime(final List<LocalTime> times) {
+        return times.isEmpty() ?
+            EMPTY :
+            new LocalTimeList(times);
     }
 }

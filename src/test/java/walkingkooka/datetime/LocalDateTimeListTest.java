@@ -24,6 +24,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.PublicClassTesting;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -32,21 +33,21 @@ public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, Lo
     ImmutableListTesting<LocalDateTimeList, LocalDateTime> {
 
     private final static LocalDateTime DATE_TIME1 = LocalDateTime.of(
-        1999,
-        12,
-        31,
-        12,
-        58,
-        59
+        2001,
+        1,
+        1,
+        1,
+        1,
+        1
     );
 
     private final static LocalDateTime DATE_TIME2 = LocalDateTime.of(
-        2000,
+        2002,
         2,
-        1,
-        12,
-        58,
-        59
+        2,
+        2,
+        2,
+        2
     );
 
     // list.............................................................................................................
@@ -138,17 +139,88 @@ public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, Lo
             ).setElements(Lists.empty())
         );
     }
+    
+    // subList..........................................................................................................
 
-    @Override
-    public LocalDateTimeList createList() {
-        return new LocalDateTimeList(
-            Lists.of(
-                DATE_TIME1,
-                DATE_TIME2
+    private final static LocalDateTime DATE_TIME3 = LocalDateTime.of(
+        2003, 
+        3,
+        3,
+        3,
+        3
+    );
+    private final static LocalDateTime DATE_TIME4 = LocalDateTime.of(
+        2004,
+        4,
+        4,
+        4,
+        4
+    );
+    private final static LocalDateTime DATE_TIME5 = LocalDateTime.of(
+        2005,
+        5,
+        5,
+        5,
+        5
+    );
+
+    private final static List<LocalDateTime> ELEMENTS = Lists.of(
+        DATE_TIME1,
+        DATE_TIME2,
+        DATE_TIME3,
+        DATE_TIME4,
+        DATE_TIME5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new LocalDateTimeList(ELEMENTS),
+            0,
+            2,
+            new LocalDateTimeList(
+                Lists.of(
+                    DATE_TIME1,
+                    DATE_TIME2
+                )
             )
         );
     }
 
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new LocalDateTimeList(ELEMENTS),
+            2,
+            4,
+            new LocalDateTimeList(
+                Lists.of(
+                    DATE_TIME3,
+                    DATE_TIME4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new LocalDateTimeList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new LocalDateTimeList(
+                Lists.of(
+                    DATE_TIME3,
+                    DATE_TIME4
+                )
+            )
+        );
+    }
+    
     // firstOrEmpty.....................................................................................................
 
     @Test
@@ -164,6 +236,16 @@ public class LocalDateTimeListTest implements ListTesting2<LocalDateTimeList, Lo
             LocalDateTimeList.EMPTY.concat(DATE_TIME1)
                 .concat(DATE_TIME2),
             DATE_TIME1
+        );
+    }
+
+    @Override
+    public LocalDateTimeList createList() {
+        return new LocalDateTimeList(
+            Lists.of(
+                DATE_TIME1,
+                DATE_TIME2
+            )
         );
     }
 

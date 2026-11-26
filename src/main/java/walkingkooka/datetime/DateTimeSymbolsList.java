@@ -95,7 +95,7 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
 
     @Override
     public DateTimeSymbolsList setElements(final Collection<DateTimeSymbols> collection) {
-        DateTimeSymbolsList dateTimeSymbolsList;
+        final DateTimeSymbolsList dateTimeSymbolsList;
 
         if (collection instanceof DateTimeSymbolsList) {
             dateTimeSymbolsList = (DateTimeSymbolsList) collection;
@@ -103,16 +103,31 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             final List<DateTimeSymbols> copy = Lists.array();
             copy.addAll(collection);
 
-            if (copy.equals(this)) {
-                dateTimeSymbolsList = this;
-            } else {
-                dateTimeSymbolsList = copy.isEmpty() ?
-                    EMPTY :
-                    new DateTimeSymbolsList(copy);
-            }
+            dateTimeSymbolsList = this.equals(copy) ?
+                this :
+                this.replaceDateTimeSymbols(copy);
         }
 
         return dateTimeSymbolsList;
+    }
+
+    @Override
+    public DateTimeSymbolsList subList(final int from,
+                                       final int to) {
+        return 0 == from && this.size() == to ?
+            this :
+            this.replaceDateTimeSymbols(
+                this.list.subList(
+                    from,
+                    to
+                )
+            );
+    }
+
+    private DateTimeSymbolsList replaceDateTimeSymbols(final List<DateTimeSymbols> dateTimeSymbolss) {
+        return dateTimeSymbolss.isEmpty() ?
+            EMPTY :
+            new DateTimeSymbolsList(dateTimeSymbolss);
     }
 
     @Override
