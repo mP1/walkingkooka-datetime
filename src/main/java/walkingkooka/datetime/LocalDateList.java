@@ -57,34 +57,46 @@ public final class LocalDateList extends AbstractList<LocalDate>
     private final List<LocalDate> dates;
 
     @Override
-    public void elementCheck(final LocalDate date) {
-        // allow null
-    }
-
-    @Override
     public LocalDateList setElements(final Collection<LocalDate> dates) {
-        Objects.requireNonNull(dates, "dates");
-
-        LocalDateList localDateList;
+        final LocalDateList localDateList;
 
         if (dates instanceof LocalDateList) {
             localDateList = (LocalDateList) dates;
         } else {
             final List<LocalDate> copy = Lists.array();
-            copy.addAll(dates);
+            copy.addAll(
+                Objects.requireNonNull(dates, "dates")
+            );
 
-            switch (dates.size()) {
-                case 0:
-                    localDateList = EMPTY;
-                    break;
-                default:
-                    localDateList = new LocalDateList(copy);
-                    break;
-            }
+            localDateList = this.equals(copy) ?
+                this :
+                this.replaceDate(copy);
         }
 
-        return this.equals(localDateList) ?
+        return localDateList;
+    }
+
+    @Override
+    public void elementCheck(final LocalDate date) {
+        // allow nulls
+    }
+
+    @Override
+    public LocalDateList subList(final int from,
+                                 final int to) {
+        return 0 == from && this.size() == to ?
             this :
-            localDateList;
+            this.replaceDate(
+                this.dates.subList(
+                    from,
+                    to
+                )
+            );
+    }
+
+    private LocalDateList replaceDate(final List<LocalDate> dates) {
+        return dates.isEmpty() ?
+            EMPTY :
+            new LocalDateList(dates);
     }
 }

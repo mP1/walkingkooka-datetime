@@ -26,7 +26,9 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.list.TsvStringList;
 import walkingkooka.text.HasMultiLineTextTesting;
 
+import java.text.DateFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -149,6 +151,83 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
             DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS),
             list,
             new DateTimeSymbolsList(list)
+        );
+    }
+
+    // subList..........................................................................................................
+
+    private final static DateTimeSymbols DATE_TIME_SYMBOLS1 = DATE_TIME_SYMBOLS;
+    private final static DateTimeSymbols DATE_TIME_SYMBOLS2 = DIFFERENT_DATE_TIME_SYMBOLS;
+    private final static DateTimeSymbols DATE_TIME_SYMBOLS3 = DateTimeSymbols.fromDateFormatSymbols(
+        new DateFormatSymbols(
+            Locale.forLanguageTag("en-CA")
+        )
+    );
+    private final static DateTimeSymbols DATE_TIME_SYMBOLS4 = DateTimeSymbols.fromDateFormatSymbols(
+        new DateFormatSymbols(
+            Locale.forLanguageTag("en-UK")
+        )
+    );
+    private final static DateTimeSymbols DATE_TIME_SYMBOLS5 = DateTimeSymbols.fromDateFormatSymbols(
+        new DateFormatSymbols(
+            Locale.forLanguageTag("en-US")
+        )
+    );
+
+    private final static List<DateTimeSymbols> ELEMENTS = Lists.of(
+        DATE_TIME_SYMBOLS1,
+        DATE_TIME_SYMBOLS2,
+        DATE_TIME_SYMBOLS3,
+        DATE_TIME_SYMBOLS4,
+        DATE_TIME_SYMBOLS5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new DateTimeSymbolsList(ELEMENTS),
+            0,
+            2,
+            new DateTimeSymbolsList(
+                Lists.of(
+                    DATE_TIME_SYMBOLS1,
+                    DATE_TIME_SYMBOLS2
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new DateTimeSymbolsList(ELEMENTS),
+            2,
+            4,
+            new DateTimeSymbolsList(
+                Lists.of(
+                    DATE_TIME_SYMBOLS3,
+                    DATE_TIME_SYMBOLS4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new DateTimeSymbolsList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new DateTimeSymbolsList(
+                Lists.of(
+                    DATE_TIME_SYMBOLS3,
+                    DATE_TIME_SYMBOLS4
+                )
+            )
         );
     }
 

@@ -24,6 +24,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.PublicClassTesting;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -143,6 +144,71 @@ public class LocalTimeListTest implements ListTesting2<LocalTimeList, LocalTime>
         );
     }
 
+    // subList..........................................................................................................
+
+    private final static LocalTime LOCAL_TIME1 = LocalTime.of(1, 11);
+    private final static LocalTime LOCAL_TIME2 = LocalTime.of(1, 22);
+    private final static LocalTime LOCAL_TIME3 = LocalTime.of(1, 33);
+    private final static LocalTime LOCAL_TIME4 = LocalTime.of(1, 44);
+    private final static LocalTime LOCAL_TIME5 = LocalTime.of(1, 55);
+
+    private final static List<LocalTime> ELEMENTS = Lists.of(
+        LOCAL_TIME1,
+        LOCAL_TIME2,
+        LOCAL_TIME3,
+        LOCAL_TIME4,
+        LOCAL_TIME5
+    );
+
+    @Test
+    public void testSubList() {
+        this.subListAndCheck(
+            new LocalTimeList(ELEMENTS),
+            0,
+            2,
+            new LocalTimeList(
+                Lists.of(
+                    LOCAL_TIME1,
+                    LOCAL_TIME2
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubList2() {
+        this.subListAndCheck(
+            new LocalTimeList(ELEMENTS),
+            2,
+            4,
+            new LocalTimeList(
+                Lists.of(
+                    LOCAL_TIME3,
+                    LOCAL_TIME4
+                )
+            )
+        );
+    }
+
+    @Test
+    public void testSubListSubList() {
+        this.subListAndCheck(
+            new LocalTimeList(ELEMENTS)
+                .subList(
+                    1,
+                    4
+                ), // 2, 3, 4
+            1,
+            3,
+            new LocalTimeList(
+                Lists.of(
+                    LOCAL_TIME3,
+                    LOCAL_TIME4
+                )
+            )
+        );
+    }
+    
     // firstOrEmpty.....................................................................................................
 
     @Test
