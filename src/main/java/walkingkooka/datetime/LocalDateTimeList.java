@@ -24,7 +24,6 @@ import java.time.LocalDateTime;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * An immutable list of {@link LocalDateTime}, which allow null elements
@@ -57,23 +56,14 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
     private final List<LocalDateTime> dateTimes;
 
     @Override
-    public LocalDateTimeList setElements(final Collection<LocalDateTime> dateTimes) {
-        final LocalDateTimeList localDateTimeList;
-
-        if (dateTimes instanceof LocalDateTimeList) {
-            localDateTimeList = (LocalDateTimeList) dateTimes;
-        } else {
-            final List<LocalDateTime> copy = Lists.array();
-            copy.addAll(
-                Objects.requireNonNull(dateTimes, "dateTimes")
+    public LocalDateTimeList setElements(final Collection<LocalDateTime> elements) {
+        return (LocalDateTimeList)
+            this.setElementsMaybeCreate(
+                elements,
+                (Collection<LocalDateTime> collection) -> collection instanceof LocalDateTimeList,
+                this::elementCheck,
+                this::replaceDateTimes
             );
-
-            localDateTimeList = this.equals(copy) ?
-                this :
-                this.replaceDate(copy);
-        }
-
-        return localDateTimeList;
     }
 
     @Override
@@ -86,7 +76,7 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
                                      final int to) {
         return 0 == from && this.size() == to ?
             this :
-            this.replaceDate(
+            this.replaceDateTimes(
                 this.dateTimes.subList(
                     from,
                     to
@@ -94,7 +84,7 @@ public final class LocalDateTimeList extends AbstractList<LocalDateTime>
             );
     }
 
-    private LocalDateTimeList replaceDate(final List<LocalDateTime> dateTimes) {
+    private LocalDateTimeList replaceDateTimes(final List<LocalDateTime> dateTimes) {
         return dateTimes.isEmpty() ?
             EMPTY :
             new LocalDateTimeList(dateTimes);
