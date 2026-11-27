@@ -24,6 +24,7 @@ import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.list.StringLikeList;
 import walkingkooka.collect.list.TsvStringList;
+import walkingkooka.text.CharSequences;
 import walkingkooka.text.HasMultiLineText;
 import walkingkooka.text.MultiLineText;
 import walkingkooka.text.TextContext;
@@ -49,9 +50,11 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
 
         return fromStringLikeList(
             csvStringList,
-            (final String string) -> DateTimeSymbols.fromCsvStringList(
-                CsvStringList.parse(string)
-            )
+            (final String string) -> CharSequences.isNullOrEmpty(string) ?
+                null :
+                DateTimeSymbols.fromCsvStringList(
+                    CsvStringList.parse(string)
+                )
         );
     }
 
@@ -70,8 +73,11 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
                                                           final Function<String, DateTimeSymbols> parser) {
         return EMPTY.setElements(
             stringLikeList.stream()
-                .map(parser::apply)
-                .collect(Collectors.toList())
+                .map(
+                    (final String string) -> CharSequences.isNullOrEmpty(string) ?
+                    null :
+                    parser.apply(string)
+                ).collect(Collectors.toList())
         );
     }
 
@@ -139,7 +145,7 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             (final DateTimeSymbols dateTimeSymbols) -> null != dateTimeSymbols ?
                 dateTimeSymbols.csvStringList()
                     .text() :
-                null
+                ""
         ).setAllLineBreaks();
     }
 

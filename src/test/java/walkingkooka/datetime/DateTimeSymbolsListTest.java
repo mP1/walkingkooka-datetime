@@ -67,6 +67,18 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
         );
     }
 
+    @Test
+    public void testFromCsvStringListWithIncludesNull() {
+        final DateTimeSymbolsList list = DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+            .concat(null)
+            .concat(DIFFERENT_DATE_TIME_SYMBOLS);
+
+        this.fromCsvStringListAndCheck(
+            list.csvStringList(),
+            list
+        );
+    }
+
     private void fromCsvStringListAndCheck(final CsvStringList csvStringList,
                                            final DateTimeSymbolsList expected) {
         this.checkEquals(
@@ -252,6 +264,18 @@ public final class DateTimeSymbolsListTest implements ImmutableListTesting<DateT
             DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
                 .concat(DIFFERENT_DATE_TIME_SYMBOLS),
             "\"\"\"am,pm\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\"\"\n" +
+                "\"\"\"AM,PM\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\"\"\"\n"
+        );
+    }
+
+    @Test
+    public void testCsvStringListWithNotEmptyIncludesNull() {
+        this.csvStringListAndCheck(
+            DateTimeSymbolsList.EMPTY.concat(DATE_TIME_SYMBOLS)
+                .concat(null)
+                .concat(DIFFERENT_DATE_TIME_SYMBOLS),
+            "\"\"\"am,pm\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.\"\"\"\n" +
+                "\n" +
                 "\"\"\"AM,PM\"\",\"\"January,February,March,April,May,June,July,August,September,October,November,December\"\",\"\"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec\"\",\"\"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday\"\",\"\"Sun,Mon,Tue,Wed,Thu,Fri,Sat\"\"\"\n"
         );
     }
