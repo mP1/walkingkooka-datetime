@@ -94,21 +94,14 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     }
 
     @Override
-    public DateTimeSymbolsList setElements(final Collection<DateTimeSymbols> collection) {
-        final DateTimeSymbolsList dateTimeSymbolsList;
-
-        if (collection instanceof DateTimeSymbolsList) {
-            dateTimeSymbolsList = (DateTimeSymbolsList) collection;
-        } else {
-            final List<DateTimeSymbols> copy = Lists.array();
-            copy.addAll(collection);
-
-            dateTimeSymbolsList = this.equals(copy) ?
-                this :
-                this.replaceDateTimeSymbols(copy);
-        }
-
-        return dateTimeSymbolsList;
+    public DateTimeSymbolsList setElements(final Collection<DateTimeSymbols> elements) {
+        return (DateTimeSymbolsList)
+            this.setElementsMaybeCreate(
+                elements,
+                (Collection<DateTimeSymbols> collection) -> collection instanceof DateTimeSymbolsList,
+                this::elementCheck,
+                this::replaceDateTimeSymbols
+            );
     }
 
     @Override
@@ -124,10 +117,10 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             );
     }
 
-    private DateTimeSymbolsList replaceDateTimeSymbols(final List<DateTimeSymbols> dateTimeSymbolss) {
-        return dateTimeSymbolss.isEmpty() ?
+    private DateTimeSymbolsList replaceDateTimeSymbols(final List<DateTimeSymbols> dateTimeSymbols) {
+        return dateTimeSymbols.isEmpty() ?
             EMPTY :
-            new DateTimeSymbolsList(dateTimeSymbolss);
+            new DateTimeSymbolsList(dateTimeSymbols);
     }
 
     @Override
@@ -143,8 +136,10 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     public CsvStringList csvStringList() {
         return CsvStringList.makeCsvStringList(
             this,
-            (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.csvStringList()
-                .text()
+            (final DateTimeSymbols dateTimeSymbols) -> null != dateTimeSymbols ?
+                dateTimeSymbols.csvStringList()
+                    .text() :
+                null
         ).setAllLineBreaks();
     }
 
@@ -154,8 +149,10 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     public TsvStringList tsvStringList() {
         return TsvStringList.makeTsvStringList(
             this,
-            (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.tsvStringList()
-                .text()
+            (final DateTimeSymbols dateTimeSymbols) -> null != dateTimeSymbols ?
+                dateTimeSymbols.tsvStringList()
+                    .text() :
+                null
         ).setAllLineBreaks();
     }
 
@@ -165,8 +162,10 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
     public MultiLineText multiLineText(final TextContext context) {
         return MultiLineText.fromCollection(
             this,
-            (final DateTimeSymbols dateTimeSymbols) -> dateTimeSymbols.csvStringList()
-                .text(),
+            (final DateTimeSymbols dateTimeSymbols) -> null != dateTimeSymbols ?
+                dateTimeSymbols.csvStringList()
+                    .text() :
+                "",
             context
         );
     }

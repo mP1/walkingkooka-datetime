@@ -24,7 +24,6 @@ import java.time.LocalTime;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * An immutable list of {@link LocalTime}, which allow nulls.
@@ -57,23 +56,14 @@ public final class LocalTimeList extends AbstractList<LocalTime>
     private final List<LocalTime> times;
 
     @Override
-    public LocalTimeList setElements(final Collection<LocalTime> times) {
-        final LocalTimeList localTimeList;
-
-        if (times instanceof LocalTimeList) {
-            localTimeList = (LocalTimeList) times;
-        } else {
-            final List<LocalTime> copy = Lists.array();
-            copy.addAll(
-                Objects.requireNonNull(times, "times")
+    public LocalTimeList setElements(final Collection<LocalTime> elements) {
+        return (LocalTimeList)
+            this.setElementsMaybeCreate(
+                elements,
+                (Collection<LocalTime> collection) -> collection instanceof LocalTimeList,
+                this::elementCheck,
+                this::replaceTimes
             );
-
-            localTimeList = this.equals(copy) ?
-                this :
-                this.replaceTime(copy);
-        }
-
-        return localTimeList;
     }
 
     @Override
@@ -86,7 +76,7 @@ public final class LocalTimeList extends AbstractList<LocalTime>
                                  final int to) {
         return 0 == from && this.size() == to ?
             this :
-            this.replaceTime(
+            this.replaceTimes(
                 this.times.subList(
                     from,
                     to
@@ -94,7 +84,7 @@ public final class LocalTimeList extends AbstractList<LocalTime>
             );
     }
 
-    private LocalTimeList replaceTime(final List<LocalTime> times) {
+    private LocalTimeList replaceTimes(final List<LocalTime> times) {
         return times.isEmpty() ?
             EMPTY :
             new LocalTimeList(times);

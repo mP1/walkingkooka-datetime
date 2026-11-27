@@ -24,7 +24,6 @@ import java.time.LocalDate;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * An immutable list of {@link LocalDate}, which allows null elements.
@@ -57,23 +56,14 @@ public final class LocalDateList extends AbstractList<LocalDate>
     private final List<LocalDate> dates;
 
     @Override
-    public LocalDateList setElements(final Collection<LocalDate> dates) {
-        final LocalDateList localDateList;
-
-        if (dates instanceof LocalDateList) {
-            localDateList = (LocalDateList) dates;
-        } else {
-            final List<LocalDate> copy = Lists.array();
-            copy.addAll(
-                Objects.requireNonNull(dates, "dates")
+    public LocalDateList setElements(final Collection<LocalDate> elements) {
+        return (LocalDateList)
+            this.setElementsMaybeCreate(
+                elements,
+                (Collection<LocalDate> collection) -> collection instanceof LocalDateList,
+                this::elementCheck,
+                this::replaceDates
             );
-
-            localDateList = this.equals(copy) ?
-                this :
-                this.replaceDate(copy);
-        }
-
-        return localDateList;
     }
 
     @Override
@@ -86,7 +76,7 @@ public final class LocalDateList extends AbstractList<LocalDate>
                                  final int to) {
         return 0 == from && this.size() == to ?
             this :
-            this.replaceDate(
+            this.replaceDates(
                 this.dates.subList(
                     from,
                     to
@@ -94,7 +84,7 @@ public final class LocalDateList extends AbstractList<LocalDate>
             );
     }
 
-    private LocalDateList replaceDate(final List<LocalDate> dates) {
+    private LocalDateList replaceDates(final List<LocalDate> dates) {
         return dates.isEmpty() ?
             EMPTY :
             new LocalDateList(dates);
