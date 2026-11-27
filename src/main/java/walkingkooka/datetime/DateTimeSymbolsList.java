@@ -158,7 +158,7 @@ public final class DateTimeSymbolsList extends AbstractList<DateTimeSymbols>
             (final DateTimeSymbols dateTimeSymbols) -> null != dateTimeSymbols ?
                 dateTimeSymbols.tsvStringList()
                     .text() :
-                null
+                ""
         ).setAllLineBreaks();
     }
 
