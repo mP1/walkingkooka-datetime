@@ -37,6 +37,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -63,6 +64,17 @@ public final class DateTimeSymbols implements HasDateTimeSymbols,
     public final static int WEEK_DAY_COUNT_MIN = 7;
 
     public final static int WEEK_DAY_COUNT_MAX = 7;
+
+    /**
+     * Returns an {@link Optional#empty()} otherwise tries to parse the non empty text.
+     */
+    public static Optional<DateTimeSymbols> tryParse(final String text) {
+        return Optional.ofNullable(
+            CharSequences.isNullOrEmpty(text) ?
+                null :
+                parse(text)
+        );
+    }
 
     /**
      * Parses the {@link String csv text} with each token interpreted as a character or string for each
