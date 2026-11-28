@@ -37,6 +37,7 @@ import java.text.DateFormatSymbols;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
@@ -715,6 +716,42 @@ public final class DateTimeSymbolsTest implements HashCodeEqualsDefinedTesting2<
     @Override
     public DateTimeSymbols parseString(final String text) {
         return DateTimeSymbols.parse(text);
+    }
+
+    // tryParse.........................................................................................................
+
+    @Test
+    public void testTryParseWithNull() {
+        this.tryParseAndCheck(
+            null,
+            Optional.empty()
+        );
+    }
+
+    @Test
+    public void testTryParseWithEmptyString() {
+        this.tryParseAndCheck(
+            "",
+            Optional.empty()
+        );
+    }
+
+    @Test
+    public void testTryParseWithNonEmptyString() {
+        final DateTimeSymbols dateTimeSymbols = this.createObject();
+
+        this.tryParseAndCheck(
+            dateTimeSymbols.text(),
+            Optional.of(dateTimeSymbols)
+        );
+    }
+
+    private void tryParseAndCheck(final String text,
+                                  final Optional<DateTimeSymbols> expected) {
+        this.checkEquals(
+            expected,
+            DateTimeSymbols.tryParse(text)
+        );
     }
 
     // TreePrintable....................................................................................................
